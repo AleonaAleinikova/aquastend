@@ -1,0 +1,123 @@
+.investors {
+  @extend %aqs-bottomBorder;
+  padding: 130px 0 90px;
+  text-align: center;
+
+  &:after {
+    @include tx-pseudo;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: -$gap;
+    right: -$gap;
+    background: url('../images/pattern.png');
+  }
+
+  @include tx-media(wide) {
+
+    &:after {
+      right: -$gap-middle;
+      left: -$gap-middle;
+    }
+
+  }
+
+  @include tx-media(phone) {
+    padding: 110px 0 60px;
+
+    &:after {
+      right: -$gap-phone;
+      left: -$gap-phone;
+    }
+
+  }
+
+}
+
+$investorsText-borderColor: $blue-400;
+$investorsText-phone-fontSize: 13px;
+
+.investorsText {
+  position: relative;
+  width: 530px;
+  margin: 0 auto;
+
+  &:before,
+  &:after {
+    @include tx-pseudo;
+    bottom: -42px;
+    width: 210px;
+    height: 2px;
+    background: $investorsText-borderColor;
+    opacity: .65;
+  }
+
+  &:before {
+    right: 50%;
+    transform: translateX(-30px);
+  }
+
+  &:after {
+    left: 50%;
+    transform: translateX(30px);
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($investorsText-phone-fontSize, none);
+    width: 100%;
+
+    &:before,
+    &:after {
+      width: 35%;
+    }
+
+  }
+
+}
+
+$investorsIcon-color: $blue-400;
+
+.investorsIcon {
+  width: 24px;
+  height: 34px;
+  fill: $investorsIcon-color;
+}
+
+$investorsPhone-fontSize: 55px;
+$investorsPhone-default-fontSize: 40px;
+$investorsPhone-phone-fontSize: 40px;
+$investorsPhone-phone-default-fontSize: 28px;
+$investorsPhone-color: $blue-900;
+
+.investorsPhone {
+  @include tx-link($investorsPhone-color);
+  @include tx-font-size($investorsPhone-default-fontSize, none);
+  margin: 25px 0 5px;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($investorsPhone-fontSize, none);
+    line-height: 1;
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($investorsPhone-phone-default-fontSize, none);
+  
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($investorsPhone-phone-fontSize, none);
+    }
+
+  }
+
+}
+
+$investorsEmail-fontSize: 18px;
+$investorsEmail-color: $blue-400;
+
+.investorsEmail {
+  @include tx-font-size($investorsEmail-fontSize, none);
+  color: $investorsEmail-color;
+}

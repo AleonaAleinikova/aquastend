@@ -9,6 +9,7 @@ import filter from 'filter';
 import handAnimation from 'handAnimation';
 import aboutBackground from 'aboutBackground';
 import progressBar from 'progressBar';
+import legal from 'legal';
 
 menu();
 facts();
@@ -17,3 +18,4 @@ filter();
 handAnimation();
 aboutBackground();
 progressBar();
+legal();

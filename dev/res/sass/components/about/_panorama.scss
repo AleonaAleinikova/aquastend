@@ -1,0 +1,107 @@
+.panorama {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 (-$gap);
+  background: url('../images/panorama.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 430px;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+  }
+
+  @include tx-media(phone) {
+    margin: 0 (-$gap-phone);
+    height: 100vh;
+  }
+
+}
+
+$panoramaText-color: $white;
+$panoramaText-fontSize: 40px;
+$panoramaText-default-fontSize: 30px;
+$panoramaText-phone-fontSize: 28px;
+$panoramaText-default-phone-fontSize: 20px;
+
+.panoramaText {
+  @include tx-font-size($panoramaText-default-fontSize, none);
+  width: 490px;
+  text-align: center;
+  color: $panoramaText-color;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($panoramaText-fontSize, none);
+    line-height: 1.15;
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($panoramaText-default-phone-fontSize, none);
+    width: 205px;
+
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($panoramaText-phone-fontSize, none);
+      line-height: 1.5;
+    }
+
+  }
+
+}
+
+$panoramaNav-width: 35px;
+$panoramaNav-height: 105px;
+$panoramaNav-color: $white;
+
+%panoramaNav {
+  position: absolute;
+  top: 50%;
+  width: $panoramaNav-width;
+  height: $panoramaNav-height;
+  margin: ($panoramaNav-height / -2) 0 0;
+  padding: 0;
+  background: none;
+
+  @include tx-media(phone) {
+    display: none;
+  }
+
+}
+
+.panoramaPrev {
+  @extend %panoramaNav;
+  left: 10%;
+
+  @include tx-media(wide) {
+    left: 20%;
+  }
+
+  @include tx-media(tablet) {
+    left: 5%;
+  }
+
+}
+
+.panoramaNext {
+  @extend %panoramaNav;
+  right: 10%;
+  transform-origin: 50% 50%;
+  transform: scale(-1, 1);
+
+  @include tx-media(wide) {
+    right: 20%;
+  }
+
+  @include tx-media(tablet) {
+    right: 5%;
+  }
+
+}
+
+.panoramaArrow {
+  width: 100%;
+  height: 100%;
+  fill: $panoramaNav-color;
+}

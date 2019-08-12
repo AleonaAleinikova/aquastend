@@ -1,0 +1,143 @@
+.header {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 25px $gap 0;
+
+  @include tx-media(wide) {
+    padding: 35px $gapContent-middle 0;
+  }
+
+  @include tx-media(phone) {
+    padding: 15px $gap-phone;
+  }
+
+}
+
+.logo {
+  @extend %logo;
+  align-self: center;
+  margin: 5px auto 0 0;
+
+  @include tx-media(tablet) {
+    margin: -4px auto 0 0;
+  }
+
+  @include tx-media(phone) {
+    margin: 0 auto;
+  }
+
+}
+
+.logoIcon {
+  width: 180px;
+  height: 38px;
+
+  @include tx-media(tablet) {
+    width: 160px;
+    height: 33px;
+  }
+
+  @include tx-media(phone) {
+    width: 140px;
+    height: 28px;
+  }
+
+}
+
+.navigationList {
+  display: flex;
+  margin: 0;
+  list-style: none;
+
+  & > li {
+    margin: 0;
+  }
+
+  @include tx-media(phone) {
+    display: none;
+  }
+
+}
+
+$navigationLink-fontSize: 12px;
+$navigationLink-color: $blue-500;
+
+.navigationLink {
+  @include tx-font-size($navigationLink-fontSize, none);
+  @include tx-link($navigationLink-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0 50px 0 0;
+  line-height: 1;
+
+  @include tx-media(tablet) {
+    margin: 0 45px 0 0;
+  }
+
+}
+
+$menuLinkItem-color: $blue-700;
+$menuLinkItem-width: 30px;
+$menuLinkItem-height: 3px;
+
+%menuLinkItem {
+  position: absolute;
+  left: 0;
+  width: $menuLinkItem-width;
+  height: $menuLinkItem-height;
+  border-radius: 3px;
+  background: $menuLinkItem-color;
+
+}
+
+.menuLink {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: 0;
+  padding: 0;
+
+  &:before,
+  &:after {
+    @extend %menuLinkItem;
+    content: '';
+    transition: transform $UITransitionFast;
+  }
+
+  &:before {
+    top: 2px;
+  }
+
+  &:after {
+    bottom: 2px;
+  }
+
+  &:hover {
+    
+    &:before {
+      transform: translateY(-2px);
+    }
+
+    &:after {
+      transform: translateY(2px);
+    }
+
+  }
+
+  @include tx-media(phone) {
+    order: -1;
+  }
+
+}
+
+.menuLinkIcon {
+  @extend %menuLinkItem;
+  top: 50%;
+  margin: -2px 0 0;
+}

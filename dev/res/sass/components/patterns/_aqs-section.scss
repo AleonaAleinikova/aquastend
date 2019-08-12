@@ -1,0 +1,51 @@
+$aqs-sectionTitle-fontSize: 60px;
+$aqs-sectionTitle-default-fontSize: 42px;
+
+$aqs-sectionTitle-tablet-fontSize: 50px;
+$aqs-sectionTitle-default-tablet-fontSize: 28px;
+
+$aqs-sectionTitle-phone-fontSize: 32px;
+$aqs-sectionTitle-default-phone-fontSize: 20px;
+
+%aqs-sectionTitle {
+  @include tx-font-size($aqs-sectionTitle-default-fontSize, none);
+  margin: 0 0 20px;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($aqs-sectionTitle-fontSize, none);
+    line-height: .95;
+  }
+
+  @include tx-media(tablet) {
+    @include tx-font-size($aqs-sectionTitle-default-tablet-fontSize, none);
+  
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($aqs-sectionTitle-tablet-fontSize, none);
+    }
+
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($aqs-sectionTitle-default-phone-fontSize, none);
+  
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($aqs-sectionTitle-phone-fontSize, none);
+    }
+
+  }
+
+}
+
+$aqs-sectionText-fontSize: 15px;
+$aqs-sectionText-tablet-fontSize: 13px;
+
+%aqs-sectionText {
+  @include tx-font-size($aqs-sectionText-fontSize, none);
+  font-weight: 300;
+
+  @include tx-media(tablet) {
+    @include tx-font-size($aqs-sectionText-tablet-fontSize, none);
+  }
+
+}

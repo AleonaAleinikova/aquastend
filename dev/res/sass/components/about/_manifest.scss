@@ -1,0 +1,70 @@
+.manifest {
+  display: flex;
+  flex-direction: column;
+  padding: 85px $gap 20px;
+  margin: 0 (-$gap);
+  background: url('../images/manifest.jpg');
+  background-size: cover;
+  background-position: 50% 0;
+  max-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+    padding: 85px $gap-middle 20px;
+  }
+
+  @include tx-media(phone) {
+    margin: 0 (-$gap-phone);
+    padding: 65px $gap-phone 20px;
+  }
+
+}
+
+$manifestTitle-fontSize: 36px;
+$manifestTitle-default-fontSize: 28px;
+$manifestTitle-color: $white;
+
+.manifestTitle {
+  @include tx-font-size($manifestTitle-default-fontSize, none);
+  color: $manifestTitle-color;
+  margin: 0 0 30px;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($manifestTitle-fontSize, none);
+    line-height: .95;
+  }
+
+  @include tx-media(phone) {
+    text-align: center;
+    margin: 0 0 10px;
+  }
+
+}
+
+$manifestText-color: $white;
+$manifestText-fontSize: 24px;
+
+.manifestText {
+  @include tx-font-size($manifestText-fontSize, none);
+  width: 100vw;
+  height: 100%;
+  padding: 0 60vw 0 0;
+  box-sizing: border-box;
+  overflow: auto;
+  color: $manifestText-color;
+  font-weight: 300;
+
+  @include tx-media(tablet) {
+    padding: 0 30vw 0 0;
+  }
+
+  @include tx-media(phone) {
+    padding: 0 12vw 0 0;
+    width: 100vw;
+    text-align: center;
+  }
+
+}

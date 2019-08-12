@@ -1,0 +1,76 @@
+$clientsNav-background: $blue-100;
+
+.clientsNav {
+  width: 720px;
+  height: 60px;
+  margin: 100px auto 60px;
+  background: $clientsNav-background;
+  border-radius: 40px;
+
+  @include tx-media(wide) {
+    width: 920px;
+    margin: 115px auto 70px;
+  }
+
+  @include tx-media(tablet) {
+    width: 670px;
+  }
+
+  @include tx-media(phone) {
+    width: 100%;
+    height: auto;
+    padding: 0 10px 0 30px;
+    margin: 60px 0;
+    background: none;
+    box-sizing: border-box;
+  }
+
+}
+
+.clientsNavList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 100%;
+
+  @include tx-media(phone) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+$clientsNavItemBorder-color: rgba($blue-600, .25);
+
+.clientsNavItem {
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+  height: 30px;
+  border-left: 2px solid $clientsNavItemBorder-color;
+
+  &:first-of-type {
+    border: none;
+  }
+
+  @include tx-media(phone) {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid $clientsNavItemBorder-color;
+    padding: 20px 0 0;
+    text-align: left;
+  }
+
+}
+
+$clientsNavLink-color: $blue-500;
+$clientsNavLink-fontSize: 13px;
+
+.clientsNavLink {
+  @include tx-font-size($clientsNavLink-fontSize, none);
+  @include tx-link($clientsNavLink-color);
+  text-decoration: none;
+}

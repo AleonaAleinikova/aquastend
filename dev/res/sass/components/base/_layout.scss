@@ -1,0 +1,55 @@
+/* Layout */
+
+// sass-lint:disable no-vendor-prefixes
+
+html {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// sass-lint:enable no-vendor-prefixes
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  padding: 0 $gap;
+  margin: 0;
+  background: $background;
+
+  @include tx-media(wide) {
+    padding: 0 $gap-middle;
+  }
+
+  @include tx-media(phone) {
+    padding: 0 $gap-phone;
+  }
+
+}
+
+.font-BebasNeue-is-loaded {
+  @extend %font-BebasNeue-is-loaded;
+}
+
+.withoutScroll {
+  overflow: hidden;
+}
+
+
+
+/* Phone Layout */
+
+@import '_layout-phone';
+
+
+
+/* Print Layout */
+
+@import '_layout-print';

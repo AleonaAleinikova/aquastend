@@ -1,0 +1,207 @@
+.hero {
+  flex-shrink: 0;
+  width: auto;
+  height: 100vh;
+  margin: 0 (-$gap);
+  overflow: hidden;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+  }
+
+}
+
+.heroSlider {
+  width: 100%;
+  height: 100%;
+  transition: .7s;
+}
+
+.heroSlide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url('../images/background.png');
+  background-size: cover;
+}
+
+.heroPagination {
+  position: absolute;
+  top: 50%;
+  right: $gap;
+  counter-reset: slide;
+  list-style: none;
+
+  @include tx-media(wide) {
+    right: $gapContent-middle;
+  }
+
+}
+
+$heroDot-color: $white;
+
+.js-sliderDot {
+  position: relative;
+  color: $heroDot-color;
+  cursor: pointer;
+
+  &:before {
+    @include tx-pseudo;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    transition: $UITransitionDefault;
+    transform: translate(-6px, -5px);
+  }
+
+  &:after {
+    counter-increment: slide;
+    content: counter(slide);
+    opacity: 0;
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+    }
+    
+  }
+
+  &-is-active {
+
+    &:before {
+      width: 26px;
+      height: 26px;
+      transform: translate(-14px, -13px);
+    }
+
+    &:after {
+      opacity: 1;
+    }
+
+  }
+
+}
+
+$slideTitle-fontSize: 48px;
+$slideTitle-default-fontSize: 32px;
+$slideTitle-phone-fontSize: 37px;
+$slideTitle-default-phone-fontSize: 26px;
+
+$slideTitle-color: $white;
+$slideTitle-background: rgba($blue-500, .8);
+
+.slideTitle {
+  @include tx-font-size($slideTitle-default-fontSize, none);
+  position: absolute;
+  left: $gap;
+  bottom: 25%;
+  color: $slideTitle-color;
+  padding: 30px;
+  border-radius: 25px;
+  background: $slideTitle-background;
+  line-height: 1.1;
+  text-transform: uppercase;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 75px;
+    height: 28px;
+    background: url('../images/arrow.svg');
+    margin: 0 0 -2px 25px;
+    transition: $UITransitionDefault;
+  }
+
+  &:hover {
+
+    &:after {
+      transform: translateX(10px);
+    }
+
+  }
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($slideTitle-fontSize, none);
+
+    &:after {
+      margin: 0 0 2px 25px;
+    }
+
+  }
+
+  @include tx-media(wide) {
+    left: $gapContent-middle;
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($slideTitle-default-phone-fontSize, none);
+    padding: 25px 20px 25px 50px;
+
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($slideTitle-phone-fontSize, none);
+      line-height: 1.3;
+    }
+
+  }
+
+}
+
+$onlineLink-fontSize: 12px;
+$onlineLink-color: $white;
+
+.onlineLink {
+  @include tx-link($onlineLink-color);
+  @include tx-font-size($onlineLink-fontSize, none);
+  position: absolute;
+  left: $gap + 60px;
+  bottom: $gap;
+  padding: 14px 14px 14px 30px;
+  border-radius: 25px;
+  border: 1px solid $onlineLink-color;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1;
+
+  @include tx-media(wide) {
+    left: calc(#{$gapContent-middle} + 80px);
+  }
+
+}
+
+.onlineIcon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 15px;
+  height: 20px;
+}
+
+$instagramLink-size: 40px;
+$instagramLink-color: $white;
+
+.instagramLink {
+  position: absolute;
+  bottom: $gap;
+  left: $gap;
+  width: $instagramLink-size;
+  height: $instagramLink-size;
+  border-radius: 50%;
+  border: 1px solid $instagramLink-color;
+
+  @include tx-media(wide) {
+    left: $gapContent-middle;
+  }
+
+}
+
+.instagramIcon {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  width: 22px;
+  height: 22px;
+  fill: none;
+}

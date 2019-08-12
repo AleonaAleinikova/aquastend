@@ -1,0 +1,40 @@
+.blogResults {
+  @extend %aqs-bottomBorder;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: row dense;
+  grid-gap: 20px;
+  padding: 0 0 210px;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+    padding: 0 calc(#{$gapContent-middle} + 40px) 200px;
+    grid-template-columns: repeat(5, 1fr);
+    overflow: hidden;
+  }
+
+}
+
+$blogMoreLink-size: 85px;
+$blogMoreLink-color: rgba($blue-400, .2);
+
+.blogMoreLink {
+  @include tx-link($blogMoreLink-color);
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  width: $blogMoreLink-size;
+  height: $blogMoreLink-size;
+  margin: 0 0 0 ($blogMoreLink-size / -2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+}
+
+.blogMoreIcon {
+  width: 40px;
+  height: 18px;
+  fill: currentColor;
+}

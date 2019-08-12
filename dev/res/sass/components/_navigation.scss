@@ -1,0 +1,111 @@
+$siteNavigation-fontSize: 13px;
+
+.siteNavigation {
+  @include tx-font-size($siteNavigation-fontSize, none);
+  break-inside: avoid-column;
+  break-after: always;
+  width: 300px;
+
+  %menu & {
+    position: absolute;
+    top: 165px;
+    right: 55%;
+    transform: translateX(25px);
+  }
+
+  %footer & {
+    height: 270px;
+    margin: 0 0 0 60px;
+  }
+
+  @include tx-media(wide) {
+    width: 310px;
+
+    %footer & {
+      margin: 0 0 0 80px;
+    }
+
+  }
+
+  @include tx-media(tablet) {
+    width: 260px;
+
+    %footer & {
+      margin: 50px auto;
+      transform: translateX(17px);
+    }
+
+    %menu & {
+      position: static;
+      margin: 0 auto 20px;
+    }
+
+  }
+
+}
+
+.siteNavigationList {
+  columns: 2;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.siteNavItem {
+  margin: 0 0 30px;
+}
+
+$siteNavLink-menu-color: $yellow;
+$siteNavLink-footer-color: $blue-500;
+$siteNavLink-footer-activeColor: $blue-700;
+$siteNavLink-borderColor: $gray-500;
+
+.siteNavLink {
+  display: inline-block;
+  min-width: 85px;
+  padding: 0 0 5px;
+  border-bottom: 2px solid $siteNavLink-borderColor;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  %footer & {
+    @include tx-link($siteNavLink-footer-color, $siteNavLink-footer-color, $siteNavLink-footer-activeColor, $siteNavLink-footer-activeColor);
+  }
+
+  %menu & {
+    @include tx-link($siteNavLink-menu-color);
+  }
+
+}
+
+.siteInnerList {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.siteInnerItem {
+  margin: 5px 0;
+}
+
+$siteInnerLink-footer-color: $gray-700;
+$siteInnerLink-menu-color: $white;
+
+.siteInnerLink {
+  @include tx-link($siteInnerLink-footer-color);
+  text-decoration: none;
+
+  %footer & {
+    @include tx-link($siteInnerLink-footer-color);
+  }
+
+  %menu & {
+    @include tx-link($siteInnerLink-menu-color);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}

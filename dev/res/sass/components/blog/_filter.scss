@@ -1,0 +1,168 @@
+.filterSection {
+  padding: 150px 0 45px;
+
+  @include tx-media(wide) {
+    padding: 150px calc(#{$gapContent-middle} + 40px) 50px;
+    margin: 0 (-$gap-middle);
+  }
+
+}
+
+$filter-background: $blue-100;
+
+.filter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background: $filter-background;
+  border-radius: 40px;
+  box-sizing: border-box;
+  padding: 0 20px 0 35px;
+}
+
+$filterCategories-border: rgba($gray-100, .3);
+
+.filterCategories {
+  width: 455px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $filterCategories-border;
+}
+
+$filterItemLabel-color: $blue-500;
+$filterItemLabel-fontSize: 16px;
+
+.filterItemLabel {
+  position: relative;
+  @include tx-link($filterItemLabel-color);
+  @include tx-font-size($filterItemLabel-fontSize, none);
+  font-weight: 500;
+  padding: 0 0 5px;
+
+  &:before {
+    @include tx-pseudo;
+    width: 100%;
+    height: 3px;
+    background: currentColor;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  %filterItem-is-checked + & {
+
+    &:before {
+      opacity: 1;
+    }
+
+  }
+
+}
+
+.filterItem {
+  position: absolute;
+  left: -10000px;
+
+  &:checked {
+    @extend %filterItem-is-checked;
+  }
+
+}
+
+.search {
+  position: relative;
+  margin: 0 0 0 auto;
+}
+
+$searchField-background: $blue-50;
+$searchField-border: $blue-250;
+
+.searchField {
+  width: 305px;
+  height: 46px;
+  border-radius: 23px;
+  background: $searchField-background;
+  border: 1px solid $searchField-border;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+$searchIcon-size: 22px;
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: $searchIcon-size;
+  height: $searchIcon-size;
+  margin: ($searchIcon-size / -2) 0 0;
+}
+
+.articlesType {
+  display: flex;
+  justify-content: space-between;
+  width: 710px;
+  margin: 45px auto 0;
+
+  &-is-hidden {
+    display: none;
+  }
+
+}
+
+$articleTypeLabel-fontSize: 13px;
+$articleTypeCheckbox-color: rgba($blue-500, .5);
+
+.articleTypeLabel {
+  position: relative;
+  @include tx-font-size($articleTypeLabel-fontSize, none);
+  font-weight: 300;
+  padding: 0 0 0 40px;
+
+  &:before, 
+  &:after {
+    @include tx-pseudo;
+    top: 50%;
+    left: 0;
+    margin: -10px 0 0;
+  }
+
+  &:before {
+    width: 16px;
+    height: 16px;
+    border: 2px solid $articleTypeCheckbox-color;
+    border-radius: 2px;
+  }
+
+  &:after {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADzSURBVHgBrdPtDYIwEAbg9wgDOILx479uID+cw7hBnUCcQEbQCZzA1BEcwJiOwAJy3hlJCgFtgDchKUf7cECh6c5uwJwBGKFbHIjSiJnTHohmrI1EpIP+GUUYKF0hR3glrO+nB+ReoOSRrW8RaNsV+iAuS9zc2AWDL21QHoLMjF0VYAvva/vQWSYu/eduQnTfcQ2pQkRWJxaywMdkfPcR2TOnhht5kEyYmKv5YtrZXY8iAKlC2hToODF2LwtzBb5IrrVfiCauFwicykI8s+Sg54poDX8SNxVLrBwjIHHbhVCgzKD/Wo7+cQLxrmUThkYa4cMb9159d029lmAAAAAASUVORK5CYII=');
+    background-size: cover;
+  }
+
+  %articleType-is-checked + & {
+
+    &:before {
+      opacity: 0;
+    }
+
+    &:after {
+      opacity: 1;
+    }
+
+  }
+
+}
+
+.articleType {
+  position: absolute;
+  left: -10000px;
+
+  &:checked {
+    @extend %articleType-is-checked;
+  }
+
+}

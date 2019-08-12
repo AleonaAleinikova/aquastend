@@ -1,0 +1,33 @@
+$aqs-borderColor: $gray-300;
+
+%aqs-bottomBorder {
+  position: relative;
+
+  &:before {
+    @include tx-pseudo;
+    right: -$gap;
+    bottom: 0;
+    left: -$gap;
+    height: 1px;
+    background: $aqs-borderColor;
+  }
+
+  @include tx-media(wide) {
+
+    &:before {
+      right: -$gap-middle;
+      left: -$gap-middle;
+    }
+
+  }
+
+  @include tx-media(phone) {
+
+    &:before {
+      right: -$gap-phone;
+      left: -$gap-phone;
+    }
+
+  }
+
+}

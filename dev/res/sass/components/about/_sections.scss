@@ -1,0 +1,417 @@
+%historySection {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  @include tx-media(wide) {
+    height: 620px;
+    max-height: 100vh;
+  }
+
+  @include tx-media(phone) {
+    height: auto;
+    padding: 15px $gap-phone;
+  }
+
+}
+
+.history-1 {
+  @extend %historySection;
+
+  @include tx-media(tablet) {
+    margin: 0 (-$gap);
+    padding: 0 $gap;
+    overflow: hidden;
+  }
+
+  @include tx-media(phone) {
+    margin: 0 (-$gap-phone);
+    padding: 440px ($gap-phone + 10px) 50px;
+
+    &:before {
+      @include tx-pseudo;
+      bottom: 235px;
+      left: 0;
+      right: 0;
+      height: 160px;
+      background: linear-gradient(180deg, #0A5FB6 0%, rgba(247, 247, 247, 0.0001) 100%);
+      opacity: .09;
+    }
+
+  }
+
+}
+
+$history-2-background: $blue-500;
+$history-2-leftGap: 68%;
+$history-2-wide-leftGap: 58%;
+$history-2-phone-topGap: 80vw;
+
+.history-2 {
+  @extend %historySection;
+  padding: 0 0 0 $history-2-leftGap;
+
+  &:before,
+  &:after {
+    @include tx-pseudo;
+    top: 0;
+    right: -$gap;
+    bottom: 0;
+  }
+
+  &:before {
+    z-index: -1;
+    left: calc(#{$history-2-leftGap} - 65px);
+    background: $history-2-background;
+    opacity: .95;
+  }
+
+  &:after {
+    z-index: -2;
+    left: -$gap;
+    background: url('../images/history2.jpg');
+    background-size: cover;
+  }
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+    padding: 0 0 0 90%;
+
+    &:before,
+    &:after {
+      right: 0;
+    }
+
+    &:before {
+      left: $history-2-wide-leftGap;
+    }
+
+    &:after {
+      left: 0;
+    }
+
+  }
+
+  @include tx-media(phone) {
+    margin: 0 (-$gap-phone);
+    padding: $history-2-phone-topGap ($gap-phone + 10px) 50px;
+
+    &:before {
+      left: 0;
+      right: 0;
+      opacity: 1;
+      top: $history-2-phone-topGap;
+      bottom: 0;
+    }
+
+    &:after {
+      top: 0;
+      bottom: auto;
+      left: 0;
+      right: 0;
+      height: $history-2-phone-topGap;
+    }
+
+  }
+
+}
+
+$history-3-phone-background: $blue-50;
+
+.history-3 {
+  @extend %historySection;
+  padding: 0 0 0 50%;
+
+  @include tx-media(phone) {
+    padding: 0 0 40px;
+
+    &:before {
+      @include tx-pseudo;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: -$gap-phone;
+      right: -$gap-phone;
+      background: $history-3-phone-background;
+    }
+
+  }
+
+}
+
+$history-4-background: $blue-50;
+
+.history-4 {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8% $gap 0;
+  margin: 0 (-$gap);
+  background: $history-4-background;
+  box-sizing: border-box;
+  align-content: flex-start;
+  justify-content: center;
+
+  @include tx-media(wide) {
+    height: 620px;
+    max-height: 100vh;
+    padding: 8% $gap-middle 0;
+    margin: 0 (-$gap-middle);
+  }
+
+  @include tx-media(phone) {
+    height: auto;
+    background: none;
+    padding: 70px 0 40px;
+    margin: 0;
+  }
+
+}
+
+$historyTitle-1-color: $blue-500;
+
+.historyTitle-1 {
+  @extend %aqs-sectionTitle;
+  color: $historyTitle-1-color;
+
+  @include tx-media(phone) {
+    text-align: center;
+    margin: 0;
+  }
+
+}
+
+$historyTitle-2-color: $yellow;
+
+.historyTitle-2 {
+  @extend %aqs-sectionTitle;
+  color: $historyTitle-2-color;
+
+  @include tx-media(phone) {
+    text-align: center;
+    margin: 70px 0 0;
+  }
+
+}
+
+$historyTitle-3-color: $blue-400;
+
+.historyTitle-3 {
+  @extend %aqs-sectionTitle;
+  color: $historyTitle-3-color;
+
+  @include tx-media(phone) {
+    text-align: center;
+  }
+
+}
+
+.historyDescription-1 {
+  @extend %aqs-sectionText;
+  max-width: 320px;
+
+  @include tx-media(phone) {
+    width: 100%;
+    max-width: 420px;
+    align-self: center;
+    text-align: center;
+  }
+
+}
+
+$historyDescription-2-color: $white;
+
+.historyDescription-2 {
+  @extend %aqs-sectionText;
+  max-width: 245px;
+  color: $historyDescription-2-color;
+
+  @include tx-media(phone) {
+    width: 100%;
+    max-width: 420px;
+    align-self: center;
+    text-align: center;
+  }
+
+}
+
+.historyDescription-3 {
+  @extend %aqs-sectionText;
+  max-width: 410px;
+
+  @include tx-media(phone) {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+}
+
+.historyDescription-4 {
+  @extend %aqs-sectionText;
+  max-width: 340px;
+
+  @include tx-media(tablet) {
+    width: 280px;
+  }
+
+  @include tx-media(phone) {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+%historyImage-1 {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+
+}
+
+.historyImage-1 {
+  @extend %historyImage-1;
+  bottom: 0;
+  width: 430px;
+  height: 475px;
+  margin: 0 0 0 -220px;
+  transform: translateX(var(--scroll));
+
+  @include tx-media(phone) {
+    bottom: 395px;
+    width: 240px;
+    height: 280px;
+    transform: none;
+    margin: 0 0 0 -140px;
+  }
+
+}
+
+.historyImage-1-1 {
+  @extend %historyImage-1;
+  bottom: 90px;
+  width: 575px;
+  height: 210px;
+  margin: 0 0 0 -85px;
+  transform: translateX(calc(var(--scroll) * -.3));
+
+  @include tx-media(phone) {
+    bottom: 425px;
+    width: 330px;
+    height: 130px;
+    transform: none;
+  }
+
+}
+
+.historyImageHolder {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: -$gap;
+  bottom: 0;
+
+  &:hover {
+    @extend %holderHover;
+  }
+
+}
+
+.historyImage-2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 400px;
+  height: 400px;
+  max-width: 400PX;
+  transform: translateX(-100%);
+  transition: $UITransitionDefault;
+
+  %holderHover &,
+  &:hover {
+    transform: translateX(0);
+  }
+
+}
+
+$historyImage-3-size: 310px;
+$historyImage-3-tablet-size: 280px;
+$historyImageHolder-3-borderColor: $blue-400;
+
+.historyImageHolder-3 {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  width: $historyImage-3-size;
+  height: $historyImage-3-size;
+  margin: ($historyImage-3-size / -2) 50px 0 0;
+  border: 7px solid $historyImageHolder-3-borderColor;
+
+  @include tx-media(tablet) {
+    width: $historyImage-3-tablet-size;
+    height: $historyImage-3-tablet-size;
+    margin: ($historyImage-3-tablet-size / -2) 50px 0 0;
+  }
+
+  @include tx-media(phone) {
+    position: relative;
+    top: auto;
+    right: auto;
+    order: -1;
+    width: 230px;
+    height: 230px;
+    margin: 60px auto 30px;
+  }
+
+}
+
+%historyImage-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 700px;
+}
+
+.historyImage-3-1 {
+  @extend %historyImage-3;
+  width: 300px;
+  height: 200px;
+  margin: -100px 0 0 -120px;
+  transform: translate(var(--mouseX), var(--mouseY));
+}
+
+.historyImage-3-2 {
+  @extend %historyImage-3;
+  width: 700px;
+  height: 580px;
+  margin: -305px 0 0 -200px;
+  transform: translate(calc(var(--mouseX) * .08), calc(var(--mouseY) * .08));
+}
+
+.historyImage-4 {
+  width: 530px;
+  height: auto;
+  margin: 0 0 0 50px;
+
+  @include tx-media(tablet) {
+    width: 330px;
+    height: 210px;
+  }
+
+  @include tx-media(phone) {
+    order: 1;
+    width: 100%;
+    margin: 20px 0 40px;
+  }
+
+}
+
+
+

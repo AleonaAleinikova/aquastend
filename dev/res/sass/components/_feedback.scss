@@ -1,0 +1,134 @@
+$feedback-footer-background: $blue-100;
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  break-inside: avoid-column;
+
+  %footer & {
+    padding: 40px 35px;
+    border-radius: 25px;
+    background: $feedback-footer-background;
+  
+    position: absolute;
+    top: 85px;
+    right: 0;
+  }
+
+  @include tx-media(wide) {
+
+    %footer & {
+      right: $gapContent-middle;
+    }
+
+  }
+
+  @include tx-media(tablet) {
+
+    %footer & {
+      top: 45px;
+      right: auto;
+      left: 50%;
+      transform: translateX(50px);
+    }
+
+  }
+
+  @include tx-media(phone) {
+    width: 280px;
+    padding: 30px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    %footer & {
+      position: static;
+      transform: none;
+    }
+
+  }
+
+}
+
+$feedbackLabel-fontSize: 12px;
+$feedbackLabel-menu-color: $yellow;
+$feedbackLabel-footer-color: $gray-900;
+
+.feedbackLabel {
+  @include tx-font-size($feedbackLabel-fontSize, none);
+  margin: 0 0 5px;
+
+  %footer & {
+    color: $feedbackLabel-footer-color;
+  }
+
+  %menu & {
+    color: $feedbackLabel-menu-color;
+  }
+
+}
+
+$feedbackField-fontSize: 12px;
+$feedbackField-width: 220px;
+$feedbackField-footer-borderColor: $blue-350;
+$feedbackField-menu-borderColor: $gray-100;
+$feedbackField-error-borderColor: $orange;
+
+%feedbackField {
+  @include tx-font-size($feedbackField-fontSize, none);
+  width: $feedbackField-width;
+  margin: 0 0 10px;
+  padding: 10px;
+  border-radius: 2px;
+  font-style: italic;
+  font-weight: 300;
+  box-sizing: border-box;
+
+  %footer & {
+    border: 1px solid $feedbackField-footer-borderColor;
+  }
+
+  %menu & {
+    border: 1px solid $feedbackField-menu-borderColor;
+  }
+
+  &-has-error {
+    border: 1px solid $feedbackField-error-borderColor;
+  }
+
+}
+
+.feedbackField {
+  @extend %feedbackField;
+  height: 35px;
+}
+
+.feedbackMessage {
+  @extend %feedbackField;
+  height: 85px;
+  resize: none;
+}
+
+$feedbackSubmit-color: $white;
+$feedbackSubmit-background: $blue-500;
+$feedbackSubmit-hover-background: $blue-300;
+$feedbackSubmit-disable-background: $gray-500;
+$feedbackSubmit-fontSize: 15px;
+
+.feedbackSubmit {
+  @include tx-font-size($feedbackSubmit-fontSize, none);
+  width: 130px;
+  height: 40px;
+  color: $feedbackSubmit-color;
+  border-radius: 4px;
+  background: $feedbackSubmit-background;
+  transition: $UITransitionDefault;
+
+  &:hover {
+    background: $feedbackSubmit-hover-background;
+  }
+
+  &:disabled {
+    background: $feedbackSubmit-disable-background;
+  }
+
+}

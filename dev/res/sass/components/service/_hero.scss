@@ -1,0 +1,82 @@
+.serviceHero {
+  margin: 0 (-$gap);
+  padding: 145px 0 125px;
+  background-size: cover;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+  }
+
+  @include tx-media(phone) {
+    display: flex;
+    align-items: flex-end;
+    padding: 290px 0 0;
+    margin: 0 (-$gap-phone);
+  }
+
+}
+
+$serviceInfo-background: rgba($blue-500, .85);
+
+.serviceInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  background: $serviceInfo-background;
+  border-radius: 25px;
+  padding: 35px;
+  max-width: 680px;
+  box-sizing: border-box;
+
+  @include tx-media(phone) {
+    width: 100%;
+    padding: 35px 20px;
+    border-radius: 0;
+  }
+
+}
+
+$serviceHeroTitle-color: $white;
+$serviceHeroTitle-fontSize: 48px;
+$serviceHeroTitle-default-fontSize: 32px;
+$serviceHeroTitle-phone-fontSize: 37px;
+$serviceHeroTitle-default-phone-fontSize: 22px;
+
+.serviceHeroTitle {
+  @include tx-font-size($serviceHeroTitle-default-fontSize, none);
+  color: $serviceHeroTitle-color;
+  margin: 0 0 15px;
+  text-align: center;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($serviceHeroTitle-fontSize, none);
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($serviceHeroTitle-default-phone-fontSize, none);
+  
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($serviceHeroTitle-phone-fontSize, none);
+    }
+
+  }
+
+}
+
+$serviceDescription-color: $yellow;
+$serviceDescription-fontSize: 14px;
+
+.serviceDescription {
+  @include tx-font-size($serviceDescription-fontSize, none);
+  color: $serviceDescription-color;
+  text-align: center;
+  margin: 0;
+  width: 560px;
+
+  @include tx-media(phone) {
+    width: 100%;
+  }
+
+}

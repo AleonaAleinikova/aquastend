@@ -1,0 +1,484 @@
+%clientSection {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.clients-1 {
+  @extend %clientSection;
+  align-items: center;
+}
+
+$clients-2-background: $blue-50;
+
+.clients-2 {
+  @extend %clientSection;
+  align-items: center;
+  padding: 105px 0;
+  margin: 0 (-$gap);
+  background: $clients-2-background;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+  }
+
+  @include tx-media(phone) {
+    margin: 0 (-$gap-phone);
+    padding: 50px 0;
+  }
+
+}
+
+.clients-3 {
+  @extend %clientSection;
+  position: relative;
+  padding: 165px calc((100% - 820px) / 2) 0;
+
+  @include tx-media(phone) {
+    padding: 60px 0;
+    text-align: center;
+  }
+
+}
+
+$clients-4-background: $blue-50;
+
+.clients-4 {
+  @extend %clientSection;
+  position: relative;
+  align-items: center;
+  padding: 85px 0;
+  margin: 0 (-$gap);
+  background: $clients-4-background;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+  }
+
+  @include tx-media(phone) {
+    margin: 0 (-$gap-phone);
+  }
+
+}
+
+$clientsTag-fontSize: 13px;
+$clientsTag-background: $blue-100;
+
+.clientsTag {
+  @include tx-font-size($clientsTag-fontSize, none);
+  font-weight: 300;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: $clientsTag-background;
+  line-height: 1;
+}
+
+$clientsTitle-3-color: $blue-400;
+
+.clientsTitle-3 {
+  @extend %aqs-sectionTitle;
+  color: $clientsTitle-3-color;
+}
+
+.clientsDescription-1 {
+  @extend %aqs-sectionText;;
+  width: 650px;
+  text-align: center;
+
+  @include tx-media(phone) {
+    width: 100%;
+  }
+
+}
+
+.clientsDescription-2 {
+  @extend %aqs-sectionText;;
+  width: 650px;
+  margin: -30px 0 0;
+  text-align: center;
+
+  @include tx-media(phone) {
+    width: 100%;
+  }
+
+}
+
+.clientsDescription-3 {
+  @extend %aqs-sectionText;
+  width: 345px;
+
+  @include tx-media(phone) {
+    width: 100%;
+  }
+
+}
+
+.clientsDescription-4 {
+  @extend %aqs-sectionText;;
+  width: 380px;
+  margin: -30px 0 0;
+  text-align: center;
+
+  @include tx-media(phone) {
+    width: 100%;
+  }
+
+}
+
+.clientsImage-2 {
+  width: 591px;
+  height: 175px;
+  fill: none;
+  margin: 55px 0 0;
+
+  @include tx-media(tablet) {
+    width: 530px;
+    height: 157px;
+  }
+
+  @include tx-media(phone) {
+    width: 280px;
+    height: 90px;
+  }
+
+}
+
+.clientsImage-3 {
+  position: absolute;
+  z-index: -1;
+  top: 60px;
+  left: 42%;
+  width: 500px;
+  height: 453px;
+
+  @include tx-media(wide) {
+    left: 47%;
+  }
+
+  @include tx-media(tablet) {
+    top: 100px;
+    left: 45%;
+    width: 410px;
+    height: auto;
+  }
+
+  @include tx-media(phone) {
+    position: static;
+    width: 240px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+}
+
+.clientsImage-4 {
+  display: block;
+  width: 382px;
+  height: 371px;
+  margin: 50px 0 0;
+  transform: translateX(-150px);
+
+  @include tx-media(phone) {
+    order: 3;
+    width: 240px;
+    height: auto;
+    transform: none;
+  }
+
+}
+
+%clientsTips {
+  position: absolute;
+  left: 50%;
+  padding: 25px 25px 30px;
+  width: 240px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  transform: translateX(85px);
+
+  &:before {
+    @include tx-pseudo;
+    z-index: -1;
+    top: 50%;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: inherit;
+    margin: -25px 0 0;
+    transform: translateX(-20px) rotate(45deg);
+    transform-origin: 50% 50%;
+  }
+
+  @include tx-media(phone) {
+    position: relative;
+    left: auto;
+    transform: none;
+  }
+
+}
+
+$clientsTips-1-background: $yellow;
+
+.clientsTips-1 {
+  @extend %clientsTips;
+  top: 230px;
+  background: $clientsTips-1-background;
+
+  @include tx-media(phone) {
+    top: auto;
+    order: 2;
+  }
+
+}
+
+$clientsTips-2-background: $blue-400;
+
+.clientsTips-2 {
+  @extend %clientsTips;
+  top: 420px;
+  background: $clientsTips-2-background;
+
+  @include tx-media(phone) {
+    top: auto;
+    order: 4;
+  }
+
+}
+
+$clientsTipsTitle-color: $white;
+$clientsTipsTitle-fontSize: 13px;
+
+.clientsTipsTitle {
+  @include tx-font-size($clientsTipsTitle-fontSize, none);
+  color: $clientsTipsTitle-color;
+  font-weight: normal;
+  margin: 0 0 5px;
+}
+
+$clientsTipsText-color: $white;
+$clientsTipsText-fontSize: 12px;
+
+.clientsTipsText {
+  @include tx-font-size($clientsTipsText-fontSize, none);
+  color: $clientsTipsText-color;
+  font-weight: 300;
+  margin: 0;
+}
+
+.reasons {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 135px;
+
+  @include tx-media(phone) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0 50px;
+  }
+
+}
+
+$reason-background: $blue-500;
+
+.reason {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: $reason-background;
+  margin: 0 10px;
+
+  @include tx-media(wide) {
+    margin: 10px 40px;
+  }
+
+  @include tx-media(phone) {
+    width: 120px;
+    height: 120px;
+    margin: 0 0 90px;
+  }
+
+}
+
+$reasonCount-color: $yellow;
+$reasonCount-fontSize: 60px;
+$reasonCount-default-fontSize: 42px;
+
+$reasonCount-phone-fontSize: 45px;
+$reasonCount-default-phone-fontSize: 28px;
+
+.reasonCount {
+  @include tx-font-size($reasonCount-default-fontSize, none);
+  color: $reasonCount-color;
+  line-height: 1;
+  font-weight: bold;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($reasonCount-fontSize, none);
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($reasonCount-default-phone-fontSize, none);
+
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($reasonCount-phone-fontSize, none);
+    }
+
+  }
+
+}
+
+$reasonDetail-fontSize: 14px;
+$reasonDetail-color: $yellow;
+
+.reasonDetail {
+  @include tx-font-size($reasonDetail-fontSize, none);
+  color: $reasonDetail-color;
+  font-weight: bold;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+  }
+
+}
+
+$reasonDescription-fontSize: 13px;
+
+.reasonDescription {
+  @include tx-font-size($reasonDescription-fontSize, none);
+  position: absolute;
+  top: 100%;
+  transform: translateY(20px);
+  text-align: center;
+  margin: 0;
+  font-weight: 300;
+  padding: 0 18px;
+
+  @include tx-media(phone) {
+    transform: translateY(10px);
+  }
+
+}
+
+$steps-background: $blue-100;
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  background: $steps-background;
+  border-radius: 67px;
+  padding: 25px 35px;
+  width: 820px;
+  height: 135px;
+  box-sizing: border-box;
+  margin: 170px auto 100px;
+
+  @include tx-media(wide) {
+    width: 940px;
+    margin: 170px 0 100px -60px;
+  }
+
+  @include tx-media(tablet) {
+    width: 510px;
+    height: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @include tx-media(phone) {
+    flex-direction: column;
+    width: 200px;
+    padding: 30px;
+    margin: 30px auto 60px;
+    border-radius: 100px;
+  }
+
+}
+
+$step-borderColor: rgba($blue-600, .25);
+
+.step {
+  display: flex;
+  padding: 0 20px;
+  border-left: 2px solid $step-borderColor;
+  width: 195px;
+
+  &:first-of-type {
+    border: none;
+  }
+
+  @include tx-media(wide) {
+    width: 160px;
+  }
+
+  @include tx-media(tablet) {
+    width: 38%;
+    margin: 20px 0;
+
+    &:nth-child(3) {
+      border: none;
+    }
+
+  }
+
+  @include tx-media(phone) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    margin: 0;
+    border-left: none;
+    border-top: 1px solid $step-borderColor;
+
+    &:nth-child(3) {
+      border-top: 1px solid $step-borderColor;
+    }
+
+  }
+
+}
+
+$stepCount-fontSize: 120px;
+$stepCount-default-fontSize: 88px;
+$stepCount-color: $blue-400;
+
+.stepCount {
+  @include tx-font-size($stepCount-default-fontSize, none);
+  color: $stepCount-color;
+  margin: 0 8px 0 0;
+  font-weight: bold;
+  line-height: .75;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($stepCount-fontSize, none);
+  }
+
+  @include tx-media(wide) {
+    margin: 0 15px 0 0;
+  }
+
+  @include tx-media(phone) {
+    margin: 0 0 10px;
+  }
+
+}
+
+$stepText-fontSize: 13px;
+
+.stepText {
+  @include tx-font-size($stepText-fontSize, none);
+  margin: 0;
+  max-width: 110px;
+  font-weight: 300;
+
+  @include tx-media(phone) {
+    max-width: 100%;
+  }
+
+}

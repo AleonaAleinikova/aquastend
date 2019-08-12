@@ -1,0 +1,144 @@
+$menu-background: $black-600;
+$menu-phone-background: $black-800;
+
+.menu {
+  @extend %menu;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 165px 180px 0 56%;
+  background: url('../images/background.png');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+  transition: opacity $UITransitionDefault $UITransitionFast, visibility $UITransitionFast step-start;
+
+  &:before {
+    @include tx-pseudo;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $menu-background;
+    opacity: .9;
+  }
+
+  &-is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform $UITransitionDefault step-end, opacity $UITransitionDefault, visibility $UITransitionDefault step-end;
+  }
+
+  @include tx-media(phone) {
+    padding: 100px 0 60px;
+    background: $menu-background;
+
+    &:before {
+      opacity: 0;
+      height: 460px;
+      background: $menu-phone-background;
+    }
+
+  }
+
+}
+
+$profileLink-color: $gray-500;
+$profileLink-fontSize: 12px;
+
+.profileLink {
+  @include tx-link($profileLink-color);
+  @include tx-font-size($profileLink-fontSize, none);
+  position: absolute;
+  top: 20px;
+  right: 110px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid currentColor;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+
+  @include tx-media(phone) {
+    top: 15px;
+    right: 20px;
+  }
+
+}
+
+$menuLogo-width: 135px;
+$menuLogo-height: 70px;
+
+.menuLogo {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: $menuLogo-width;
+  height: $menuLogo-height;
+  margin: 0 0 0 ($menuLogo-width / -2);
+
+  @include tx-media(phone) {
+    display: none;
+  }
+
+}
+
+.menuLogoIcon {
+  width: 100%;
+  height: 100%;
+}
+
+$menuClose-color: $white;
+$menuClose-size: 25px;
+
+.menuClose {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background: none;
+  transform-origin: 50% 50%;
+  transition: $UITransitionDefault;
+
+  &:before,
+  &:after {
+    @include tx-pseudo;
+    top: 50%;
+    right: 50%;
+    width: $menuClose-size;
+    height: 2px;
+    background: $menuClose-color;
+    transform-origin: 50% 50%;
+    margin: -1px ($menuClose-size / -2) 0 0;
+  }
+
+  &:before {
+    transform: rotate(-45deg);
+  }
+
+  &:after {
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include tx-media(phone) {
+    top: 10px;
+    left: 10px;
+  }
+
+}

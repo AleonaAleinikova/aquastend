@@ -1,0 +1,200 @@
+$articleTitle-color: $blue-900;
+$articleTitle-fontSize: 42px;
+$articleTitle-default-fontSize: 32px;
+$articleTitle-phone-fontSize: 36px;
+$articleTitle-phone-default-fontSize: 22px;
+
+$articleSubtitle-color: $blue-900;
+$articleSubtitle-fontSize: 36px;
+$articleSubtitle-default-fontSize: 28px;
+$articleSubtitle-phone-fontSize: 32px;
+$articleSubtitle-phone-default-fontSize: 20px;
+
+$articleText-fontSize: 16px;
+
+$articleBlockquote-borderColor: $blue-900;
+
+$articleBold-background: $blue-100;
+
+.article {
+  position: relative;
+  padding: 160px 16% 60px;
+  text-align: center;
+
+  h1 {
+    @include tx-font-size($articleTitle-default-fontSize, none);
+    color: $articleTitle-color;
+    text-transform: uppercase;
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+      @include tx-font-size($articleTitle-fontSize, none);
+      line-height: 1;
+    }
+
+  }
+
+  h2 {
+    @include tx-font-size($articleSubtitle-default-fontSize, none);
+    color: $articleSubtitle-color;
+    text-transform: uppercase;
+    margin: 50px 0 40px;
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+      @include tx-font-size($articleSubtitle-fontSize, none);
+      line-height: 1;
+    }
+    
+  }
+
+  p {
+    @include tx-font-size($articleText-fontSize, none);
+  }
+
+  b {
+    display: inline-block;
+    padding: 30px 25px;
+    margin: 25px -30px;
+    border-radius: 45px;
+    background: $articleBold-background;
+  }
+
+  blockquote {
+    width: auto;
+    text-align: left;
+    padding: 0 0 0 15px;
+    margin: 5px 10px;
+    box-sizing: border-box;
+    border-left: 2px solid $articleBlockquote-borderColor;
+  }
+
+  @include tx-media(wide) {
+    padding: 160px 10% 60px;
+  }
+
+  @include tx-media(phone) {
+    padding: 160px 0 60px;
+
+    h1 {
+      @include tx-font-size($articleTitle-phone-default-fontSize, none);
+
+      %font-BebasNeue-is-loaded & {
+        @include tx-font-size($articleTitle-phone-fontSize, none);
+      }
+
+    }
+
+    h2 {
+      @include tx-font-size($articleSubtitle-phone-default-fontSize, none);
+
+      %font-BebasNeue-is-loaded & {
+        @include tx-font-size($articleSubtitle-phone-fontSize, none);
+      }
+      
+    }
+
+    b {
+      margin: 25px auto;
+    }
+
+  }
+
+}
+
+$articleBackLink-width: 220px;
+$articleBackLink-color: $blue-500;
+$articleBackLink-borderColor: $gray-100;
+$articleBackLinkArrow-color: $yellow;
+
+.articleBackLink {
+  @include tx-link($articleBackLink-color);
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  box-sizing: border-box;
+  width: $articleBackLink-width;
+  padding: 20px 20px 20px 60px;
+  margin: 0 0 0 ($articleBackLink-width / -2);
+  line-height: 1;
+  border-radius: 30px;
+  border: 1px solid $articleBackLink-borderColor;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:before,
+  &:after {
+    @include tx-pseudo;
+    top: 50%;
+    left: 30px;
+    transition: transform $UITransitionDefault;
+  }
+
+  &:before {
+    width: 25px;
+    height: 2px;
+    background: $articleBackLinkArrow-color;
+    margin: -1px 0 0;
+  }
+
+  &:after {
+    width: 6px;
+    height: 6px;
+    border-bottom: 2px solid $articleBackLinkArrow-color;
+    border-left: 2px solid $articleBackLinkArrow-color;
+    transform-origin: 0 50%;
+    transform: rotate(45deg);
+    margin: -7px 0 0;
+  }
+
+  &:hover {
+
+    &:before {
+      transform: translateX(-10px);
+    }
+
+    &:after {
+      transform: translateX(-10px) rotate(45deg);
+    }
+
+  }
+
+}
+
+$imageHolderText-fontSize: 13px;
+$imageHolderText-color: $gray-500;
+
+.imageHolder {
+  position: relative;
+  border-radius: 25px;
+  background-size: cover;
+  background-position: 50% 50%;
+  margin: 70px 0;
+
+  &:before {
+    @include tx-pseudo(relative);
+    padding: 60% 0 0;
+    border-radius: inherit;
+    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
+  }
+
+  &:after {
+    @include tx-font-size($imageHolderText-fontSize, none);
+    position: absolute;
+    bottom: -25px;
+    right: 30px;
+    content: attr(data-text);
+    font-style: italic;
+    color: $imageHolderText-color;
+  }
+
+}
+
+.articleImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}

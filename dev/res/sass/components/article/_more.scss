@@ -1,0 +1,71 @@
+$moreArticles-background: $blue-100;
+
+.moreArticles {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 45px $gap 130px;
+  margin: 0 (-$gap);
+  background: $moreArticles-background;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+    padding: 45px $gapContent-middle 130px;
+  }
+
+  @include tx-media(phone) {
+    flex-direction: column;
+    margin: 0 (-$gap-phone);
+    padding: 45px $gap-phone 130px;
+  }
+
+}
+
+$moreArticlesLink-color: $blue-200;
+
+.moreArticlesLink {
+  @include tx-link($moreArticlesLink-color);
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  text-decoration: none;
+  border-bottom: 2px dashed currentColor;
+  transform: translateX(-50%);
+
+  &:before,
+  &:after {
+    @include tx-pseudo;
+    top: 50%;
+    right: -45px;
+    transition: transform $UITransitionDefault;
+  }
+
+  &:before {
+    width: 25px;
+    height: 2px;
+    background: currentColor;
+    transform: translateY(3px);
+  }
+
+  &:after {
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+    transform: translateY(-2px) rotate(-135deg);
+  }
+
+  &:hover {
+
+    &:before {
+      transform: translate(10px, 3px);
+    }
+
+    &:after {
+      transform: translate(10px, -2px) rotate(-135deg);
+    }
+
+  }
+
+}

@@ -1,0 +1,10 @@
+$cardDescription-fontSize: 12px;
+$cardDescription-color: $gray-500;
+
+.cardDescription {
+  @include tx-font-size($cardDescription-fontSize, none);
+  color: $cardDescription-color;
+  margin: 0;
+  font-style: italic;
+  font-weight: 300;
+}

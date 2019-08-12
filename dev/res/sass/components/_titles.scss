@@ -1,0 +1,38 @@
+$sectionTitle-color: $blue-900;
+$sectionTitle-fontSize: 36px;
+$sectionTitle-default-fontSize: 28px;
+$sectionTitle-phone-fontSize: 32px;
+$sectionTitle-phone-default-fontSize: 20px;
+
+.sectionTitle {
+  @include tx-font-size($sectionTitle-default-fontSize, none);
+  width: 100%;
+  text-align: center;
+  color: $sectionTitle-color;
+  text-transform: uppercase;
+  margin: 0 0 60px;
+
+  .history-4 & {
+    margin: 0 0 30px;
+  }
+
+  .clients-1 & {
+    margin: 0 0 30px;
+  }
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($sectionTitle-fontSize, none);
+    line-height: 1;
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($sectionTitle-phone-default-fontSize, none);
+  
+    %font-BebasNeue-is-loaded & {
+    @include tx-font-size($sectionTitle-phone-fontSize, none);
+    }
+
+  }
+
+}

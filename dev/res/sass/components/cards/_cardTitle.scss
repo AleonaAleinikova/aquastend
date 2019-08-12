@@ -1,0 +1,59 @@
+$cardTitle-articleDefault-fontSize: 13px;
+$cardTitle-articleDefault-color: $blue-500;
+
+$cardTitle-articleContent-fontSize: 20px;
+$cardTitle-articleContent-color: $blue-400;
+
+$cardTitle-articleTop-fontSize: 20px;
+$cardTitle-articleTop-color: $white;
+
+.cardTitle {
+
+  %card-articleDefault & {
+    @include tx-font-size($cardTitle-articleDefault-fontSize, none);
+    color: $cardTitle-articleDefault-color;
+    margin: 25px 0;
+    line-height: 1.2;
+  }
+
+  %card-articleContent & {
+    @include tx-font-size($cardTitle-articleContent-fontSize, none);
+    position: relative;
+    color: $cardTitle-articleContent-color;
+    line-height: 1.2;
+    padding: 25px 0 0;
+    margin: 0 0 15px;
+
+    &:before {
+      @include tx-pseudo;
+      top: 0;
+      left: 0;
+      width: 48px;
+      height: 8px;
+      background: radial-gradient(circle closest-side,currentColor 3.5px,transparent 4.5px);
+      background-position: -2px 0;
+      background-size: 18px 8px;
+    }
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+    }
+
+  }
+
+  %card-articleTop & {
+    @include tx-font-size($cardTitle-articleTop-fontSize, none);
+    color: $cardTitle-articleTop-color;
+    line-height: 1.2;
+    padding: 15px 25px 15px 15px;
+    border-radius: 10px;
+    background: rgba($blue-500, .85);
+    max-width: 60%;
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+    }
+
+  }
+
+}

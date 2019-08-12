@@ -1,0 +1,178 @@
+$advantages-background: $blue-50;
+
+.advantages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 70px calc((100% - 700px) / 2) 15px;
+  margin: 0 (-$gap);
+  flex-shrink: 0;
+  background: $advantages-background;
+
+  @include tx-media(wide) {
+    padding: 70px calc((100% - 530px) / 2) 15px;
+    margin: 0 (-$gap-middle);
+  }
+
+  @include tx-media(phone) {
+    flex-direction: column;
+    padding: 55px $gap-phone 15px;
+    margin: 0 (-$gap-phone);
+  }
+
+}
+
+.advantage {
+  position: relative;
+  width: 22%;
+  text-align: center;
+  margin: 60px 20px;
+  transform-origin: 50% 50%;
+
+  &:hover {
+    animation: advantagesAnim .8s;
+  }
+
+  @include tx-media(wide) {
+    width: 170px;
+    margin: 60px;
+  }
+
+  @include tx-media(phone) {
+    width: 100%;
+    margin: 0;
+  }
+
+}
+
+@keyframes advantagesAnim {
+  0% {
+    transform: translateX(0);
+  }
+  8% {
+    transform: translateX(-23px);
+  }
+  16% {
+    transform: translateX(20px);
+  }
+  24% {
+    transform: translateX(-17px);
+  }
+  32% {
+    transform: translateX(13px);
+  }
+  45% {
+    transform: translateX(-10px);
+  }
+  55% {
+    transform: translateX(8px);
+  }
+  66% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+  85% {
+    transform: translateX(-3px);
+  }
+  90% {
+    transform: translateX(2px);
+  }
+  95% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+$advantageTitle-fontSize: 30px;
+$advantageTitle-default-fontSize: 19px;
+$advantageTitle-phone-fontSize: 24px;
+$advantageTitle-phone-default-fontSize: 16px;
+$advantageTitle-color: $blue-900;
+
+.advantageTitle {
+  @include tx-font-size($advantageTitle-default-fontSize, none);
+  color: $advantageTitle-color;
+  line-height: 1.1;
+  margin: 20px 0;
+  text-transform: uppercase;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($advantageTitle-fontSize, none);
+    letter-spacing: -1px;
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($advantageTitle-phone-default-fontSize, none);
+  
+    %font-BebasNeue-is-loaded & {
+      @include tx-font-size($advantageTitle-phone-fontSize, none);
+    }
+
+  }
+
+}
+
+$advantageIcon-width: 240px;
+$advantageIcon-height: 295px;
+$advantageIcon-darkColor: $blue-500;
+$advantageIcon-lightColor: $yellow;
+
+.advantageIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $advantageIcon-width;
+  height: $advantageIcon-height;
+  margin: ($advantageIcon-height / -2) 0 0 ($advantageIcon-width / -2);
+  fill: none;
+  stroke-width: .5px;
+  transform-origin: 50% 50%;
+
+  .advantage-1 & {
+    stroke: $advantageIcon-darkColor;
+    transform: rotate(-195deg) translate(-5px, 37px);
+  }
+
+  .advantage-2 & {
+    stroke: $advantageIcon-lightColor;
+    transform: rotate(-140deg) translate(5px, 35px);
+  }
+
+  .advantage-3 & {
+    stroke: $advantageIcon-darkColor;
+    transform: rotate(-155deg) translate(7px, 40px);
+  }
+
+  .advantage-4 & {
+    stroke: $advantageIcon-darkColor;
+    transform: rotate(-25deg) translate(10px, 5px);
+  }
+
+  .advantage-5 & {
+    stroke: $advantageIcon-darkColor;
+    transform: rotate(-205deg) translate(1px, 20px);
+  }
+
+  .advantage-6 & {
+    stroke: $advantageIcon-lightColor;
+    transform: rotate(25deg) translate(-10px, 5px);
+  }
+
+  @include tx-media(phone) {
+    display: none;
+  }
+
+}
+
+$advantageDescription-fontSize: 13px;
+
+.advantageDescription {
+  @include tx-font-size($advantageDescription-fontSize, none);
+  margin: 0 0 30px;
+  font-weight: 300;
+}

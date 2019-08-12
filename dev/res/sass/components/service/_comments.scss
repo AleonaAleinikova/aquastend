@@ -1,0 +1,123 @@
+.serviceSection-4 {
+  @extend %aqs-bottomBorder;
+  padding: 100px 0;
+
+  @include tx-media(phone) {
+    padding: 50px 0;
+  }
+
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  width: 620px;
+  margin: -60px auto 0;
+  overflow: hidden;
+
+  @include tx-media(phone) {
+    width: 100%;
+  }
+
+}
+
+$commentBorder-color: $blue-250;
+
+.comment {
+  position: relative;
+  padding: 0 0 0 120px;
+  margin: 60px 0 40px;
+
+  &:after {
+    @include tx-pseudo;
+    bottom: -50px;
+    right: 0;
+    left: 120px;
+    height: 1px;
+    background: $commentBorder-color;
+  }
+
+  @include tx-media(phone) {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: 0 20px;
+    padding: 0;
+    margin: 50px 0 35px;
+
+    &:after {
+      bottom: -40px;
+      left: 0;
+    }
+
+  }
+
+}
+
+$commentName-color: $black-700;
+
+.commentName {
+  @include tx-link($commentName-color);
+  text-decoration: none;
+  
+  @include tx-media(phone) {
+    grid-area: 1 / 2; 
+  }
+
+}
+
+.commentIcon {
+  width: 30px;
+  height: 30px;
+  margin: 0 0 0 15px;
+}
+
+.commentImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+  @include tx-media(phone) {
+    position: static;
+    width: 50px;
+    height: 50px;
+    grid-area: 1 / 1 / span 2;
+  }
+
+}
+
+$commentDate-fontSize: 13px;
+$commentDate-color: $blue-450;
+
+.commentDate {
+  @include tx-font-size($commentDate-fontSize, none);
+  font-weight: 300;
+  margin: 20px 0;
+  color: $commentDate-color;
+  font-style: italic;
+  display: block;
+
+  @include tx-media(phone) {
+    grid-area: 2 / 2;
+    margin: 0;
+  }
+
+}
+
+$commentText-fontSize: 13px;
+
+.commentText {
+  @include tx-font-size($commentText-fontSize, none);
+  font-weight: 300;
+  margin: 0;
+
+  @include tx-media(phone) {
+    grid-area: 3 /1/ 3 /span 3;
+    margin: 30px 0 0;
+    text-align: center;
+  }
+
+}

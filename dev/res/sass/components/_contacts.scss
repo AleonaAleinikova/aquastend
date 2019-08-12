@@ -1,0 +1,68 @@
+$address-fontSize: 13px;
+$address-footer-color: $gray-700;
+$address-menu-color: $white;
+
+.address {
+  @include tx-font-size($address-fontSize, none);
+  font-weight: 500;
+  text-transform: uppercase;
+
+  %footer & {
+    color: $address-footer-color;
+  }
+
+  %menu & {
+    color: $address-menu-color;
+    margin: 0 0 15px;
+  }
+
+  @include tx-media(tablet) {
+    text-align: center;
+
+    %menu & {
+      align-self: center;
+    }
+
+  }
+
+}
+
+$contactLink-fontSize: 28px;
+$contactLink-footer-color: $gray-700;
+$contactLink-menu-color: $yellow;
+$contactLink-borderColor: $gray-75;
+
+.contactLink {
+  @include tx-font-size($contactLink-fontSize, none);
+  display: inline-block;
+  text-decoration: none;
+  padding: 0 0 30px;
+  line-height: 1;
+  font-weight: 300;
+
+  %footer & {
+    @include tx-link($contactLink-footer-color);
+    border-bottom: 1px solid $contactLink-borderColor;
+  }
+
+  %menu & {
+    @include tx-link($contactLink-menu-color);
+  }
+
+  @include tx-media(tablet) {
+    
+    %footer & {
+      padding: 0 0 50px;
+    }
+
+    %menu & {
+      align-self: center;
+    }
+
+  }
+
+}
+
+.contactLinkText {
+  font-weight: bold;
+}

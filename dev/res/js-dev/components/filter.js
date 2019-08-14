@@ -57,8 +57,8 @@ function fetchData(url) {
 }
 
 function renderCard(element) {
-  const type = element.type[0].toUpperCase() + element.type.slice(1)
-  let card = `<div class="card card-article${type}">`;
+  const type = element.type[0].toUpperCase() + element.type.slice(1);
+  let card = `<div class="card card-${element.category}${type}">`;
   if (element.title) card += `<h3 class="cardTitle">${element.title}</h3>`;
   if (element.description) card += `<p class="cardDescription">${element.description}</p>`;
   if (element.image) card += `<div class="cardImageHolder" style="background-image: url('${element.image}"><img src="${element.image}" alt="" class="cardImage"></div>`;

@@ -1,5 +1,39 @@
 $card-articleDefault-background: $white;
-$card-articleDefault-borderColor: rgba($gray-100, .2);
+$card-articleDefault-borderColor: $blue-150;
+
+$card-sale-background: $yellow;
+
+$sale-color: $white;
+$sale-background: $orange-900;
+$sale-fontSize: 17px;
+
+$newsItem-background: $blue-900;
+
+%sale {
+
+  &:before {
+    @include tx-pseudo;
+    @include tx-font-size($sale-fontSize, none);
+    z-index: 5;
+    top: 0;
+    right: 0;
+    content: 'АКЦИЯ!!!';
+    color: $sale-color;
+    background: $sale-background;
+    width: 150px;
+    padding: 5px 0;
+    transform: translate(35px, 20px) rotate(45deg);
+    text-align: center;
+    font-weight: bold;
+
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+    }
+
+  }
+
+}
 
 
 .card {
@@ -71,6 +105,67 @@ $card-articleDefault-borderColor: rgba($gray-100, .2);
     box-sizing: border-box;
     box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
     border: 1px solid rgba($blue-400, .2);
+  }
+
+  &-newsDefault {
+    @extend %card-newsDefault;
+    padding: 0 20px 30px;
+    background: $card-articleDefault-background;
+    border: 1px solid $card-articleDefault-borderColor;
+  }
+
+  &-newsContent {
+    @extend %card-newsContent;
+    justify-content: center;
+    grid-column: span 2;
+    padding: 15px 15px 15px calc(50% + 15px);
+    box-sizing: border-box;
+    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
+    border: 1px solid rgba($blue-400, .2);
+    overflow: hidden;
+
+    &:after {
+      @include tx-pseudo;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 80px;
+      transform: translate(60px, -20px) rotate(45deg);
+      background: $newsItem-background;
+    }
+
+    &:before {
+      @include tx-pseudo;
+      z-index: 2;
+      top: 10px;
+      right: 15px;
+      width: 23px;
+      height: 31px;
+      background: url('../images/logoPath.svg');
+      background-size: cover;
+    }
+
+  }
+
+  &-saleDefault {
+    @extend %card-saleDefault;
+    @extend %sale;
+    padding: 0 20px 30px;
+    background: $card-sale-background;
+    border: 1px solid $card-articleDefault-borderColor;
+    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
+    overflow: hidden;
+  }
+
+  &-saleContent {
+    @extend %card-saleContent;
+    @extend %sale;
+    grid-column: span 2;
+    padding: 75px 15px 15px calc(50% + 15px);
+    box-sizing: border-box;
+    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
+    background: $card-sale-background;
+    overflow: hidden;
   }
 
 }

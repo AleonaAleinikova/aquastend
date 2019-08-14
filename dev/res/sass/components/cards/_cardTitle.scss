@@ -7,6 +7,14 @@ $cardTitle-articleContent-color: $blue-400;
 $cardTitle-articleTop-fontSize: 20px;
 $cardTitle-articleTop-color: $white;
 
+$cardTitle-news-color: $blue-900;
+
+$cardTitle-sale-fontSize: 20px;
+$cardTitle-sale-color: $white;
+
+$cardTitleTag-color: $gray-500;
+$cardTitleTag-fontSize: 12px;
+
 .cardTitle {
 
   %card-articleDefault & {
@@ -28,11 +36,22 @@ $cardTitle-articleTop-color: $white;
       @include tx-pseudo;
       top: 0;
       left: 0;
-      width: 48px;
+      width: 8px;
       height: 8px;
-      background: radial-gradient(circle closest-side,currentColor 3.5px,transparent 4.5px);
-      background-position: -2px 0;
-      background-size: 18px 8px;
+      background: currentColor;
+      border-radius: 50%;
+    }
+
+    &:after {
+      position: absolute;
+      @include tx-font-size($cardTitleTag-fontSize, none);
+      content: 'статьи';
+      top: 0;
+      left: 15px;
+      line-height: .45;
+      font-family: $fontFamily;
+      color: $cardTitleTag-color;
+      font-weight: normal;
     }
 
     %font-BebasNeue-is-loaded & {
@@ -49,6 +68,62 @@ $cardTitle-articleTop-color: $white;
     border-radius: 10px;
     background: rgba($blue-500, .85);
     max-width: 60%;
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+    }
+
+  }
+
+  %card-newsDefault & {
+    @include tx-font-size($cardTitle-articleDefault-fontSize, none);
+    color: $cardTitle-news-color;
+    margin: 25px 0;
+    line-height: 1.2;
+  }
+
+  %card-newsContent & {
+    @include tx-font-size($cardTitle-articleContent-fontSize, none);
+    position: relative;
+    color: $cardTitle-news-color;
+    line-height: 1.2;
+    padding: 25px 0 0;
+    margin: 0 0 15px;
+
+    &:before {
+      @include tx-pseudo;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      background: currentColor;
+      border-radius: 50%;
+    }
+
+    &:after {
+      position: absolute;
+      @include tx-font-size($cardTitleTag-fontSize, none);
+      content: 'новости';
+      top: 0;
+      left: 15px;
+      line-height: .45;
+      font-family: $fontFamily;
+      color: $cardTitleTag-color;
+      font-weight: normal;
+    }
+
+    %font-BebasNeue-is-loaded & {
+      @extend %font-BebasNeue;
+    }
+
+  }
+
+  %card-saleDefault &,
+  %card-saleContent & {
+    @include tx-font-size($cardTitle-sale-fontSize, none);
+    color: $cardTitle-sale-color;
+    line-height: 1.2;
+    margin: 20px 0 0;
 
     %font-BebasNeue-is-loaded & {
       @extend %font-BebasNeue;

@@ -10,6 +10,7 @@ import handAnimation from 'handAnimation';
 import aboutBackground from 'aboutBackground';
 import progressBar from 'progressBar';
 import legal from 'legal';
+import * as map from 'map';
 
 menu();
 facts();
@@ -19,3 +20,4 @@ handAnimation();
 aboutBackground();
 progressBar();
 legal();
+map.init();

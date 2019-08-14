@@ -1,0 +1,71 @@
+.contactsSection {
+  padding: 140px 0 80px;
+}
+
+$contacts-background: $blue-400;
+
+.contacts {
+  position: absolute;
+  z-index: 1;
+  top: 140px;
+  left: 85px;
+  background: $contacts-background;
+  border-radius: 24px 24px 100px;
+  padding: 40px;
+  transform: translateY(21vw) translateY(-118px);
+}
+
+$contactsTitle-color: $white;
+$contactsTitle-fontSize: 30px;
+$contactsTitle-default-fontSize: 20px;
+
+.contactsTitle {
+  @include tx-font-size($contactsTitle-default-fontSize, none);
+  color: $contactsTitle-color;
+  margin: 0 0 15px;
+
+  %font-BebasNeue-is-loaded & {
+    @extend %font-BebasNeue;
+    @include tx-font-size($contactsTitle-fontSize, none);
+  }
+
+}
+
+$contactsAddress-color: $yellow;
+$contactsAddress-fontSize: 13px;
+
+.contactsAddress {
+  @include tx-font-size($contactsAddress-fontSize, none);
+  color: $contactsAddress-color;
+  font-weight: 500;
+  margin: 0 0 15px;
+}
+
+$contactsPhone-fontSize: 21px;
+$contactsPhone-color: $white;
+
+.contactsPhone {
+  @include tx-font-size($contactsPhone-fontSize, none);
+  @include tx-link($contactsPhone-color);
+  display: block;
+  text-decoration: none;
+}
+
+$contactsaEmail-color: $white;
+$contactsaEmail-fontSize: 14px;
+
+.contactsaEmail {
+  @include tx-link($contactsaEmail-color);
+  @include tx-font-size($contactsaEmail-fontSize, none);
+  text-decoration: none;
+}
+
+$map-borderColor: rgba($gray-500, .4);
+
+.map {
+  position: relative;
+  margin: 0 (-$gap);
+  height: 42vw;
+  border-top: 1px solid $map-borderColor;
+  border-bottom: 1px solid $map-borderColor;
+}

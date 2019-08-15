@@ -6,6 +6,10 @@
     margin: 0 (-$gap-middle);
   }
 
+  @include tx-media(phone) {
+    padding: 80px 0 40px;
+  }
+
 }
 
 $filter-background: $blue-100;
@@ -19,6 +23,24 @@ $filter-background: $blue-100;
   border-radius: 40px;
   box-sizing: border-box;
   padding: 0 20px 0 35px;
+
+  @include tx-media(tablet) {
+    position: relative;
+    width: 600px;
+    padding: 0;
+    margin: 100px auto 0;
+    justify-content: center;
+  }
+
+  @include tx-media(phone) {
+    position: relative;
+    height: auto;
+    width: 50%;
+    background: none;
+    border-radius: 0;
+    margin: 100px 20px 0 0;
+  }
+
 }
 
 $filterCategories-border: rgba($gray-100, .3);
@@ -28,10 +50,20 @@ $filterCategories-border: rgba($gray-100, .3);
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid $filterCategories-border;
+
+  @include tx-media(phone) {
+    flex-direction: column;
+    border: none;
+    box-sizing: border-box;
+    padding: 0 0 0 20px;
+  }
+
 }
 
 $filterItemLabel-color: $blue-500;
 $filterItemLabel-fontSize: 16px;
+$filterItemLabel-phone-fontSize: 20px;
+$filterItemLabel-borderColor: rgba($blue-400, .6);
 
 .filterItemLabel {
   position: relative;
@@ -40,14 +72,22 @@ $filterItemLabel-fontSize: 16px;
   font-weight: 500;
   padding: 0 0 5px;
 
-  &:before {
+  &:before,
+  &:after {
     @include tx-pseudo;
     width: 100%;
-    height: 3px;
-    background: currentColor;
     bottom: 0;
     left: 0;
+  }
+
+  &:before {
+    height: 3px;
+    background: currentColor;
     opacity: 0;
+  }
+
+  &:after {
+    border-bottom: 2px dashed $filterItemLabel-borderColor;
   }
 
   %filterItem-is-checked + & {
@@ -56,6 +96,16 @@ $filterItemLabel-fontSize: 16px;
       opacity: 1;
     }
 
+    &:after {
+      opacity: 0;
+    }
+
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($filterItemLabel-phone-fontSize, none);
+    align-self: flex-start;
+    margin: 0 0 30px;
   }
 
 }
@@ -73,6 +123,20 @@ $filterItemLabel-fontSize: 16px;
 .search {
   position: relative;
   margin: 0 0 0 auto;
+
+  @include tx-media(tablet) {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin: 0 0 0 -150px;
+    transform: translateY(-25px);
+  }
+
+  @include tx-media(phone) {
+    left: 100%;
+    margin: 0 0 0 -140px;
+  }
+
 }
 
 $searchField-background: $blue-50;
@@ -86,6 +150,15 @@ $searchField-border: $blue-250;
   border: 1px solid $searchField-border;
   padding: 0 20px;
   box-sizing: border-box;
+
+  @include tx-media(tablet) {
+    width: 300px;
+  }
+
+  @include tx-media(tablet) {
+    width: 280px;
+  }
+
 }
 
 $searchIcon-size: 22px;
@@ -99,6 +172,8 @@ $searchIcon-size: 22px;
   margin: ($searchIcon-size / -2) 0 0;
 }
 
+$articlesType-background: $blue-100;
+
 .articlesType {
   display: flex;
   justify-content: space-between;
@@ -109,9 +184,25 @@ $searchIcon-size: 22px;
     display: none;
   }
 
+  @include tx-media(tablet) {
+    width: 590px;
+  }
+
+  @include tx-media(phone) {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    width: auto;
+    padding: 20px 15px 0 10px;
+    flex-direction: column;
+    background: $articlesType-background;
+    border-radius: 9px;
+  }
+
 }
 
 $articleTypeLabel-fontSize: 13px;
+$articleTypeLabel-phone-fontSize: 15px;
 $articleTypeCheckbox-color: rgba($blue-500, .5);
 
 .articleTypeLabel {
@@ -153,6 +244,12 @@ $articleTypeCheckbox-color: rgba($blue-500, .5);
       opacity: 1;
     }
 
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($articleTypeLabel-phone-fontSize, none);
+    margin: 0 0 20px;
+    padding: 0 0 0 30px;
   }
 
 }

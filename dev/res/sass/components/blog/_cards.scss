@@ -13,6 +13,21 @@
     overflow: hidden;
   }
 
+  @include tx-media(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include tx-media(phone) {
+    display: flex;
+    flex-direction: column;
+    margin: 0 -10px;
+
+    &:before {
+      left: -10px;
+      right: -10px;
+    }
+  }
+
 }
 
 $blogMoreLink-size: 85px;

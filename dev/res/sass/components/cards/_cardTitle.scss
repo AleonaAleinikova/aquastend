@@ -73,6 +73,10 @@ $cardTitleTag-fontSize: 12px;
       @extend %font-BebasNeue;
     }
 
+    @include tx-media(phone) {
+      max-width: 100%;
+    }
+
   }
 
   %card-newsDefault & {

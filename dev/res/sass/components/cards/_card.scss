@@ -9,6 +9,24 @@ $sale-fontSize: 17px;
 
 $newsItem-background: $blue-900;
 
+%default {
+  padding: 0 20px 30px;
+  border: 1px solid $card-articleDefault-borderColor;
+}
+
+%content {
+  grid-column: span 2;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
+  padding: 15px 15px 15px calc(50% + 15px);
+
+  @include tx-media(phone) {
+    grid-column: span 1;
+    padding: 0 20px 45px;
+  }
+
+}
+
 %sale {
 
   &:before {
@@ -41,14 +59,15 @@ $newsItem-background: $blue-900;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
   border-radius: 20px;
   min-height: 320px;
+  border: 1px solid $card-articleDefault-borderColor;
 
   &-articleDefault {
     @extend %card-articleDefault;
     padding: 0 20px 30px;
     background: $card-articleDefault-background;
-    border: 1px solid $card-articleDefault-borderColor;
 
     .moreArticles & {
       width: 23.5%;
@@ -92,37 +111,33 @@ $newsItem-background: $blue-900;
     @extend %card-articleTop;
     padding: 0 0 20px 15px;
     grid-column: span 2;
-    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
-    border: 1px solid rgba($blue-400, .2);
+    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);;
     justify-content: flex-end;
+
+    @include tx-media(phone) {
+      height: 400px;
+      grid-column: span 1;
+      padding: 0 15px 20px;
+    }
+
   }
 
   &-articleContent {
+    @extend %content;
     @extend %card-articleContent;
     justify-content: center;
-    grid-column: span 2;
-    padding: 15px 15px 15px calc(50% + 15px);
-    box-sizing: border-box;
-    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
-    border: 1px solid rgba($blue-400, .2);
   }
 
   &-newsDefault {
+    @extend %default;
     @extend %card-newsDefault;
-    padding: 0 20px 30px;
     background: $card-articleDefault-background;
-    border: 1px solid $card-articleDefault-borderColor;
   }
 
   &-newsContent {
+    @extend %content;
     @extend %card-newsContent;
     justify-content: center;
-    grid-column: span 2;
-    padding: 15px 15px 15px calc(50% + 15px);
-    box-sizing: border-box;
-    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
-    border: 1px solid rgba($blue-400, .2);
-    overflow: hidden;
 
     &:after {
       @include tx-pseudo;
@@ -150,22 +165,28 @@ $newsItem-background: $blue-900;
   &-saleDefault {
     @extend %card-saleDefault;
     @extend %sale;
-    padding: 0 20px 30px;
+    @extend %default;
     background: $card-sale-background;
-    border: 1px solid $card-articleDefault-borderColor;
     box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
-    overflow: hidden;
   }
 
   &-saleContent {
-    @extend %card-saleContent;
+    @extend %content;
     @extend %sale;
-    grid-column: span 2;
-    padding: 75px 15px 15px calc(50% + 15px);
-    box-sizing: border-box;
-    box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
+    @extend %card-saleContent;
+    padding-top: 75px;
     background: $card-sale-background;
-    overflow: hidden;
+
+    @include tx-media(phone) {
+      padding-top: 0;
+    }
+
+  }
+
+  @include tx-media(phone) {
+    max-width: 100%;
+    min-height: 200px;
+    margin: 0 0 20px;
   }
 
 }

@@ -5,7 +5,7 @@ $moreArticles-background: $blue-100;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 45px $gap 130px;
+  padding: 45px $gap 105px;
   margin: 0 (-$gap);
   background: $moreArticles-background;
 
@@ -17,7 +17,7 @@ $moreArticles-background: $blue-100;
   @include tx-media(phone) {
     flex-direction: column;
     margin: 0 (-$gap-phone);
-    padding: 45px $gap-phone 130px;
+    padding: 45px 50px 130px;
   }
 
 }

@@ -1,20 +1,23 @@
 $articleTitle-color: $blue-900;
 $articleTitle-fontSize: 42px;
 $articleTitle-default-fontSize: 32px;
-$articleTitle-phone-fontSize: 36px;
+$articleTitle-phone-fontSize: 32px;
 $articleTitle-phone-default-fontSize: 22px;
 
 $articleSubtitle-color: $blue-900;
 $articleSubtitle-fontSize: 36px;
 $articleSubtitle-default-fontSize: 28px;
-$articleSubtitle-phone-fontSize: 32px;
-$articleSubtitle-phone-default-fontSize: 20px;
+$articleSubtitle-phone-fontSize: 28px;
+$articleSubtitle-phone-default-fontSize: 18px;
 
 $articleText-fontSize: 16px;
+$articleText-phone-fontSize: 13px;
 
 $articleBlockquote-borderColor: $blue-900;
 
 $articleBold-background: $blue-100;
+
+$articleBlockquote-color: $gray-400;
 
 .article {
   position: relative;
@@ -50,6 +53,11 @@ $articleBold-background: $blue-100;
 
   p {
     @include tx-font-size($articleText-fontSize, none);
+
+    @include tx-media(phone) {
+      @include tx-font-size($articleText-phone-fontSize, none);
+    }
+
   }
 
   b {
@@ -58,6 +66,7 @@ $articleBold-background: $blue-100;
     margin: 25px -30px;
     border-radius: 45px;
     background: $articleBold-background;
+    font-weight: 500;
   }
 
   blockquote {
@@ -66,7 +75,14 @@ $articleBold-background: $blue-100;
     padding: 0 0 0 15px;
     margin: 5px 10px;
     box-sizing: border-box;
+    color: $articleBlockquote-color;
     border-left: 2px solid $articleBlockquote-borderColor;
+
+    @include tx-media(phone) {
+      margin: 35px 0;
+      border-left: 3px solid $articleBlockquote-borderColor;
+    }
+
   }
 
   @include tx-media(wide) {
@@ -186,6 +202,15 @@ $imageHolderText-color: $gray-500;
     content: attr(data-text);
     font-style: italic;
     color: $imageHolderText-color;
+  }
+
+  @include tx-media(phone) {
+    margin: 35px 0;
+
+    &:before {
+      padding: 50% 0 0;
+    }
+
   }
 
 }

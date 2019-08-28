@@ -213,6 +213,14 @@ $clientsTitle-3-color: $blue-400;
     position: relative;
     left: auto;
     transform: none;
+    margin: 35px 0 0;
+
+    &:before {
+      z-index: 1;
+      left: 50%;
+      transform: translateX(-25px) rotate(45deg);
+    }
+
   }
 
 }
@@ -227,6 +235,12 @@ $clientsTips-1-background: $yellow;
   @include tx-media(phone) {
     top: auto;
     order: 2;
+
+    &:before {
+      top: 100%;
+      margin: -35px 0 0;
+    }
+
   }
 
 }
@@ -241,6 +255,12 @@ $clientsTips-2-background: $blue-400;
   @include tx-media(phone) {
     top: auto;
     order: 4;
+
+    &:before {
+      top: 0;
+      margin: -15px 0 0;
+    }
+
   }
 
 }

@@ -85,7 +85,7 @@ $progress-background: $blue-50;
   }
 
   @include tx-media(phone) {
-    width: 100%;
+    display: none;
   }
 
 }
@@ -185,6 +185,12 @@ $progressButtonArrow-color: $yellow;
     width: 680px;
   }
 
+  @include tx-media(phone) {
+    position: relative;
+    width: auto;
+    margin: 40px $gap-phone 0;
+  }
+
 }
 
 $progressStep-itemColor: rgba($gray-100, .3);
@@ -204,6 +210,15 @@ $progressStep-itemColor: rgba($gray-100, .3);
     width: 2px;
     height: 20px;
     background: $progressStep-itemColor;
+  }
+
+  @include tx-media(phone) {
+    position: static;
+
+    &:before {
+      display: none;
+    }
+
   }
 
 }
@@ -238,6 +253,10 @@ $progressDays-color: $blue-900;
     margin: 0 0 0 -107px;
   }
 
+  @include tx-media(phone) {
+    text-indent: -9999px;
+  }
+
 }
 
 $progressText-fontSize: 12px;
@@ -250,4 +269,12 @@ $progressText-color: $black-500;
   line-height: 1.3;
   margin: 10px 0;
   color: $progressText-color;
+
+  @include tx-media(phone) {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin: 10px 0 50px;
+  }
+
 }

@@ -39,8 +39,8 @@ module.exports = (grunt, options) => {
   ]);
 
   grunt.registerTask('process-build-images', [
-    'newer:imagemin:optimize',
-    'newer:pngmin:optimize',
+    // 'newer:imagemin:optimize',
+    // 'newer:pngmin:optimize',
     // 'newer:guetzli:optimize',
   ]);
 

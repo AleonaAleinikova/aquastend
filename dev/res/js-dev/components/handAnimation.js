@@ -10,7 +10,6 @@ export default function handAnimation() {
   }
 
   function addProperty(clientX, clientY) {
-    console.dir(holder);
     const propX = clientX * .1;
     const propY = clientY * .1;
     holder.style.setProperty('--mouseX', propX + 'px');

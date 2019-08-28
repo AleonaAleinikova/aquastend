@@ -1,3 +1,7 @@
+function who() {
+  return document.querySelector('.menu');
+}
+
 function addActiveClass(menu) {
   menu.classList.add('menu-is-active');
 }
@@ -31,8 +35,10 @@ export default function menu() {
   }
 
   function init() {
-    findElements();
-    subscribe();
+    if (who()) {
+      findElements();
+      subscribe();
+    }
   }
 
   init();

@@ -9,6 +9,7 @@
 
   @include tx-media(phone) {
     margin: 0 (-$gap-phone);
+    padding: 70px 0 65px;
   }
 
 }
@@ -43,6 +44,9 @@
 
   @include tx-media(phone) {
     width: 100%;
+    height: 55vw;
+    max-height: 280px;
+    margin: -10px auto 15px;
   }
 
 }
@@ -175,6 +179,8 @@ $progressButtonArrow-color: $yellow;
 
 }
 
+$progressSteps-color: $blue-500;
+
 .progressSteps {
   width: 855px;
   display: flex;
@@ -187,13 +193,18 @@ $progressButtonArrow-color: $yellow;
 
   @include tx-media(phone) {
     position: relative;
+    align-items: center;
     width: auto;
-    margin: 40px $gap-phone 0;
+    margin: 40px 40px 0;
+    background: $progressSteps-color;
+    height: 5px;
   }
 
 }
 
 $progressStep-itemColor: rgba($gray-100, .3);
+$progressStep-color: $blue-700;
+$progressStep-fontSize: 20px;
 
 .progressStep {
   position: relative;
@@ -214,9 +225,42 @@ $progressStep-itemColor: rgba($gray-100, .3);
 
   @include tx-media(phone) {
     position: static;
+    width: 10px;
 
     &:before {
       display: none;
+    }
+
+    &:after {
+      @include tx-pseudo;
+      content: attr(data-text);
+      right: 60%;
+      bottom: 100%;
+      margin: 0 0 45px;
+      color: $progressStep-color;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 25px;
+      border: 1px solid currentColor;
+      opacity: 0;
+    }
+
+  }
+
+  &-is-active {
+    @extend %progressStep-is-active;
+
+    &:after {
+      opacity: 1;
+    }
+
+  }
+
+  %font-BebasNeue-is-loaded & {
+
+    &:after {
+      @extend %font-BebasNeue;
+      @include tx-font-size($progressStep-fontSize, none);
     }
 
   }
@@ -226,6 +270,7 @@ $progressStep-itemColor: rgba($gray-100, .3);
 $progressDays-fontSize: 21px;
 $progressDays-default-fontSize: 14px;
 $progressDays-color: $blue-900;
+$progressDays-background: $white;
 
 .progressDays {
   @include tx-font-size($progressDays-default-fontSize, none);
@@ -233,6 +278,7 @@ $progressDays-color: $blue-900;
   position: relative;
   font-weight: bold;
   text-decoration: none;
+  transition: $UITransitionDefault;
 
   %font-BebasNeue-is-loaded & {
     @extend %font-BebasNeue;
@@ -255,6 +301,24 @@ $progressDays-color: $blue-900;
 
   @include tx-media(phone) {
     text-indent: -9999px;
+    width: 8px;
+    height: 8px;
+    background: $progressDays-background;
+    border-radius: 50%;
+    border: 5px solid $progressSteps-color;
+
+    &:before {
+      width: 60px;
+      height: 40px;
+      bottom: -20px;
+      margin: 0 0 0 -30px;
+    }
+
+    %progressStep-is-active & {
+      border-color: $yellow;
+      transform: scale(1.5);
+    }
+
   }
 
 }
@@ -273,8 +337,15 @@ $progressText-color: $black-500;
   @include tx-media(phone) {
     position: absolute;
     bottom: 100%;
-    left: 50%;
+    left: 45%;
     margin: 10px 0 50px;
+    text-align: left;
+    opacity: 0;
+
+    %progressStep-is-active & {
+      opacity: 1;
+    }
+
   }
 
 }

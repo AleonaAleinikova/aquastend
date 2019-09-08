@@ -24,6 +24,8 @@ $factInfo-phone-width: 170px;
   border-radius: $factInfo-width / 2;
   transition: .8s;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  // -webkit-backface-visibility: hidden;
 
   &-is-turned {
     transform: rotateY(180deg);
@@ -53,16 +55,19 @@ $factInfo-phone-width: 170px;
   border-radius: inherit;
   background: $factInfo-background;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .factFront {
   @extend %factSide;
   z-index: 2;
+  transform: translateZ(0);
 }
 
 .factBack {
   @extend %factSide;
-  transform: rotateY(180deg);
+  z-index: 1;
+  transform: rotateY(180deg) translateZ(0);
 }
 
 $factTitle-fontSize: 60px;
@@ -199,6 +204,7 @@ $factMore-phone-height: 20px;
     width: $factMore-phone-width;
     height: $factMore-phone-height;
     margin: 0 ($factMore-phone-width / -2) 0 0;
+    transform: none;
   }
 
 }

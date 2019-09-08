@@ -1,0 +1,10 @@
+.preloader {
+
+  &-is-hidden,
+  %font-BebasNeue-is-loaded & {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $UITransitionDefault $UITransitionDefault, visibility .7s step-end;
+  }
+
+}

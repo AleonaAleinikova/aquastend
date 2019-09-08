@@ -11,6 +11,8 @@ import aboutBackground from 'aboutBackground';
 import progressBar from 'progressBar';
 import legal from 'legal';
 import notFound from 'notFound';
+import articles from 'articles';
+import forms from 'forms';
 import * as map from 'map';
 
 menu();
@@ -23,3 +25,5 @@ progressBar();
 legal();
 map.init();
 notFound();
+articles();
+forms();

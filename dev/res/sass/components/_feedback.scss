@@ -2,6 +2,7 @@ $feedback-footer-background: $blue-100;
 
 .feedback {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   break-inside: avoid-column;
 

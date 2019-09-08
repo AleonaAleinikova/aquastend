@@ -108,9 +108,29 @@ $advantageTitle-color: $blue-900;
 
   @include tx-media(phone) {
     @include tx-font-size($advantageTitle-phone-default-fontSize, none);
+    margin: 40px 0 0;
   
     %font-BebasNeue-is-loaded & {
       @include tx-font-size($advantageTitle-phone-fontSize, none);
+    }
+
+    &:before {
+      @include tx-pseudo;
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAPCAYAAACiLkz/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHMSURBVHgBrVbLTQNBDLU9+XFLB6QD4ALkBFsCFcCZC0sFhApYAUIcQwVABeGAxDEpISUECZH/mJmwQVFgZm2Jd8hh/Gy/8fNuFiEHd9P6bGTPLMAJAjTy4x4gtOc8ed5o3vdBgY/X0+2KMVcA2JjDJNHmS/XgslnZlB5XiOvog5kdVXbveiAVT6WOq17PjwYuP9HkS/Xg8C1tENhOhLzEwE1yp2iSvp5h210RD5pLaPUQsW0JyB51w5U0RvC2++Z/iF/kw7z06DmxGlo95JodgBQIx7HwbMwXBc0b0yFfQLyHSg8Jb7tEcHreemaOOvTdlNOYC1o9BOx2U44g1+19sfgck88IV6nHrRCL3gx59TAXeQuEQOKDSB2VHrIMz1I6EbbDUTwEMXA7FNHqoerYtIW29Ut71w/wPwg+A1o9hEk2sMSXRWwiaMXi7P9cpGAMrolWD/mf2v5N5qq+BPsxPgmmL3aHDGexuEYPLQ/LI3MUmGLf4vgcClBtXrecDZIHsCdZRamenwssrANK1pJ6mg+x8tjlc9gJP7lyjRIQQKoHfzXppPVp1bYYYVCpUYY7mea9vED+PZQy8Ca6Om7n3+donzaaty+gRJGeLxRVBrOOeaRDAAAAAElFTkSuQmCC');
+      width: 48px;
+      height: 15px;
+      top: -5px;
+      left: 50%;
+      margin: 0 0 0 -24px;
+    }
+
+    .advantage-1 & {
+      margin: 0;
+
+      &:before {
+        display: none;
+      }
+
     }
 
   }

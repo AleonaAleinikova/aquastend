@@ -8,13 +8,19 @@ function getFontClassName(fontName) {
   return `${LOADED_PREFIX}${noSpaces}${LOADED_SUFFIX}`;
 }
 
+function addClass() {
+  const preloader = document.querySelector('.preloader');
+  preloader.classList.add('preloader-is-hidden');
+}
+
 function fontPromise(font) {
   const rest = new FontFaceObserver(font);
   rest
     .load()
     .then((loadedFont) => {
       document.body.classList.add(getFontClassName(loadedFont.family));
-    });
+    })
+    .catch(addClass)
 }
 
 

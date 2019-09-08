@@ -55,6 +55,74 @@ function aboutBackground() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = articles;
+
+var _nanoajax = _interopRequireDefault(require("nanoajax"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* global Promise */
+function who() {
+  return document.querySelector('.moreCards');
+}
+
+function articles() {
+  var holder;
+  var link;
+  var url;
+
+  function findElements() {
+    holder = document.querySelector('.moreCards');
+    link = document.querySelector('.js-moreArticles');
+    url = link.dataset.url;
+  }
+
+  function refreshCards(response) {
+    var result = JSON.parse(response).html;
+    result = result.replace(/\`/g, '\"');
+    holder.innerHTML = result;
+  }
+
+  function fetchData() {
+    return new Promise(function (resolve, reject) {
+      _nanoajax.default.ajax({
+        url: url
+      }, function (code, response) {
+        if (code === 200) resolve(response);else reject(response);
+      });
+    });
+  }
+
+  function updateCards() {
+    fetchData().then(refreshCards);
+  }
+
+  function onClick(event) {
+    event.preventDefault();
+    updateCards();
+  }
+
+  function subscribe() {
+    link.addEventListener('click', onClick);
+  }
+
+  function init() {
+    if (who()) {
+      findElements();
+      subscribe();
+    }
+  }
+
+  init();
+}
+
+},{"nanoajax":23}],3:[function(require,module,exports){
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = facts;
 var items = [{
   count: '960',
@@ -166,7 +234,7 @@ function facts() {
   init();
 }
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 
 "use strict";
 
@@ -321,7 +389,165 @@ function filter() {
   init();
 }
 
-},{"nanoajax":19}],4:[function(require,module,exports){
+},{"nanoajax":23}],5:[function(require,module,exports){
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = form;
+
+var _input = _interopRequireDefault(require("input.numbered"));
+
+var _nanoajax = _interopRequireDefault(require("nanoajax"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function initMask(id) {
+  return new _input.default("#".concat(id, "phone"), {
+    mask: '+7 (###) ### - ## - ##',
+    numbered: '#',
+    empty: '_',
+    placeholder: true
+  });
+}
+
+function activeteButton(element) {
+  element.removeAttribute('disabled');
+}
+
+function disactiveteButton(element) {
+  element.setAttribute('disabled', 'disabled');
+}
+
+function validatePhone(phoneMask, target) {
+  var result = phoneMask.validate();
+  if (result < 0) target.classList.add('field-has-error');
+  return result > 0;
+}
+
+function validateName(target) {
+  var result = target.value !== '';
+  if (!result) target.classList.add('field-has-error');
+  return result;
+}
+
+function form(item, id) {
+  var submit;
+  var isPhone;
+  var isName;
+  var phoneMask;
+  var isActive;
+
+  function findElements() {
+    submit = item.querySelector('.feedbackSubmit');
+  }
+
+  function checkField(target) {
+    if (target.name === 'phone') isPhone = validatePhone(phoneMask, target);else if (target.name === 'name') isName = validateName(target);
+    isActive = isPhone && isName;
+  }
+
+  function showSuccess() {
+    console.log('success');
+    item.reset();
+    disactiveteButton(submit);
+  }
+
+  function showError() {
+    console.log('error');
+  }
+
+  function collectData() {
+    return new FormData(item);
+  }
+
+  function sendData(data) {
+    return new Promise(function (resolve, reject) {
+      _nanoajax.default.ajax({
+        url: form.action,
+        method: 'POST',
+        body: data
+      }, function (code, response) {
+        if (code === 200) resolve();else showError(response);
+      });
+    });
+  }
+
+  function onSubmit(event) {
+    event.preventDefault();
+    sendData(collectData()).then(showSuccess);
+  }
+
+  function onFocusout(event) {
+    var target = event.target;
+    checkField(target);
+    if (isActive) activeteButton(submit);else disactiveteButton(submit);
+  }
+
+  function onFocus(event) {
+    var target = event.target;
+    target.classList.remove('field-has-error'); // errorMessage.classList.remove('errorMessage-is-active');
+  }
+
+  function subscribe() {
+    item.addEventListener('submit', onSubmit);
+    item.addEventListener('focusout', onFocusout);
+    item.addEventListener('focusin', onFocus);
+  }
+
+  function init() {
+    findElements();
+    phoneMask = initMask(id);
+    subscribe();
+  }
+
+  init();
+}
+
+},{"input.numbered":22,"nanoajax":23}],6:[function(require,module,exports){
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = forms;
+
+var _form = _interopRequireDefault(require("form"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function who() {
+  return document.querySelector('.feedback');
+}
+
+function forms() {
+  var forms;
+
+  function findElements() {
+    forms = [].slice.call(document.querySelectorAll('.feedback'));
+  }
+
+  function initModules() {
+    forms.forEach(function (element) {
+      var id = element.dataset.id ? element.dataset.id : '';
+      (0, _form.default)(element, id);
+    });
+  }
+
+  function init() {
+    if (who()) {
+      findElements();
+      initModules();
+    }
+  }
+
+  init();
+}
+
+},{"form":5}],7:[function(require,module,exports){
 
 "use strict";
 
@@ -368,7 +594,7 @@ function handAnimation() {
   init();
 }
 
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 
 "use strict";
 
@@ -431,7 +657,7 @@ function legal() {
   init();
 }
 
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 
 "use strict";
 
@@ -482,7 +708,7 @@ function init() {
   }
 }
 
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 
 "use strict";
 
@@ -537,7 +763,7 @@ function menu() {
   init();
 }
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 
 "use strict";
 
@@ -664,7 +890,7 @@ function notFound() {
   init();
 }
 
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 
 "use strict";
 
@@ -685,11 +911,16 @@ function getFontClassName(fontName) {
   return "".concat(LOADED_PREFIX).concat(noSpaces).concat(LOADED_SUFFIX);
 }
 
+function addClass() {
+  var preloader = document.querySelector('.preloader');
+  preloader.classList.add('preloader-is-hidden');
+}
+
 function fontPromise(font) {
   var rest = new _fontfaceobserver.default(font);
   rest.load().then(function (loadedFont) {
     document.body.classList.add(getFontClassName(loadedFont.family));
-  });
+  }).catch(addClass);
 }
 
 function init(fontCritical, fontsRest) {
@@ -705,7 +936,7 @@ function init(fontCritical, fontsRest) {
 
 ;
 
-},{"fontfaceobserver":18}],10:[function(require,module,exports){
+},{"fontfaceobserver":21}],13:[function(require,module,exports){
 
 "use strict";
 
@@ -720,7 +951,7 @@ function create(html) {
   return element.firstChild;
 }
 
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 
 "use strict";
 
@@ -795,7 +1026,7 @@ function target(event) {
   return event.target;
 }
 
-},{}],12:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 
 "use strict";
 
@@ -1138,8 +1369,8 @@ function init(object, navigationObject, pageClassName) {
   }
 
   function onTouchEnd() {
-    document.removeEventListener('touchmove', onTouchMove, true);
-    document.removeEventListener('touchend', onTouchEnd);
+    // document.removeEventListener('touchmove', onTouchMove, true);
+    // document.removeEventListener('touchend', onTouchEnd);
     cancelAnimationFrame(getAnimationFrame());
     requestAnimationFrame(fixSlider);
   }
@@ -1149,9 +1380,8 @@ function init(object, navigationObject, pageClassName) {
     var status = getStatus();
 
     if (!status.fixing || !status.changing) {
-      updateInteractionParameters(event);
-      document.addEventListener('touchmove', onTouchMove, true);
-      document.addEventListener('touchend', onTouchEnd);
+      updateInteractionParameters(event); // document.addEventListener('touchmove', onTouchMove, true);
+      // document.addEventListener('touchend', onTouchEnd);
     }
   }
 
@@ -1160,7 +1390,7 @@ function init(object, navigationObject, pageClassName) {
   }
 
   function subscribe() {
-    getSlider().parentElement.addEventListener('touchstart', onTouchStart);
+    // getSlider().parentElement.addEventListener('touchstart', onTouchStart);
     window.addEventListener('resize', onResize);
   }
   /* Slider Inititalization */
@@ -1195,7 +1425,7 @@ function init(object, navigationObject, pageClassName) {
   };
 }
 
-},{"patterns/tx-createNode":10,"patterns/tx-eventManager":11,"patterns/tx-transition":13,"patterns/tx-translate":14}],13:[function(require,module,exports){
+},{"patterns/tx-createNode":13,"patterns/tx-eventManager":14,"patterns/tx-transition":16,"patterns/tx-translate":17}],16:[function(require,module,exports){
 
 "use strict";
 
@@ -1228,7 +1458,7 @@ function cssTransition(event, state) {
   return transitionEvent;
 }
 
-},{}],14:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 
 "use strict";
 
@@ -1271,7 +1501,7 @@ function string(axis, distance) {
   return "-webkit-transform:".concat(style.propertyLayer, ";-moz-transform:").concat(style.propertyLayer, ";-ms-transform:").concat(style.property, ";-o-transform:").concat(style.property, ";transform:").concat(style.propertyLayer, ";");
 }
 
-},{}],15:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 
 "use strict";
 
@@ -1293,6 +1523,7 @@ function progressBar() {
   var progressButton;
   var progressSteps;
   var imageHolder;
+  var steps;
   var width;
   var stepSize;
   var position = 0;
@@ -1304,6 +1535,7 @@ function progressBar() {
     progressButton = document.querySelector('.progressButton');
     progressSteps = document.querySelector('.progressSteps');
     imageHolder = document.querySelector('.progressImageHolder');
+    steps = [].slice.call(document.querySelectorAll('.progressStep'));
   }
 
   function initSize() {
@@ -1312,16 +1544,23 @@ function progressBar() {
     maxShift = stepSize * 3;
   }
 
+  function removeStepsClass() {
+    steps.forEach(function (element) {
+      return element.classList.remove('progressStep-is-active');
+    });
+  }
+
   function changeStep(step) {
     var shift = stepSize * step;
     position = shift;
     progress.style.setProperty('--position', position + 'px');
+    removeStepsClass();
+    steps[step].classList.add('progressStep-is-active');
     imageHolder.className = "progressImageHolder progressImageHolder-".concat(step, "-is-active");
   }
 
   function checkPosition(shift) {
     var step = Math.round(shift / stepSize);
-    console.log(shift, maxShift, step);
     imageHolder.className = "progressImageHolder progressImageHolder-".concat(step, "-is-active");
   }
 
@@ -1380,7 +1619,7 @@ function progressBar() {
   init();
 }
 
-},{}],16:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 
 "use strict";
 
@@ -1407,12 +1646,16 @@ function slider() {
   var dotsList;
   var body;
   var timeout;
+  var start;
+  var height;
 
   function findElements() {
     container = document.querySelector('.js-slider');
     parent = container.parentElement;
     slides = [].slice.call(container.querySelectorAll('.heroSlide'));
     body = document.body;
+    height = window.innerHeight;
+    body.style.setProperty('--height', height + 'px');
   }
 
   function initSlider() {
@@ -1442,8 +1685,9 @@ function slider() {
       }, 800);
       gallery.next();
     } else if (way && gallery.current() === 2) {
+      var _height = window.innerHeight;
       window.scrollTo({
-        top: window.innerHeight,
+        top: _height,
         behavior: "smooth"
       });
       body.classList.remove('withoutScroll');
@@ -1473,7 +1717,22 @@ function slider() {
     event.preventDefault();
     var deltaY = event.deltaY;
     selectWay(deltaY > 0);
-  }
+  } // function onTouchMove(event) {
+  //   event.preventDefault();
+  //   const currentCord = event.touches[0].pageY;
+  //   selectWay(currentCord > start);
+  // }
+  // function onTouchEnd(event) {
+  //   document.removeEventListener('touchmove', onTouchMove, false);
+  //   document.removeEventListener('touchend', onTouchEnd, false);
+  // }
+  // function onTouch(event) {
+  //   event.preventDefault();
+  //   start = event.pageY;
+  //   document.addEventListener('touchmove', onTouchMove, false);
+  //   document.addEventListener('touchend', onTouchEnd, false);
+  // }
+
 
   function resetEvents() {
     document.addEventListener('keydown', onKey);
@@ -1489,7 +1748,8 @@ function slider() {
     pagination.addEventListener('click', onDot);
     pagination.addEventListener('touchstart', onDot);
     document.addEventListener('keydown', onKey);
-    document.addEventListener('wheel', onWheel, false);
+    document.addEventListener('wheel', onWheel, false); // document.addEventListener('touchstart', onTouch, false);
+
     document.addEventListener('scroll', onScroll);
   }
 
@@ -1504,7 +1764,7 @@ function slider() {
   init();
 }
 
-},{"patterns/tx-slider":12}],17:[function(require,module,exports){
+},{"patterns/tx-slider":15}],20:[function(require,module,exports){
 
 "use strict";
 
@@ -1528,6 +1788,10 @@ var _legal = _interopRequireDefault(require("legal"));
 
 var _notFound = _interopRequireDefault(require("notFound"));
 
+var _articles = _interopRequireDefault(require("articles"));
+
+var _forms = _interopRequireDefault(require("forms"));
+
 var map = _interopRequireWildcard(require("map"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -1545,8 +1809,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _legal.default)();
 map.init();
 (0, _notFound.default)();
+(0, _articles.default)();
+(0, _forms.default)();
 
-},{"aboutBackground":1,"facts":2,"filter":3,"handAnimation":4,"legal":5,"map":6,"menu":7,"notFound":8,"patterns/fontLoad":9,"progressBar":15,"slider":16}],18:[function(require,module,exports){
+},{"aboutBackground":1,"articles":2,"facts":3,"filter":4,"forms":6,"handAnimation":7,"legal":8,"map":9,"menu":10,"notFound":11,"patterns/fontLoad":12,"progressBar":18,"slider":19}],21:[function(require,module,exports){
 /* Font Face Observer v2.1.0 - © Bram Stein. License: BSD-3-Clause */(function(){function l(a,b){document.addEventListener?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function m(a){document.body?a():document.addEventListener?document.addEventListener("DOMContentLoaded",function c(){document.removeEventListener("DOMContentLoaded",c);a()}):document.attachEvent("onreadystatechange",function k(){if("interactive"==document.readyState||"complete"==document.readyState)document.detachEvent("onreadystatechange",k),a()})};function t(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
 this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}
 function u(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:"+b+";"}function z(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function A(a,b){function c(){var a=k;z(a)&&a.a.parentNode&&b(a.g)}var k=a;l(a.b,c);l(a.c,c);z(a)};function B(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var C=null,D=null,E=null,F=null;function G(){if(null===D)if(J()&&/Apple/.test(window.navigator.vendor)){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);D=!!a&&603>parseInt(a[1],10)}else D=!1;return D}function J(){null===F&&(F=!!document.fonts);return F}
@@ -1556,7 +1822,272 @@ b)}else m(function(){function v(){var b;if(b=-1!=f&&-1!=g||-1!=f&&-1!=h||-1!=g&&
 n+"ms timeout exceeded"));else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,g=p.a.offsetWidth,h=q.a.offsetWidth,v();r=setTimeout(I,50)}}var e=new t(k),p=new t(k),q=new t(k),f=-1,g=-1,h=-1,w=-1,x=-1,y=-1,d=document.createElement("div");d.dir="ltr";u(e,L(c,"sans-serif"));u(p,L(c,"serif"));u(q,L(c,"monospace"));d.appendChild(e.a);d.appendChild(p.a);d.appendChild(q.a);document.body.appendChild(d);w=e.a.offsetWidth;x=p.a.offsetWidth;y=q.a.offsetWidth;I();A(e,function(a){f=a;v()});u(e,
 L(c,'"'+c.family+'",sans-serif'));A(p,function(a){g=a;v()});u(p,L(c,'"'+c.family+'",serif'));A(q,function(a){h=a;v()});u(q,L(c,'"'+c.family+'",monospace'))})})};"object"===typeof module?module.exports=B:(window.FontFaceObserver=B,window.FontFaceObserver.prototype.load=B.prototype.load);}());
 
-},{}],19:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
+/*! numbered v1.0.6 | pavel-yagodin | MIT License | https://github.com/CSSSR/jquery.numbered */
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define([], factory);
+	} else if (typeof exports === 'object') {
+		module.exports = factory();
+	} else {
+		root.Numbered = factory();
+	}
+}(this, function () {
+	'use strict';
+
+	var defaults = {
+		mask: '+7 (###) ### - ## - ##',
+		numbered: '#',
+		empty: '_',
+		placeholder: false
+	};
+
+	var Numbered = function (target, params) {
+		var self = this;
+
+		if (typeof target !== 'object') {
+			self.inputs = document.querySelectorAll(target);
+		} else if (typeof target.length !== 'undefined') {
+			self.inputs = target;
+		} else {
+			self.inputs = [target];
+		}
+		self.inputs = Array.prototype.slice.call(self.inputs);
+
+		params = params || (typeof self.inputs[0].numbered !== 'undefined' ? self.inputs[0].numbered.params : {});
+
+		for (var def in defaults) {
+			if (typeof params[def] === 'undefined') {
+				params[def] = defaults[def];
+			}
+		}
+
+		self.params = params;
+		self.config = {};
+
+		self.config.placeholder = self.params.mask.replace(new RegExp(self.params.numbered, 'g'), self.params.empty);
+		self.config.numbered    = self.params.numbered.replace(/([()[\]\.^\#$|?+-])/g, '\\\\$1');
+		self.config.numberedCol = self.params.mask.split(self.params.numbered).length -1;
+		self.config.empty       = self.params.empty.replace(/([()[\]\.^\#$|?+-])/g, '\\$1');
+		self.config.mask        = self.params.mask.replace(/([()[\]\.^\#$|?+-])/g, '\\$1').replace(new RegExp(self.config.numbered, 'g'), '(\\d)');
+		self.config.maskNums    = self.params.mask.replace(/[^\d]/gi, '').split('');
+		self.config.maskNumsCol = self.config.maskNums.length;
+		self.config.regexp      = new RegExp('^' + self.config.mask + '$');
+		self.config.events      = ['input', 'change', 'click', 'focusin', 'blur'];
+
+		// console.log(self.config);
+
+
+		self._eventFire = function(el, etype){
+			if (el.fireEvent) {
+				el.fireEvent('on' + etype);
+			} else {
+				var evObj = document.createEvent('Events');
+				evObj.initEvent(etype, true, false);
+				el.dispatchEvent(evObj);
+			}
+		};
+
+		self._getSelectionRange = function (oElm) {
+			var r = { text: '', start: 0, end: 0, length: 0 };
+			if (oElm.setSelectionRange) {
+				r.start= oElm.selectionStart;
+				r.end = oElm.selectionEnd;
+				r.text = (r.start != r.end) ? oElm.value.substring(r.start, r.end): '';
+			} else if (document.selection) {
+				var oR;
+				if (oElm.tagName && oElm.tagName === 'TEXTAREA') {
+					var oS = document.selection.createRange().duplicate();
+					oR = oElm.createTextRange();
+					var sB = oS.getBookmark();
+					oR.moveToBookmark(sB);
+				} else {
+					oR = document.selection.createRange().duplicate();
+				}
+
+				r.text = oR.text;
+				for (; oR.moveStart('character', -1) !== 0; r.start++);
+				r.end = r.text.length + r.start;
+			}
+			r.length = r.text.length;
+			return r;
+		};
+
+
+		self.magic = function (event) {
+			var numbered = this.numbered;
+			var value = numbered.input.value || ' ';
+			var valueFormatted = value.replace(/[^\d]/gi, '').split('').join('');
+			var valueFormattedArr = valueFormatted.split('');
+			var valueFormattedCol = valueFormattedArr.length;
+			var valueFormattedIndex = 0;
+			var positionStart = -1;
+			var positionEnd = -1;
+			var positionOld = self._getSelectionRange(numbered.input);
+			var maskNumsIndex = 0;
+			var valueFormattedRes = [];
+			var maskSplit = numbered.params.mask.split('');
+			// console.log(valueFormatted);
+
+			for (var key in maskSplit) {
+				var val = maskSplit[key];
+				key = parseInt(key);
+				if (maskNumsIndex <= numbered.config.maskNumsCol && val == numbered.config.maskNums[maskNumsIndex] && val == valueFormattedArr[valueFormattedIndex]) {
+					valueFormattedRes.push(val);
+					maskNumsIndex++;
+					valueFormattedIndex++;
+				} else if(val == numbered.params.numbered) {
+					if (positionStart < 0) {
+						positionStart = key;
+					}
+					if(valueFormattedIndex < valueFormattedCol) {
+						valueFormattedRes.push(valueFormattedArr[valueFormattedIndex]);
+						valueFormattedIndex++;
+						positionEnd = key;
+					} else {
+						valueFormattedRes.push(numbered.params.empty);
+					}
+				} else {
+					valueFormattedRes.push(val);
+				}
+			}
+			value = valueFormattedRes.join('');
+
+			var position = (positionEnd >= 0 ? positionEnd + 1 : positionStart);
+			if (event.type !== 'click') {
+				if ((event.type === 'blur' || event.type === 'change') && valueFormattedIndex - maskNumsIndex === 0 && !numbered.params.placeholder) {
+					this.value = '';
+				} else if (numbered.oldValue !== numbered.input.value || event.type === 'focusin') {
+					this.value = value;
+				}
+			}
+
+			if(event.type !== 'change' && event.type !== 'blur' && (event.type !== 'click' || (numbered.lastEvent === 'focusin' && event.type === 'click'))) {
+				if (numbered.input.setSelectionRange) {
+					numbered.input.setSelectionRange(position, position);
+				} else if (numbered.input.createTextRange) {
+					var range = numbered.input.createTextRange();
+					range.collapse(true);
+					range.moveEnd('character', position);
+					range.moveStart('character', position);
+					range.select();
+				}
+			}
+
+			numbered.oldValue = this.value;
+			numbered.lastEvent = event.type;
+			return event.target;
+		};
+
+		for (var index in self.inputs) {
+			var $input = self.inputs[index];
+			var is = false;
+			if (typeof $input.numbered === 'оbject' || typeof $input.numbered !== 'undefined') {
+				is = true;
+			}
+			$input.numbered = {
+				input: self.inputs[index],
+				config: self.config,
+				params: self.params,
+				oldValue: false
+			};
+
+			if (!is) {
+				for (var key in self.config.events) {
+					$input.addEventListener(self.config.events[key], self.magic);
+				}
+				self._eventFire($input, 'blur');
+			}
+			self.inputs[index] = $input;
+		}
+
+		self.destroy = function () {
+			var self = this;
+			for (var index in self.inputs) {
+				var $input = self.inputs[index];
+
+				for (var key in self.config.events) {
+					$input.removeEventListener(self.config.events[key], self.magic);
+					$input.numbered = null;
+				}
+			}
+			return null;
+		};
+
+		self.validate = function (i) {
+			var input = i || false;
+			var self = this;
+			var res = self.inputs.length > 1 ? [] : false;
+			var inputs = input !== false ? [input] : self.inputs;
+			for (var index in inputs) {
+				var $input = inputs[index];
+				var validate;
+
+				if (inputs[index].numbered.config.regexp.test(inputs[index].numbered.input.value)) {
+					validate = 1;
+				} else if (inputs[index].numbered.input.value === '' || inputs[index].numbered.input.value === inputs[index].numbered.config.placeholder) {
+					validate = 0;
+				} else {
+					validate = -1;
+				}
+
+				if (inputs.length > 1) {
+					res.push(validate);
+				} else {
+					res = validate;
+				}
+			}
+			return res;
+		};
+
+		self.reInit = function () {
+			var self = this;
+			var res = self.inputs.length > 1 ? [] : false;
+			for (var index in self.inputs) {
+				var $input = self.inputs[index];
+				self._eventFire($input, 'blur');
+			}
+			return res;
+		};
+
+		self.setVal = function (value) {
+			var self = this;
+			var res = self.inputs.length > 1 ? [] : false;
+			for (var index in self.inputs) {
+				var $input = self.inputs[index];
+				$input.value = value;
+				self._eventFire($input, 'blur');
+			}
+			return res;
+		};
+
+		self.getVal = function (r) {
+			var raw = r || false;
+			var values = [];
+			for (var index in this.inputs) {
+				var $input = this.inputs[index];
+				var value = $input.value;
+
+				if (raw) {
+					if (this.validate($input) > 0) {
+						var arr = value.match(this.config.regexp);
+						value = arr.slice(1, arr.length).join('');
+					} else {
+						value = $input.value.replace(/[^\d]/gi, '');
+					}
+				}
+				values.push(value);
+			}
+			return values.length>1?values:values[0];
+		};
+
+		return self;
+	};
+
+	return Numbered;
+}));
+
+},{}],23:[function(require,module,exports){
 (function (global){
 // Best place to find information on XHR features is:
 // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
@@ -1669,4 +2200,4 @@ function setDefault(obj, key, value) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[17]);
+},{}]},{},[20]);

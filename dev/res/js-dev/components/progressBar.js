@@ -11,6 +11,7 @@ export default function progressBar() {
   let progressButton;
   let progressSteps;
   let imageHolder;
+  let steps;
   let width;
   let stepSize;
   let position = 0;
@@ -22,6 +23,7 @@ export default function progressBar() {
     progressButton = document.querySelector('.progressButton');
     progressSteps = document.querySelector('.progressSteps');
     imageHolder = document.querySelector('.progressImageHolder');
+    steps = [].slice.call(document.querySelectorAll('.progressStep'));
   }
 
   function initSize() {
@@ -30,16 +32,21 @@ export default function progressBar() {
     maxShift = stepSize * 3;
   }
 
+  function removeStepsClass() {
+    steps.forEach(element => element.classList.remove('progressStep-is-active'));
+  }
+
   function changeStep(step) {
     const shift = stepSize * step;
     position = shift;
     progress.style.setProperty('--position', position + 'px');
+    removeStepsClass();
+    steps[step].classList.add('progressStep-is-active');
     imageHolder.className = `progressImageHolder progressImageHolder-${step}-is-active`;
   }
 
   function checkPosition(shift) {
     const step = Math.round(shift / stepSize);
-    console.log(shift, maxShift, step);
     imageHolder.className = `progressImageHolder progressImageHolder-${step}-is-active`;
   }
 

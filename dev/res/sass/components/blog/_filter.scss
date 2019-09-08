@@ -86,10 +86,6 @@ $filterItemLabel-borderColor: rgba($blue-400, .6);
     opacity: 0;
   }
 
-  &:after {
-    border-bottom: 2px dashed $filterItemLabel-borderColor;
-  }
-
   %filterItem-is-checked + & {
 
     &:before {
@@ -106,6 +102,11 @@ $filterItemLabel-borderColor: rgba($blue-400, .6);
     @include tx-font-size($filterItemLabel-phone-fontSize, none);
     align-self: flex-start;
     margin: 0 0 30px;
+
+    &:after {
+      border-bottom: 2px dashed $filterItemLabel-borderColor;
+    }
+  
   }
 
 }

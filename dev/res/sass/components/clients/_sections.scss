@@ -121,6 +121,9 @@ $clientsTitle-3-color: $blue-400;
 
   @include tx-media(phone) {
     width: 100%;
+    padding: 0 $gap-phone;
+    margin: -20px 0 0;
+    box-sizing: border-box;
   }
 
 }

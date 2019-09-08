@@ -323,8 +323,8 @@ export function init(object, navigationObject, pageClassName) {
   }
 
   function onTouchEnd() {
-    document.removeEventListener('touchmove', onTouchMove, true);
-    document.removeEventListener('touchend', onTouchEnd);
+    // document.removeEventListener('touchmove', onTouchMove, true);
+    // document.removeEventListener('touchend', onTouchEnd);
     cancelAnimationFrame(getAnimationFrame());
     requestAnimationFrame(fixSlider);
   }
@@ -334,8 +334,8 @@ export function init(object, navigationObject, pageClassName) {
     const status = getStatus();
     if (!status.fixing || !status.changing) {
       updateInteractionParameters(event);
-      document.addEventListener('touchmove', onTouchMove, true);
-      document.addEventListener('touchend', onTouchEnd);
+      // document.addEventListener('touchmove', onTouchMove, true);
+      // document.addEventListener('touchend', onTouchEnd);
     }
   }
 
@@ -344,7 +344,7 @@ export function init(object, navigationObject, pageClassName) {
   }
 
   function subscribe() {
-    getSlider().parentElement.addEventListener('touchstart', onTouchStart);
+    // getSlider().parentElement.addEventListener('touchstart', onTouchStart);
     window.addEventListener('resize', onResize);
   }
 

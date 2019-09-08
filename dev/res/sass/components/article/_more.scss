@@ -3,8 +3,7 @@ $moreArticles-background: $blue-100;
 .moreArticles {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 45px $gap 105px;
   margin: 0 (-$gap);
   background: $moreArticles-background;
@@ -15,9 +14,18 @@ $moreArticles-background: $blue-100;
   }
 
   @include tx-media(phone) {
-    flex-direction: column;
     margin: 0 (-$gap-phone);
     padding: 45px 50px 130px;
+  }
+
+}
+
+.moreCards {
+  display: flex;
+  justify-content: space-between;
+
+  @include tx-media(phone) {
+    flex-direction: column;
   }
 
 }

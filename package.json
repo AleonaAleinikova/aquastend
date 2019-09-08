@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "fontfaceobserver": "^2.1.0",
+    "input.numbered": "^1.0.6",
     "nanoajax": "^0.4.3"
   },
   "devDependencies": {

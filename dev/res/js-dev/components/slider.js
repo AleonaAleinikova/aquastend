@@ -14,12 +14,16 @@ export default function slider() {
   let dotsList;
   let body;
   let timeout;
+  let start;
+  let height;
 
   function findElements() {
     container = document.querySelector('.js-slider');
     parent = container.parentElement;
     slides = [].slice.call(container.querySelectorAll('.heroSlide'));
     body = document.body;
+    height = window.innerHeight;
+    body.style.setProperty('--height', height + 'px');
   }
 
   function initSlider() {
@@ -47,8 +51,9 @@ export default function slider() {
       timeout = setTimeout(() => document.addEventListener('wheel', onWheel, false), 800);
       gallery.next();
     } else if (way && gallery.current() === 2) {
+      const height = window.innerHeight;
       window.scrollTo({
-          top: window.innerHeight,
+          top: height,
           behavior: "smooth"
       });
       body.classList.remove('withoutScroll');
@@ -79,6 +84,24 @@ export default function slider() {
     selectWay(deltaY > 0);
   }
 
+  // function onTouchMove(event) {
+  //   event.preventDefault();
+  //   const currentCord = event.touches[0].pageY;
+  //   selectWay(currentCord > start);
+  // }
+
+  // function onTouchEnd(event) {
+  //   document.removeEventListener('touchmove', onTouchMove, false);
+  //   document.removeEventListener('touchend', onTouchEnd, false);
+  // }
+
+  // function onTouch(event) {
+  //   event.preventDefault();
+  //   start = event.pageY;
+  //   document.addEventListener('touchmove', onTouchMove, false);
+  //   document.addEventListener('touchend', onTouchEnd, false);
+  // }
+
   function resetEvents() {
     document.addEventListener('keydown', onKey);
     document.addEventListener('wheel', onWheel, false);
@@ -94,6 +117,7 @@ export default function slider() {
     pagination.addEventListener('touchstart', onDot);
     document.addEventListener('keydown', onKey);
     document.addEventListener('wheel', onWheel, false);
+    // document.addEventListener('touchstart', onTouch, false);
     document.addEventListener('scroll', onScroll);
   }
 

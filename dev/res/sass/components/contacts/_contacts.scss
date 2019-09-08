@@ -1,5 +1,10 @@
 .contactsSection {
   padding: 140px 0 80px;
+
+  @include tx-media(phone) {
+    padding: 80px 0 0;
+  }
+
 }
 
 $contacts-background: $blue-400;
@@ -13,6 +18,21 @@ $contacts-background: $blue-400;
   border-radius: 24px 24px 100px;
   padding: 40px;
   transform: translateY(21vw) translateY(-118px);
+
+  @include tx-media(tablet) {
+    left: $gap;
+    transform: translateY(26vw) translateY(-118px);
+  }
+
+  @include tx-media(phone) {
+    position: static;
+    transform: none;
+    margin: 0 (-$gap-phone);
+    border-radius: 0;
+    padding: 25px 20px;
+    text-align: center;
+  }
+
 }
 
 $contactsTitle-color: $white;
@@ -68,4 +88,14 @@ $map-borderColor: rgba($gray-500, .4);
   height: 42vw;
   border-top: 1px solid $map-borderColor;
   border-bottom: 1px solid $map-borderColor;
+
+  @include tx-media(tablet) {
+    height: 52vw;
+  }
+
+  @include tx-media(phone) {
+    height: 60vh;
+    margin: 0 (-$gap-phone);
+  }
+
 }

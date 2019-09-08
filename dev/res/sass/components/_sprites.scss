@@ -2,7 +2,11 @@
 
 // @include ssh-sprites;
 
-
+.sourceSVG {
+  position: absolute;
+  top: -10000px;
+  left: -10000px;
+}
 
 /* HDPI */
 

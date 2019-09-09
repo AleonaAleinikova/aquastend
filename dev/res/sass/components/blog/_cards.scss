@@ -30,6 +30,118 @@
 
 }
 
+$emptyResults-borderColor: $blue-400;
+
+.emptyResults {
+  display: none;
+
+  &:only-child {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid $emptyResults-borderColor;
+    padding: 0 40px;
+    box-sizing: border-box;
+
+    @include tx-media(wide) {
+      grid-column: span 5;
+    }
+
+    @include tx-media(phone) {
+      width: 280px;
+      height: 280px;
+      padding: 0 15px;
+    }
+
+  }
+
+}
+
+$emptyResultsIcon-background: $blue-500;
+
+.emptyResultsIcon {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: $emptyResultsIcon-background;
+  border-radius: 50%;
+  display: block;
+  margin: 30px 0;
+  align-self: center;
+
+  &:before,
+  &:after {
+    @include tx-pseudo;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+  }
+
+  &:before {
+    left: -20px;
+  }
+
+  &:after {
+    right: -20px;
+  }
+
+  @include tx-media(phone) {
+    margin: -10px 0 20px;
+  }
+
+}
+
+$emptyResultsText-fontSize: 14px;
+$emptyResultsText-phone-fontSize: 12px;
+
+.emptyResultsText {
+  @include tx-font-size($emptyResultsText-fontSize, none);
+  margin: 0 0 30px;
+
+  @include tx-media(phone) {
+    @include tx-font-size($emptyResultsText-phone-fontSize, none);
+    margin: 0 0 15px;
+  }
+
+}
+
+$emptyResultsLink-color: $blue-400;
+$emptyResultsLink-fontSize: 13px;
+
+.emptyResultsLink {
+  @include tx-link($emptyResultsLink-color);
+  position: relative;
+  border-bottom: 2px dashed currentColor;
+  text-decoration: none;
+  align-self: center;
+  margin: -10px 0 0 -20px;
+  font-weight: 500;
+
+  &:before {
+    @include tx-pseudo;
+    right: -30px;
+    top: 7px;
+    width: 18px;
+    height: 14px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAOCAYAAAAi2ky3AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADkSURBVHgBrZNBDgExFIb/1xnCzhHmCOzYcQKcgKWIcATcQGJjJ04gTsBCiFvMESwkMmPa6jSR1IRJx/g3fX3t+/Lyt49goeA06hDYGoQrR9gqN1Z+8g6zARHRREEqKvQcFPf388D7CSQIO2P7EWYFKtWXCwnM02CEDArO45kqmBop/+WZBt2Ow2qB3I4VjaGnijwTBifqunFUcNxt4jCLPHB3qz0iqV8kl3RHnFiNCdG3KSCGtlqqRsoPedTNZPbjMp5KgZkJeTM7L0R3+g9ILKsPKYVspkGsQRzYQOKqkIdvQ/sEcbVfVjDwGvEAAAAASUVORK5CYII=');
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($emptyResultsLink-fontSize, none);
+    margin: 0 0 0 -20px;
+  }
+
+}
+
 $blogMoreLink-size: 85px;
 $blogMoreLink-color: rgba($blue-400, .2);
 

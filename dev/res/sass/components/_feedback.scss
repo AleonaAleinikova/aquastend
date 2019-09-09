@@ -33,6 +33,10 @@ $feedback-footer-background: $blue-100;
       transform: translateX(50px);
     }
 
+    %menu & {
+      margin: 0 auto;
+    }
+
   }
 
   @include tx-media(phone) {

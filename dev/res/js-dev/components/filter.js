@@ -107,7 +107,12 @@ export default function filter() {
     updateCondition(target, conditions, themesHolder);
     const content = filterData();
     const html = renderContent(content);
-    container.innerHTML = html;
+    container.innerHTML = `${html} <div class="emptyResults">
+    <span class="emptyResultsIcon"></span>
+    <p class="emptyResultsText">Лучший способ смыть результаты выдачи — очистить фильтры выбора.</p>
+    <p class="emptyResultsText">А лучший способ отчистить автомобиль — вымыть его на Аквастенде, по фирменному рецепту.</p>
+    <a href="#" class="emptyResultsLink">Смотреть лучшие статьи</a>
+  </div>`;
   }
 
   function onChange(event) {

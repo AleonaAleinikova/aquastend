@@ -53,6 +53,11 @@ $siteNavigation-fontSize: 13px;
 
 .siteNavItem {
   margin: 0 0 30px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+
 }
 
 $siteNavLink-menu-color: $yellow;

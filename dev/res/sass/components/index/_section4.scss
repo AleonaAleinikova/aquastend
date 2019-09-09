@@ -10,6 +10,12 @@
     width: auto;
     margin: 0 (-$gap-middle);
     padding: 70px $gapContent-middle 90px;
+
+    &:before {
+      right: 0;
+      left: 0;
+    }
+
   }
 
   @include tx-media(phone) {

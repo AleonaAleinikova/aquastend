@@ -63,21 +63,21 @@ $heroDot-color: $white;
     left: 50%;
     width: 10px;
     height: 10px;
-    border-radius: 50%;
     border: 1px solid currentColor;
-    transition: $UITransitionDefault;
+    border-radius: 50%;
     transform: translate(-6px, -5px);
+    transition: $UITransitionDefault;
   }
 
   &:after {
-    counter-increment: slide;
     content: counter(slide);
+    counter-increment: slide;
     opacity: 0;
 
     %font-BebasNeue-is-loaded & {
       @extend %font-BebasNeue;
     }
-    
+
   }
 
   &-is-active {
@@ -102,27 +102,27 @@ $slideTitle-phone-fontSize: 37px;
 $slideTitle-default-phone-fontSize: 26px;
 
 $slideTitle-color: $white;
-$slideTitle-background: rgba($blue-500, .8);
+$slideTitle-background: rgba($blue-500, .88);
 
 .slideTitle {
   @include tx-font-size($slideTitle-default-fontSize, none);
   position: absolute;
-  left: $gap;
   bottom: 25%;
-  color: $slideTitle-color;
-  padding: 30px;
+  left: $gap;
+  padding: 25px 40px;
   border-radius: 25px;
+  color: $slideTitle-color;
   background: $slideTitle-background;
-  line-height: 1.1;
   text-transform: uppercase;
+  line-height: .95;
 
   &:after {
     content: '';
     display: inline-block;
     width: 75px;
     height: 28px;
-    background: url('../images/arrow.svg');
     margin: 0 0 -2px 25px;
+    background: url('../images/arrow.svg');
     transition: $UITransitionDefault;
   }
 

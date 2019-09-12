@@ -9,6 +9,7 @@ $address-menu-color: $white;
 
   %footer & {
     color: $address-footer-color;
+    margin: 40px 0 15px;
   }
 
   %menu & {
@@ -42,6 +43,7 @@ $contactLink-borderColor: $gray-75;
 
   %footer & {
     @include tx-link($contactLink-footer-color);
+    padding: 0 0 50px;
     border-bottom: 1px solid $contactLink-borderColor;
   }
 
@@ -50,7 +52,7 @@ $contactLink-borderColor: $gray-75;
   }
 
   @include tx-media(tablet) {
-    
+
     %footer & {
       padding: 0 0 50px;
     }

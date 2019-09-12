@@ -16,8 +16,12 @@ $contacts-background: $blue-400;
   left: 85px;
   background: $contacts-background;
   border-radius: 24px 24px 100px;
-  padding: 40px;
+  padding: 35px 70px 40px 40px;
   transform: translateY(21vw) translateY(-118px);
+
+  @include tx-media(wide) {
+    left: -100px;
+  }
 
   @include tx-media(tablet) {
     left: $gap;
@@ -88,6 +92,11 @@ $map-borderColor: rgba($gray-500, .4);
   height: 42vw;
   border-top: 1px solid $map-borderColor;
   border-bottom: 1px solid $map-borderColor;
+
+  @include tx-media(wide) {
+    margin: 0 (-$gap-middle);
+    height: 80vh;
+  }
 
   @include tx-media(tablet) {
     height: 52vw;

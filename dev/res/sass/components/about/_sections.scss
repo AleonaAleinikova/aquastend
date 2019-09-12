@@ -1,9 +1,9 @@
 %historySection {
   position: relative;
   display: flex;
-  flex-shrink: 0;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
+  flex-shrink: 0;
   height: 100vh;
 
   @include tx-media(wide) {
@@ -22,20 +22,20 @@
   @extend %historySection;
 
   @include tx-media(tablet) {
-    margin: 0 (-$gap);
-    padding: 0 $gap;
     overflow: hidden;
+    padding: 0 $gap;
+    margin: 0 (-$gap);
   }
 
   @include tx-media(phone) {
-    margin: 0 (-$gap-phone);
     padding: 440px ($gap-phone + 10px) 50px;
+    margin: 0 (-$gap-phone);
 
     &:before {
       @include tx-pseudo;
+      right: 0;
       bottom: 235px;
       left: 0;
-      right: 0;
       height: 160px;
       background: linear-gradient(180deg, #0A5FB6 0%, rgba(247, 247, 247, 0.0001) 100%);
       opacity: .09;
@@ -211,13 +211,21 @@ $historyTitle-3-color: $blue-400;
 
 .historyDescription-1 {
   @extend %aqs-sectionText;
-  max-width: 320px;
+  max-width: 380px;
 
   @include tx-media(phone) {
+    max-width: 340px;
+  }
+
+  @include tx-media(phone) {
+    align-self: center;
     width: 100%;
     max-width: 420px;
-    align-self: center;
     text-align: center;
+  }
+
+  & > p {
+    margin: 20px 0;
   }
 
 }
@@ -226,14 +234,18 @@ $historyDescription-2-color: $white;
 
 .historyDescription-2 {
   @extend %aqs-sectionText;
-  max-width: 245px;
+  max-width: 285px;
   color: $historyDescription-2-color;
 
   @include tx-media(phone) {
+    align-self: center;
     width: 100%;
     max-width: 420px;
-    align-self: center;
     text-align: center;
+  }
+
+  & > p {
+    margin: 20px 0;
   }
 
 }
@@ -392,10 +404,10 @@ $historyImageHolder-3-borderColor: $blue-400;
   width: 700px;
   height: 580px;
   margin: -305px 0 0 -200px;
-  transform: translate(calc(var(--mouseX) * .08), calc(var(--mouseY) * .08));
 }
 
 .historyImage-4 {
+  align-self: flex-start;
   width: 530px;
   height: auto;
   margin: 0 0 0 50px;
@@ -408,6 +420,7 @@ $historyImageHolder-3-borderColor: $blue-400;
   @include tx-media(phone) {
     order: 1;
     width: 100%;
+    height: auto;
     margin: 20px 0 40px;
   }
 

@@ -604,7 +604,6 @@ $formPlaceholder-color: $gray;
 
 %button {
   @extend %tx-fastTouch;
-  @include tx-grid-height(2, $setLineHeight: false);
   padding: 0 ($gap / 2);
   border: 0;
   cursor: pointer;

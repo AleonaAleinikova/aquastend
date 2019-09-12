@@ -73,10 +73,10 @@ $navigationLinkActive-color: $gray-800;
   @include tx-font-size($navigationLink-fontSize, none);
   @include tx-link($navigationLink-color);
   position: relative;
+  margin: 0 50px 0 0;
+  font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: bold;
-  margin: 0 50px 0 0;
   line-height: 1;
 
   &:before {
@@ -129,8 +129,8 @@ $menuLinkItem-height: 3px;
   position: relative;
   width: 30px;
   height: 30px;
-  background: 0;
   padding: 0;
+  background: 0;
 
   &:before,
   &:after {
@@ -144,11 +144,11 @@ $menuLinkItem-height: 3px;
   }
 
   &:after {
-    bottom: 2px;
+    bottom: 3px;
   }
 
   &:hover {
-    
+
     &:before {
       transform: translateY(-2px);
     }

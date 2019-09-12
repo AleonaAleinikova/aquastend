@@ -3,9 +3,9 @@ $clientsNav-background: $blue-100;
 .clientsNav {
   width: 720px;
   height: 60px;
-  margin: 100px auto 60px;
-  background: $clientsNav-background;
   border-radius: 40px;
+  margin: 105px auto 60px;
+  background: $clientsNav-background;
 
   @include tx-media(wide) {
     width: 920px;
@@ -50,7 +50,7 @@ $clientsNavItemBorder-color: rgba($blue-600, .25);
   flex-grow: 1;
   text-align: center;
   height: 30px;
-  border-left: 2px solid $clientsNavItemBorder-color;
+  border-left: 1px solid $clientsNavItemBorder-color;
 
   &:first-of-type {
     border: none;
@@ -73,4 +73,9 @@ $clientsNavLink-fontSize: 13px;
   @include tx-font-size($clientsNavLink-fontSize, none);
   @include tx-link($clientsNavLink-color);
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
 }

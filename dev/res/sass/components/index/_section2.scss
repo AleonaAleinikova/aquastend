@@ -25,7 +25,6 @@ $factInfo-phone-width: 170px;
   transition: .8s;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  // -webkit-backface-visibility: hidden;
 
   &-is-turned {
     transform: rotateY(180deg);
@@ -36,8 +35,8 @@ $factInfo-phone-width: 170px;
     right: 50%;
     width: $factInfo-phone-width;
     height: 205px;
-    margin: 0 ($factInfo-phone-width / -2) 0 0;
     border-radius: $factInfo-phone-width / 2;
+    margin: 0 ($factInfo-phone-width / -2) 0 0;
   }
 
 }
@@ -83,8 +82,8 @@ $factTitle-color: $blue-500;
   width: 450px;
   margin: 0;
   color: $factTitle-color;
-  line-height: 1.1;
   text-transform: uppercase;
+  line-height: 1.1;
 
   %font-BebasNeue-is-loaded & {
     @extend %font-BebasNeue;
@@ -147,13 +146,14 @@ $factNumber-color: $blue-500;
   %font-BebasNeue-is-loaded & {
     @extend %font-BebasNeue;
     @include tx-font-size($factNumber-fontSize, none);
-    line-height: 1;
+    margin: 0 0 0 -10px;
     letter-spacing: -10px;
+    line-height: 1;
   }
 
   @include tx-media(phone) {
     @include tx-font-size($factNumber-phone-default-fontSize, none);
-    
+
     %font-BebasNeue-is-loaded & {
       @include tx-font-size($factNumber-phone-fontSize, none);
     }
@@ -162,15 +162,15 @@ $factNumber-color: $blue-500;
 
 }
 
-$factDetail-fontSize: 20px;
+$factDetail-fontSize: 24px;
 $factDetail-phone-fontSize: 17px;
 $factDetail-color: $blue-500;
 
 .factDetail {
   @include tx-font-size($factDetail-fontSize, none);
-  text-transform: uppercase;
   color: $factDetail-color;
   font-weight: 300;
+  text-transform: lowercase;
 
   @include tx-media(phone) {
     @include tx-font-size($factDetail-phone-fontSize, none);
@@ -220,7 +220,7 @@ $factTimer-height: 37px;
 
 .factTimer {
   position: absolute;
-  top: 100px;
+  top: 115px;
   right: 60%;
   width: $factTimer-width;
   height: $factTimer-height;

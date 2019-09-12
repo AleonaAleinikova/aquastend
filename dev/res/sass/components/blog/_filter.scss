@@ -106,7 +106,7 @@ $filterItemLabel-borderColor: rgba($blue-400, .6);
     &:after {
       border-bottom: 2px dashed $filterItemLabel-borderColor;
     }
-  
+
   }
 
 }
@@ -212,7 +212,7 @@ $articleTypeCheckbox-color: rgba($blue-500, .5);
   font-weight: 300;
   padding: 0 0 0 40px;
 
-  &:before, 
+  &:before,
   &:after {
     @include tx-pseudo;
     top: 50%;
@@ -231,7 +231,7 @@ $articleTypeCheckbox-color: rgba($blue-500, .5);
     width: 20px;
     height: 20px;
     opacity: 0;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADzSURBVHgBrdPtDYIwEAbg9wgDOILx479uID+cw7hBnUCcQEbQCZzA1BEcwJiOwAJy3hlJCgFtgDchKUf7cECh6c5uwJwBGKFbHIjSiJnTHohmrI1EpIP+GUUYKF0hR3glrO+nB+ReoOSRrW8RaNsV+iAuS9zc2AWDL21QHoLMjF0VYAvva/vQWSYu/eduQnTfcQ2pQkRWJxaywMdkfPcR2TOnhht5kEyYmKv5YtrZXY8iAKlC2hToODF2LwtzBb5IrrVfiCauFwicykI8s+Sg54poDX8SNxVLrBwjIHHbhVCgzKD/Wo7+cQLxrmUThkYa4cMb9159d029lmAAAAAASUVORK5CYII=');
+    background: url('../images/checkbox.png');
     background-size: cover;
   }
 

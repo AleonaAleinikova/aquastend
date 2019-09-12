@@ -7,9 +7,9 @@
     @include tx-pseudo;
     z-index: -1;
     top: 0;
+    right: -$gap;
     bottom: 0;
     left: -$gap;
-    right: -$gap;
     background: url('../images/pattern.png');
   }
 
@@ -39,7 +39,7 @@ $investorsText-phone-fontSize: 13px;
 
 .investorsText {
   position: relative;
-  width: 530px;
+  width: 470px;
   margin: 0 auto;
 
   &:before,
@@ -47,7 +47,7 @@ $investorsText-phone-fontSize: 13px;
     @include tx-pseudo;
     bottom: -42px;
     width: 210px;
-    height: 2px;
+    height: 1px;
     background: $investorsText-borderColor;
     opacity: .65;
   }
@@ -105,7 +105,7 @@ $investorsPhone-color: $blue-900;
 
   @include tx-media(phone) {
     @include tx-font-size($investorsPhone-phone-default-fontSize, none);
-  
+
     %font-BebasNeue-is-loaded & {
       @include tx-font-size($investorsPhone-phone-fontSize, none);
     }
@@ -119,5 +119,10 @@ $investorsEmail-color: $blue-400;
 
 .investorsEmail {
   @include tx-font-size($investorsEmail-fontSize, none);
-  color: $investorsEmail-color;
+  @include tx-link($investorsEmail-color);
+
+  &:hover {
+    text-decoration: none;
+  }
+
 }

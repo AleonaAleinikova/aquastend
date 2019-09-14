@@ -65,6 +65,7 @@ $moreArticlesLink-color: $blue-200;
   }
 
   &:hover {
+    border-color: transparent;
 
     &:before {
       transform: translate(10px, 3px);

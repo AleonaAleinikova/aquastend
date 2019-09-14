@@ -19,6 +19,7 @@ $newsItem-background: $blue-900;
   box-sizing: border-box;
   box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
   padding: 15px 15px 15px calc(50% + 15px);
+  overflow: hidden;
 
   @include tx-media(phone) {
     grid-column: span 1;

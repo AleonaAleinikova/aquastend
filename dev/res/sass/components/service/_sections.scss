@@ -36,8 +36,7 @@
 
   @include tx-media(wide) {
     padding: 135px 0 115px;
-    min-height: 100vh;
-    
+
     &:before {
       right: -$gap-middle;
       left: -$gap-middle;
@@ -49,7 +48,7 @@
     padding: 0;
     justify-content: center;
     align-items: center;
-    
+
     &:before {
       right: -$gap-phone;
       left: -$gap-phone;
@@ -195,7 +194,7 @@ $serviceResult-size: 260px;
   &-3 {
     grid-template-columns: $serviceResult-size $serviceResult-size $serviceResult-size;
   }
-  
+
   &-4 {
     grid-template-columns: $serviceResult-size $serviceResult-size;
   }
@@ -205,7 +204,7 @@ $serviceResult-size: 260px;
   }
 
   @include tx-media(wide) {
-    
+
     &-4 {
       grid-template-columns: $serviceResult-size $serviceResult-size $serviceResult-size $serviceResult-size;
     }
@@ -270,7 +269,7 @@ $serviceResultTextBorder-color: $blue-250;
   }
 
   %font-BebasNeue-is-loaded & {
-   
+
     &:before {
       @extend %font-BebasNeue;
       @include tx-font-size($serviceResultTextCount-fontSize, none);

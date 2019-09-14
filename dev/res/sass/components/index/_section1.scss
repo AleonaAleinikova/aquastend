@@ -37,6 +37,23 @@
   counter-reset: slide;
   list-style: none;
 
+  // &:before,
+  // &:after {
+  //   @include tx-pseudo;
+  //   left: 50%;
+  //   width: 1px;
+  //   height: 15px;
+  //   background: white;
+  // }
+
+  // &:before {
+  //   top: 20px;
+  // }
+
+  // &:after {
+  //   bottom: 29px;
+  // }
+
   @include tx-media(wide) {
     right: $gapContent-middle;
   }

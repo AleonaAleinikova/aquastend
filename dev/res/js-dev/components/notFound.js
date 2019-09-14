@@ -7,14 +7,21 @@ export default function notFound() {
   let canvas;
   let context;
   let image;
+  let width;
+  let height;
 
   function findElements() {
     holder = document.querySelector('.notFound');
   }
 
+  function initSizes() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+  }
+
   function initCanvasSize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
   }
 
   function loadImage() {
@@ -28,12 +35,12 @@ export default function notFound() {
         image.removeEventListener('error', onError);
         reject();
       });
-      image.src = '/res/images/111.jpg';
+      image.src = '/res/images/222.jpg';
     });
   }
 
   function drawResult() {
-    context.drawImage(image, 0, 0);
+    context.drawImage(image, 0, 0, width, height, 0 , 0, width, height);
   }
 
   function clearBackground(x, y) {
@@ -42,16 +49,16 @@ export default function notFound() {
 
     context.clearRect(x - 39, y - 16, 78, 32);
     context.clearRect(x - 16, y - 39, 32, 78);
-    
+
     context.clearRect(x - 38, y - 19, 76, 38);
     context.clearRect(x - 19, y - 38, 38, 76);
-    
+
     context.clearRect(x - 37, y - 21, 74, 42);
     context.clearRect(x - 21, y - 37, 42, 74);
 
     context.clearRect(x - 36, y - 23, 72, 46);
     context.clearRect(x - 23, y - 36, 46, 72);
-    
+
     context.clearRect(x - 35, y - 25, 70, 50);
     context.clearRect(x - 25, y - 35, 50, 70);
 
@@ -89,6 +96,7 @@ export default function notFound() {
   }
 
   function onResize() {
+    initSizes();
     initCanvasSize();
     if (image) drawResult();
     else drawBackground();
@@ -110,6 +118,7 @@ export default function notFound() {
   function init() {
     if (who()) {
       findElements();
+      initSizes();
       subscribe();
       initCanvas();
     }

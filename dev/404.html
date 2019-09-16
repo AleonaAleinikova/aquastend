@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="@tx-language" @tx-amp class="fixed">
+<html lang="ru" class="fixed">
 
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
     <title>Аквастенд</title>
     <meta name="title" content="Аквастенд">
     <meta name="description" content="Аквастенд">
@@ -15,95 +15,90 @@
     <meta http-equiv="cleartype" content="on">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="@tx-title">
-<meta name="mobile-web-app-capable" content="yes">
-<link href="/manifest.json" type="application/json" rel="manifest">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aquastend">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link href="/manifest.json" type="application/json" rel="manifest">
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
-<!--[if IE]> <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"> <![endif]-->
-<link href="/maskIcon.svg" rel="mask-icon" type="image/svg+xml" color="@tx-theme">
-    <meta name="theme-color" content="@tx-theme">
+    <!--[if IE]> <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"> <![endif]-->
+    <link href="/maskIcon.svg" rel="mask-icon" type="image/svg+xml" color="#fd746c">
+    <meta name="theme-color" content="#fd746c">
   </head>
 
   <body class="fixed">
-
-<!--     Только на этой станице появляются классы у body и html -->
     <div class="preloader">
-  <svg class="icon" viewBox="0 0 120 120">
-    <path fill="#fff" d="M87.1 57.1l3.8-.5L87 71.1H73.4V46.5l4 2.1-6.5-19-6.6 19 4-2.1v24.6H54.7l-3.9-14.5 3.8.5-12.7-14.4 8.9 33.5h17.5v12.4l-3.8 3.8 3.8 3.8v16l5.1-5.2V96.2l3.8-3.8-3.8-3.8V76.2H91l8.9-33.5z"/>
-  </svg>
-  <div class="preloaderHolder"></div>
-    <style>
-
-    .preloader {
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .preloader::before {
-      position: absolute;
-      z-index: -2;
-      top: 0;
-      left: 0;
-      content: '';
-      width: 100%;
-      height: 100%;
-      background: white;
-    }
-
-    .preloaderHolder {
-      position: absolute;
-      z-index: -1;
-      top: 50%;
-      left: 50%;
-      width: 120px;
-      height: 120px;
-      margin: -60px 0 0 -60px;
-      animation: preloader 1.5s infinite ease-in-out;
-      background: #233263;
-    }
-
-    .icon {
-      position: absolute;
-      z-index: 5;
-      top: 50%;
-      left: 50%;
-      width: 120px;
-      height: 120px;
-      margin: -70px 0 0 -70px;
-      transform: translateZ(1000px);
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-    }
-
-
-    @keyframes preloader {
-      0% {
-        transform: perspective(140px) rotateX(0deg) rotateY(0deg);
+      <svg class="icon" viewBox="0 0 120 120">
+        <path fill="#fff" d="M87.1 57.1l3.8-.5L87 71.1H73.4V46.5l4 2.1-6.5-19-6.6 19 4-2.1v24.6H54.7l-3.9-14.5 3.8.5-12.7-14.4 8.9 33.5h17.5v12.4l-3.8 3.8 3.8 3.8v16l5.1-5.2V96.2l3.8-3.8-3.8-3.8V76.2H91l8.9-33.5z" />
+      </svg>
+      <div class="preloaderHolder"></div>
+      <style>
+      .preloader {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
       }
-      50% {
-        transform: perspective(140px) rotateX(-180.1deg) rotateY(0deg);
+      
+      .preloader::before {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: white;
       }
-      100% {
-        transform: perspective(140px) rotateX(-180deg) rotateY(-179.9deg);
+      
+      .preloaderHolder {
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        margin: -60px 0 0 -60px;
+        animation: preloader 1.5s infinite ease-in-out;
+        background: #233263;
       }
-    }
-  </style>
-</div>
-
+      
+      .icon {
+        position: absolute;
+        z-index: 5;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        margin: -70px 0 0 -70px;
+        transform: translateZ(1000px);
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+      }
+      
+      @keyframes preloader {
+        0% {
+          transform: perspective(140px) rotateX(0deg) rotateY(0deg);
+        }
+        50% {
+          transform: perspective(140px) rotateX(-180.1deg) rotateY(0deg);
+        }
+        100% {
+          transform: perspective(140px) rotateX(-180deg) rotateY(-179.9deg);
+        }
+      }
+      </style>
+    </div>
     <main class="page">
       <section class="notFound">
-  <img src="/res/images/404.png" class="notFoundIcon"></img>
-  <p class="notFoundMessage">
-    Извините, кажется команда Аквастендистов смыла эту страницу
-  </p>
-  <img src="/res/images/hand.png" class="notFoundCursor">
-  <canvas class="notFoundCanvas"></canvas>
-</section>
+        <img src="/res/images/404.png" class="notFoundIcon">
+        <p class="notFoundMessage">
+          Извините, кажется команда Аквастендистов смыла эту страницу
+        </p>
+        <img src="/res/images/hand.png" class="notFoundCursor">
+        <canvas class="notFoundCanvas"></canvas>
+      </section>
     </main>
     <script src="/res/js/scripts.min.js" type="text/javascript" defer></script>
   </body>

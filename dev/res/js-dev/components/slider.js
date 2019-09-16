@@ -52,10 +52,7 @@ export default function slider() {
       gallery.next();
     } else if (way && gallery.current() === 2) {
       const height = window.innerHeight;
-      window.scrollTo({
-          top: height,
-          behavior: "smooth"
-      });
+      body.classList.add('animationScroll');
       body.classList.remove('withoutScroll');
       clearTimeout(timeout);
       document.removeEventListener('wheel', onWheel, false);
@@ -105,6 +102,7 @@ export default function slider() {
   function resetEvents() {
     document.addEventListener('keydown', onKey);
     document.addEventListener('wheel', onWheel, false);
+    body.classList.remove('animationScroll');
     body.classList.add('withoutScroll');
   }
 

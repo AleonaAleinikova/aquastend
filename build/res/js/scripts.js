@@ -55,6 +55,63 @@ function aboutBackground() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = advantages;
+
+function who() {
+  return document.querySelector('.advantages');
+}
+
+function advantages() {
+  var elements;
+
+  function findElements() {
+    elements = [].slice.call(document.querySelectorAll('.advantage'));
+  }
+
+  function addActiveClass(target) {
+    if (elements.indexOf(target) >= 0) target.classList.add('advantage-is-active');
+  }
+
+  function removeActiveClass(target) {
+    if (elements.indexOf(target) >= 0) target.classList.remove('advantage-is-active');
+  }
+
+  function onHover(event) {
+    var target = event.target;
+    addActiveClass(target);
+  }
+
+  function onEnd(event) {
+    var target = event.target;
+    removeActiveClass(target);
+  }
+
+  function subscribe() {
+    elements.forEach(function (element) {
+      element.addEventListener('mouseover', onHover);
+    });
+    elements.forEach(function (element) {
+      element.addEventListener('animationend', onEnd);
+    });
+  }
+
+  function init() {
+    if (who()) {
+      findElements();
+      subscribe();
+    }
+  }
+
+  init();
+}
+
+},{}],3:[function(require,module,exports){
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = articles;
 
 var _nanoajax = _interopRequireDefault(require("nanoajax"));
@@ -116,7 +173,7 @@ function articles() {
   init();
 }
 
-},{"nanoajax":23}],3:[function(require,module,exports){
+},{"nanoajax":24}],4:[function(require,module,exports){
 
 "use strict";
 
@@ -234,7 +291,7 @@ function facts() {
   init();
 }
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 "use strict";
 
@@ -328,11 +385,13 @@ function filter() {
   var container;
   var data;
   var themesHolder;
+  var hash;
 
   function findElements() {
     filter = document.querySelector('.filterSection');
     container = document.querySelector('.blogResults');
     themesHolder = document.querySelector('.articlesType');
+    hash = window.location.hash;
   }
 
   function checkConditions(item, conditions, key) {
@@ -369,8 +428,15 @@ function filter() {
     filter.addEventListener('change', onChange);
   }
 
+  function setCategory() {
+    var item = document.querySelector("".concat(hash));
+    item.checked = true;
+    updateFilter(item);
+  }
+
   function startFilter(response) {
     data = response;
+    if (hash) setCategory();
     subscribe();
   }
 
@@ -379,17 +445,23 @@ function filter() {
     fetchData(url).then(startFilter);
   }
 
+  function onHashChange() {
+    hash = window.location.hash;
+    setCategory();
+  }
+
   function init() {
     if (who()) {
       findElements();
       getData();
+      window.addEventListener('hashchange', onHashChange);
     }
   }
 
   init();
 }
 
-},{"nanoajax":23}],5:[function(require,module,exports){
+},{"nanoajax":24}],6:[function(require,module,exports){
 
 "use strict";
 
@@ -506,7 +578,7 @@ function form(item, id) {
   init();
 }
 
-},{"input.numbered":22,"nanoajax":23}],6:[function(require,module,exports){
+},{"input.numbered":23,"nanoajax":24}],7:[function(require,module,exports){
 
 "use strict";
 
@@ -547,7 +619,7 @@ function forms() {
   init();
 }
 
-},{"form":5}],7:[function(require,module,exports){
+},{"form":6}],8:[function(require,module,exports){
 
 "use strict";
 
@@ -594,7 +666,7 @@ function handAnimation() {
   init();
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 
 "use strict";
 
@@ -657,7 +729,7 @@ function legal() {
   init();
 }
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 
 "use strict";
 
@@ -708,7 +780,7 @@ function init() {
   }
 }
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 
 "use strict";
 
@@ -763,7 +835,7 @@ function menu() {
   init();
 }
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 
 "use strict";
 
@@ -781,14 +853,21 @@ function notFound() {
   var canvas;
   var context;
   var image;
+  var width;
+  var height;
 
   function findElements() {
     holder = document.querySelector('.notFound');
   }
 
+  function initSizes() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+  }
+
   function initCanvasSize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
   }
 
   function loadImage() {
@@ -802,12 +881,12 @@ function notFound() {
         image.removeEventListener('error', onError);
         reject();
       });
-      image.src = '/res/images/111.jpg';
+      image.src = '/res/images/222.jpg';
     });
   }
 
   function drawResult() {
-    context.drawImage(image, 0, 0);
+    context.drawImage(image, 0, 0, width, height, 0, 0, width, height);
   }
 
   function clearBackground(x, y) {
@@ -862,6 +941,7 @@ function notFound() {
   }
 
   function onResize() {
+    initSizes();
     initCanvasSize();
     if (image) drawResult();else drawBackground();
   }
@@ -882,6 +962,7 @@ function notFound() {
   function init() {
     if (who()) {
       findElements();
+      initSizes();
       subscribe();
       initCanvas();
     }
@@ -890,7 +971,7 @@ function notFound() {
   init();
 }
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 
 "use strict";
 
@@ -936,7 +1017,7 @@ function init(fontCritical, fontsRest) {
 
 ;
 
-},{"fontfaceobserver":21}],13:[function(require,module,exports){
+},{"fontfaceobserver":22}],14:[function(require,module,exports){
 
 "use strict";
 
@@ -951,7 +1032,7 @@ function create(html) {
   return element.firstChild;
 }
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 
 "use strict";
 
@@ -1026,7 +1107,7 @@ function target(event) {
   return event.target;
 }
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 
 "use strict";
 
@@ -1425,7 +1506,7 @@ function init(object, navigationObject, pageClassName) {
   };
 }
 
-},{"patterns/tx-createNode":13,"patterns/tx-eventManager":14,"patterns/tx-transition":16,"patterns/tx-translate":17}],16:[function(require,module,exports){
+},{"patterns/tx-createNode":14,"patterns/tx-eventManager":15,"patterns/tx-transition":17,"patterns/tx-translate":18}],17:[function(require,module,exports){
 
 "use strict";
 
@@ -1458,7 +1539,7 @@ function cssTransition(event, state) {
   return transitionEvent;
 }
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 
 "use strict";
 
@@ -1501,7 +1582,7 @@ function string(axis, distance) {
   return "-webkit-transform:".concat(style.propertyLayer, ";-moz-transform:").concat(style.propertyLayer, ";-ms-transform:").concat(style.property, ";-o-transform:").concat(style.property, ";transform:").concat(style.propertyLayer, ";");
 }
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 
 "use strict";
 
@@ -1619,7 +1700,7 @@ function progressBar() {
   init();
 }
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 
 "use strict";
 
@@ -1686,10 +1767,7 @@ function slider() {
       gallery.next();
     } else if (way && gallery.current() === 2) {
       var _height = window.innerHeight;
-      window.scrollTo({
-        top: _height,
-        behavior: "smooth"
-      });
+      body.classList.add('animationScroll');
       body.classList.remove('withoutScroll');
       clearTimeout(timeout);
       document.removeEventListener('wheel', onWheel, false);
@@ -1737,6 +1815,7 @@ function slider() {
   function resetEvents() {
     document.addEventListener('keydown', onKey);
     document.addEventListener('wheel', onWheel, false);
+    body.classList.remove('animationScroll');
     body.classList.add('withoutScroll');
   }
 
@@ -1764,7 +1843,7 @@ function slider() {
   init();
 }
 
-},{"patterns/tx-slider":15}],20:[function(require,module,exports){
+},{"patterns/tx-slider":16}],21:[function(require,module,exports){
 
 "use strict";
 
@@ -1790,6 +1869,8 @@ var _notFound = _interopRequireDefault(require("notFound"));
 
 var _articles = _interopRequireDefault(require("articles"));
 
+var _advantages = _interopRequireDefault(require("advantages"));
+
 var _forms = _interopRequireDefault(require("forms"));
 
 var map = _interopRequireWildcard(require("map"));
@@ -1811,8 +1892,9 @@ map.init();
 (0, _notFound.default)();
 (0, _articles.default)();
 (0, _forms.default)();
+(0, _advantages.default)();
 
-},{"aboutBackground":1,"articles":2,"facts":3,"filter":4,"forms":6,"handAnimation":7,"legal":8,"map":9,"menu":10,"notFound":11,"patterns/fontLoad":12,"progressBar":18,"slider":19}],21:[function(require,module,exports){
+},{"aboutBackground":1,"advantages":2,"articles":3,"facts":4,"filter":5,"forms":7,"handAnimation":8,"legal":9,"map":10,"menu":11,"notFound":12,"patterns/fontLoad":13,"progressBar":19,"slider":20}],22:[function(require,module,exports){
 /* Font Face Observer v2.1.0 - © Bram Stein. License: BSD-3-Clause */(function(){function l(a,b){document.addEventListener?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function m(a){document.body?a():document.addEventListener?document.addEventListener("DOMContentLoaded",function c(){document.removeEventListener("DOMContentLoaded",c);a()}):document.attachEvent("onreadystatechange",function k(){if("interactive"==document.readyState||"complete"==document.readyState)document.detachEvent("onreadystatechange",k),a()})};function t(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
 this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}
 function u(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:"+b+";"}function z(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function A(a,b){function c(){var a=k;z(a)&&a.a.parentNode&&b(a.g)}var k=a;l(a.b,c);l(a.c,c);z(a)};function B(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var C=null,D=null,E=null,F=null;function G(){if(null===D)if(J()&&/Apple/.test(window.navigator.vendor)){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);D=!!a&&603>parseInt(a[1],10)}else D=!1;return D}function J(){null===F&&(F=!!document.fonts);return F}
@@ -1822,7 +1904,7 @@ b)}else m(function(){function v(){var b;if(b=-1!=f&&-1!=g||-1!=f&&-1!=h||-1!=g&&
 n+"ms timeout exceeded"));else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,g=p.a.offsetWidth,h=q.a.offsetWidth,v();r=setTimeout(I,50)}}var e=new t(k),p=new t(k),q=new t(k),f=-1,g=-1,h=-1,w=-1,x=-1,y=-1,d=document.createElement("div");d.dir="ltr";u(e,L(c,"sans-serif"));u(p,L(c,"serif"));u(q,L(c,"monospace"));d.appendChild(e.a);d.appendChild(p.a);d.appendChild(q.a);document.body.appendChild(d);w=e.a.offsetWidth;x=p.a.offsetWidth;y=q.a.offsetWidth;I();A(e,function(a){f=a;v()});u(e,
 L(c,'"'+c.family+'",sans-serif'));A(p,function(a){g=a;v()});u(p,L(c,'"'+c.family+'",serif'));A(q,function(a){h=a;v()});u(q,L(c,'"'+c.family+'",monospace'))})})};"object"===typeof module?module.exports=B:(window.FontFaceObserver=B,window.FontFaceObserver.prototype.load=B.prototype.load);}());
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /*! numbered v1.0.6 | pavel-yagodin | MIT License | https://github.com/CSSSR/jquery.numbered */
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -2087,7 +2169,7 @@ L(c,'"'+c.family+'",sans-serif'));A(p,function(a){g=a;v()});u(p,L(c,'"'+c.family
 	return Numbered;
 }));
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 (function (global){
 // Best place to find information on XHR features is:
 // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
@@ -2200,4 +2282,4 @@ function setDefault(obj, key, value) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[20]);
+},{}]},{},[21]);

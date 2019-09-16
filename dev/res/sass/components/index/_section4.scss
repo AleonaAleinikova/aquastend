@@ -4,12 +4,12 @@
   flex-wrap: wrap;
   flex-shrink: 0;
   justify-content: space-between;
-  padding: 70px 0 90px;
+  padding: 90px 0;
 
   @include tx-media(wide) {
     width: auto;
     margin: 0 (-$gap-middle);
-    padding: 70px $gapContent-middle 90px;
+    padding: 90px $gapContent-middle;
 
     &:before {
       right: 0;
@@ -59,9 +59,9 @@ $newsTitle-fontSize: 16px;
 
 .newsTitle {
   @include tx-font-size($newsTitle-fontSize, none);
-  line-height: 1.1;
-  margin: 15px 0;
+  margin: 12px 0;
   font-weight: 500;
+  line-height: 1.1;
 }
 
 $newsLink-color: $blue-500;

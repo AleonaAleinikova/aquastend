@@ -12,6 +12,7 @@ import progressBar from 'progressBar';
 import legal from 'legal';
 import notFound from 'notFound';
 import articles from 'articles';
+import advantages from 'advantages';
 import forms from 'forms';
 import * as map from 'map';
 
@@ -27,3 +28,4 @@ map.init();
 notFound();
 articles();
 forms();
+advantages();

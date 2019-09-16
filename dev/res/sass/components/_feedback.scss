@@ -10,7 +10,7 @@ $feedback-footer-background: $blue-100;
     padding: 40px 35px;
     border-radius: 25px;
     background: $feedback-footer-background;
-  
+
     position: absolute;
     top: 85px;
     right: 0;
@@ -40,10 +40,10 @@ $feedback-footer-background: $blue-100;
   }
 
   @include tx-media(phone) {
+    box-sizing: border-box;
     width: 280px;
     padding: 30px;
     margin: 0 auto;
-    box-sizing: border-box;
 
     %footer & {
       position: static;
@@ -75,8 +75,9 @@ $feedbackLabel-footer-color: $gray-900;
 $feedbackField-fontSize: 12px;
 $feedbackField-width: 220px;
 $feedbackField-footer-borderColor: $blue-350;
-$feedbackField-menu-borderColor: $gray-100;
+$feedbackField-menu-borderColor: $blue-350;
 $feedbackField-error-borderColor: $orange;
+$feedbackField-color: $gray-500;
 
 %feedbackField {
   @include tx-font-size($feedbackField-fontSize, none);
@@ -87,12 +88,14 @@ $feedbackField-error-borderColor: $orange;
   font-style: italic;
   font-weight: 300;
   box-sizing: border-box;
+  color: $feedbackField-color;
 
   %footer & {
     border: 1px solid $feedbackField-footer-borderColor;
   }
 
   %menu & {
+    width: 240px;
     border: 1px solid $feedbackField-menu-borderColor;
   }
 
@@ -127,6 +130,7 @@ $feedbackSubmit-fontSize: 15px;
   border-radius: 4px;
   background: $feedbackSubmit-background;
   transition: $UITransitionDefault;
+  box-sizing: border-box;
 
   &:hover {
     background: $feedbackSubmit-hover-background;

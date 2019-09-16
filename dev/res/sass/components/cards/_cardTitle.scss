@@ -20,7 +20,7 @@ $cardTitleTag-fontSize: 12px;
   %card-articleDefault & {
     @include tx-font-size($cardTitle-articleDefault-fontSize, none);
     color: $cardTitle-articleDefault-color;
-    margin: 25px 0;
+    margin: 25px 0 18px;
     line-height: 1.2;
   }
 
@@ -64,9 +64,9 @@ $cardTitleTag-fontSize: 12px;
     @include tx-font-size($cardTitle-articleTop-fontSize, none);
     color: $cardTitle-articleTop-color;
     line-height: 1.2;
-    padding: 15px 25px 15px 15px;
+    padding: 12px 25px 12px 20px;
     border-radius: 10px;
-    background: rgba($blue-500, .85);
+    background: rgba($blue-500, .88);
     max-width: 60%;
 
     %font-BebasNeue-is-loaded & {

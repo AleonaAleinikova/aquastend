@@ -19,6 +19,7 @@ $newsItem-background: $blue-900;
   box-sizing: border-box;
   box-shadow: 0px 1px 30px rgba(29, 113, 169, 0.14);
   padding: 15px 15px 15px calc(50% + 15px);
+  overflow: hidden;
 
   @include tx-media(phone) {
     grid-column: span 1;
@@ -28,6 +29,7 @@ $newsItem-background: $blue-900;
 }
 
 %sale {
+  overflow: hidden;
 
   &:before {
     @include tx-pseudo;
@@ -38,9 +40,9 @@ $newsItem-background: $blue-900;
     content: 'АКЦИЯ!!!';
     color: $sale-color;
     background: $sale-background;
-    width: 150px;
+    width: 180px;
     padding: 5px 0;
-    transform: translate(35px, 20px) rotate(45deg);
+    transform: translate(41px, 15px) rotate(36deg);
     text-align: center;
     font-weight: bold;
 
@@ -59,7 +61,6 @@ $newsItem-background: $blue-900;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  overflow: hidden;
   border-radius: 20px;
   min-height: 320px;
   border: 1px solid $card-articleDefault-borderColor;

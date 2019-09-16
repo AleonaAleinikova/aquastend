@@ -79,11 +79,13 @@ export default function filter() {
   let container;
   let data;
   let themesHolder;
+  let hash;
 
   function findElements() {
     filter = document.querySelector('.filterSection');
     container = document.querySelector('.blogResults');
     themesHolder = document.querySelector('.articlesType');
+    ({ hash } = window.location);
   }
 
   function checkConditions(item, conditions, key) {
@@ -124,8 +126,15 @@ export default function filter() {
     filter.addEventListener('change', onChange);
   }
 
+  function setCategory() {
+    const item = document.querySelector(`${hash}`);
+    item.checked = true;
+    updateFilter(item);
+  }
+
   function startFilter(response) {
     data = response;
+    if (hash) setCategory();
     subscribe();
   }
 
@@ -135,10 +144,16 @@ export default function filter() {
       .then(startFilter);
   }
 
+  function onHashChange() {
+    ({ hash } = window.location);
+    setCategory();
+  }
+
   function init() {
     if (who()) {
       findElements();
       getData();
+      window.addEventListener('hashchange', onHashChange);
     }
   }
 

@@ -33,7 +33,7 @@ export default function slider() {
     pagination = parent.querySelector('.js-sliderDots');
     dotsList = [].slice.call(parent.querySelectorAll('.js-sliderDot'));
     gallery.slide(0);
-    body.classList.add('withoutScroll');
+    body.classList.add('withoutScroll', 'fixed');
   }
 
   function findDot(target) {
@@ -47,19 +47,21 @@ export default function slider() {
   }
 
   function selectWay(way) {
+    console.log(way);
     if (way && gallery.current() !== 2) {
-      timeout = setTimeout(() => document.addEventListener('wheel', onWheel, false), 800);
+      timeout = setTimeout(subscribeWheel, 800);
       gallery.next();
     } else if (way && gallery.current() === 2) {
       const height = window.innerHeight;
       body.classList.add('animationScroll');
-      body.classList.remove('withoutScroll');
+      body.classList.remove('withoutScroll', 'fixed');
       clearTimeout(timeout);
       document.removeEventListener('wheel', onWheel, false);
       document.removeEventListener('keydown', onKey);
+      document.removeEventListener('touchstart', onTouch, false);
     } else {
       gallery.prev();
-      timeout = setTimeout(() => document.addEventListener('wheel', onWheel, false), 800);
+      timeout = setTimeout(subscribeWheel, 800);
     }
   }
 
@@ -72,6 +74,12 @@ export default function slider() {
 
   function unsubscribeWheel() {
     document.removeEventListener('wheel', onWheel, false);
+    document.removeEventListener('touchstart', onTouch, false);
+  }
+
+  function subscribeWheel() {
+    document.addEventListener('wheel', onWheel, false);
+    document.addEventListener('touchstart', onTouch, false);
   }
 
   function onWheel(event) {
@@ -81,29 +89,34 @@ export default function slider() {
     selectWay(deltaY > 0);
   }
 
-  // function onTouchMove(event) {
-  //   event.preventDefault();
-  //   const currentCord = event.touches[0].pageY;
-  //   selectWay(currentCord > start);
-  // }
+  function onTouchMove(event) {
+    event.preventDefault();
+    const currentCord = event.touches[0].pageY;
+    selectWay(currentCord > start);
+      document.removeEventListener('touchmove', onTouchMove, false);
+    document.removeEventListener('touchend', onTouchEnd, false);
+    document.removeEventListener('touchstart', onTouch, false);
+  }
 
-  // function onTouchEnd(event) {
-  //   document.removeEventListener('touchmove', onTouchMove, false);
-  //   document.removeEventListener('touchend', onTouchEnd, false);
-  // }
+  function onTouchEnd(event) {
+    document.removeEventListener('touchmove', onTouchMove, false);
+    document.removeEventListener('touchend', onTouchEnd, false);
+    document.removeEventListener('touchstart', onTouch, false);
+  }
 
-  // function onTouch(event) {
-  //   event.preventDefault();
-  //   start = event.pageY;
-  //   document.addEventListener('touchmove', onTouchMove, false);
-  //   document.addEventListener('touchend', onTouchEnd, false);
-  // }
+  function onTouch(event) {
+    event.preventDefault();
+    start = event.touches[0].pageX;
+    document.addEventListener('touchmove', onTouchMove, false);
+    document.addEventListener('touchend', onTouchEnd, false);
+  }
 
   function resetEvents() {
     document.addEventListener('keydown', onKey);
     document.addEventListener('wheel', onWheel, false);
+    document.addEventListener('touchstart', onTouch, false);
     body.classList.remove('animationScroll');
-    body.classList.add('withoutScroll');
+    body.classList.add('withoutScroll', 'fixed');
   }
 
   function onScroll(event) {
@@ -115,7 +128,7 @@ export default function slider() {
     pagination.addEventListener('touchstart', onDot);
     document.addEventListener('keydown', onKey);
     document.addEventListener('wheel', onWheel, false);
-    // document.addEventListener('touchstart', onTouch, false);
+    document.addEventListener('touchstart', onTouch, false);
     document.addEventListener('scroll', onScroll);
   }
 

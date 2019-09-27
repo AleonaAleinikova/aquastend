@@ -27,10 +27,11 @@
 
   <body>
     <div class="preloader">
-      <svg class="icon" viewBox="0 0 120 120">
-        <path fill="#fff" d="M87.1 57.1l3.8-.5L87 71.1H73.4V46.5l4 2.1-6.5-19-6.6 19 4-2.1v24.6H54.7l-3.9-14.5 3.8.5-12.7-14.4 8.9 33.5h17.5v12.4l-3.8 3.8 3.8 3.8v16l5.1-5.2V96.2l3.8-3.8-3.8-3.8V76.2H91l8.9-33.5z" />
-      </svg>
-      <div class="preloaderHolder"></div>
+      <div class="preloaderHolder">
+        <svg class="icon" viewBox="0 0 120 120">
+          <path fill="#fff" d="M87.1 57.1l3.8-.5L87 71.1H73.4V46.5l4 2.1-6.5-19-6.6 19 4-2.1v24.6H54.7l-3.9-14.5 3.8.5-12.7-14.4 8.9 33.5h17.5v12.4l-3.8 3.8 3.8 3.8v16l5.1-5.2V96.2l3.8-3.8-3.8-3.8V76.2H91l8.9-33.5z" />
+        </svg>
+      </div>
       <style>
       .preloader {
         position: fixed;
@@ -52,40 +53,43 @@
         background: white;
       }
       
-      .preloaderHolder {
+      .preloaderHolder,
+      .icon {
         position: absolute;
-        z-index: -1;
         top: 50%;
         left: 50%;
-        width: 120px;
-        height: 120px;
-        margin: -60px 0 0 -60px;
-        animation: preloader 1.5s infinite ease-in-out;
+        width: 90px;
+        height: 90px;
+      }
+      
+      .preloaderHolder {
+        z-index: -1;
+        margin: -45px 0 0 -45px;
+        animation: preloader 3s infinite ease-in-out;
         background: #233263;
       }
       
       .icon {
-        position: absolute;
         z-index: 5;
-        top: 50%;
-        left: 50%;
-        width: 120px;
-        height: 120px;
-        margin: -70px 0 0 -70px;
+        margin: -53px 0 0 -53px;
         transform: translateZ(1000px);
-        transform-style: preserve-3d;
-        -webkit-transform-style: preserve-3d;
       }
       
       @keyframes preloader {
         0% {
           transform: perspective(140px) rotateX(0deg) rotateY(0deg);
         }
+        25% {
+          transform: perspective(140px) rotateX(-180deg) rotateY(0deg);
+        }
         50% {
-          transform: perspective(140px) rotateX(-180.1deg) rotateY(0deg);
+          transform: perspective(140px) rotateX(-360deg) rotateY(0deg);
+        }
+        75% {
+          transform: perspective(140px) rotateX(-360deg) rotateY(180deg);
         }
         100% {
-          transform: perspective(140px) rotateX(-180deg) rotateY(-179.9deg);
+          transform: perspective(140px) rotateX(-360deg) rotateY(360deg);
         }
       }
       </style>
@@ -244,16 +248,13 @@
             <a href="/investors" class="siteNavLink">Инвесторам</a>
           </li>
           <li class="siteNavItem">
-            <a href="/investors" class="siteNavLink">Контакты</a>
-          </li>
-          <li class="siteNavItem">
-            <a href="#" class="siteNavLink">Личный <br>кабинет</a>
+            <a href="/contacts" class="siteNavLink">Контакты</a>
           </li>
         </ul>
       </nav>
       <address class="address">Краснодар
         <br> ул.Дзержинского, 125/1</address>
-      <a href="tel:+7 (909) 451-60-16" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
+      <a href="tel:79094516016" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
   </a>
       <form action="http://private-41d3c9-aquaprofile.apiary-mock.com" class="feedback" data-id="menu_">
         <label for="menu_name" class="feedbackLabel">Имя:</label>
@@ -269,12 +270,12 @@
     </div>
     <main class="page">
       <section class="serviceHero" style="background-image: url('/res/images/serviceHero2.jpg')">
-        <div class="serviceInfo">
+        <div class="serviceInfo serviceInfo-2">
           <h1 class="serviceHeroTitle">
-            Чернение шин авто в краснодаре
+            Чернение шин авто в&nbsp;Краснодаре
           </h1>
           <p class="serviceDescription">
-            Чернение можно сравнить с уходом за обувью: после нанесения специального состава и резина, и кожа блестят, выглядят ухоженно и служат дольше.
+            Чернение можно сравнить с&nbsp;уходом за&nbsp;обувью: после нанесения специального состава и&nbsp;резина, и&nbsp;кожа блестят, выглядят ухоженно и&nbsp;служат дольше.
           </p>
         </div>
       </section>
@@ -290,39 +291,27 @@
           </g>
         </svg>
         <div class="serviceDescription-1">
-          <p>Устройство для чернения колёс находится в нашей зоне сухой уборки. Пистолет для распыления чернителя автоматически дозирует раствор и позволяет нанести состав, не пачкая руки краской.</p>
-          <p>Мы используем для чернения покрышек сертифицированный раствор на водной основе, который абсолютно безопасен для шин.</p>
+          <p>Устройство для чернения колёс находится в&nbsp;нашей зоне сухой уборки. Пистолет для распыления чернителя автоматически дозирует раствор и&nbsp;позволяет нанести состав, не&nbsp;пачкая руки краской.</p>
+          <p>Мы&nbsp;используем для чернения покрышек сертифицированный раствор на&nbsp;водной основе, который абсолютно безопасен для шин.</p>
         </div>
         <img src="/res/images/serviceImage2.jpg" alt="" class="serviceImage-1">
       </section>
       <section class="serviceSection-2" style="background-image: url('/res/images/serviceBackground5.jpg')">
         <h2 class="serviceTitle-2">Как чернить шины</h2>
         <div class="serviceDescription-2">
-          <p>Колёса нужно тщательно вымыть и высушить так, чтобы вода не осталась в протекторе. Затем нанести на резину специальную краску и вытереть диски, если они случайно испачкались.</p>
-          <p>Самостоятельная обработка шин на нашей мойке обходится гораздо дешевле, чем при посещении СТО — но эффект от чернения не менее впечатляющий.</p>
+          <p>Колёса нужно тщательно вымыть и&nbsp;высушить так, чтобы вода не&nbsp;осталась в&nbsp;протекторе. Затем нанести на&nbsp;резину специальную краску и&nbsp;вытереть диски, если они случайно испачкались.</p>
+          <p>Самостоятельная обработка шин на&nbsp;нашей мойке обходится гораздо дешевле, чем при посещении СТО&nbsp;&mdash; но&nbsp;эффект от&nbsp;чернения не&nbsp;менее впечатляющий.</p>
         </div>
       </section>
       <section class="serviceSection-3">
         <h2 class="sectionTitle">Результат чернения резины</h2>
         <div class="serviceResults serviceResults-6">
-          <p class="serviceResultText">
-            Покрышки приобретают яркий чёрный цвет — простой способ освежить эстетический вид машины.
-          </p>
-          <p class="serviceResultText">
-            Покрытие предотвращает старение и быстрый износ колёс автомобиля, защищает резину от растрескивания.
-          </p>
-          <p class="serviceResultText">
-            Шины защищены от ультрафиолетового излучения, поэтому резина медленнее выгорает на солнце.
-          </p>
-          <p class="serviceResultText">
-            Состав придаёт шинам водоотталкивающий эффект и антистатические свойства — грязь и пыль меньше притягиваются к колесам машины.
-          </p>
-          <p class="serviceResultText">
-            Слой бережёт резину от химических реагентов, которые используются, чтобы очистить дорогу от снега.
-          </p>
-          <p class="serviceResultText">
-            Цена на чернение резины ниже, чем новые покрышки. Если проводить процедуру регулярно, колёса прослужат долго.
-          </p>
+          <p class="serviceResultText">Покрышки приобретают яркий чёрный цвет&nbsp;&mdash; простой способ освежить эстетический вид машины.</p>
+          <p class="serviceResultText">Покрытие предотвращает старение и&nbsp;быстрый износ колёс автомобиля, защищает резину от&nbsp;растрескивания.</p>
+          <p class="serviceResultText">Шины защищены от&nbsp;ультрафиолетового излучения, поэтому резина медленнее выгорает на&nbsp;солнце.</p>
+          <p class="serviceResultText">Состав придаёт шинам водоотталкивающий эффект и&nbsp;антистатические свойства&nbsp;&mdash; грязь и&nbsp;пыль меньше притягиваются к&nbsp;колесам машины.</p>
+          <p class="serviceResultText">Слой бережёт резину от&nbsp;химических реагентов, которые используются, чтобы очистить дорогу от&nbsp;снега.</p>
+          <p class="serviceResultText">Цена на&nbsp;чернение резины ниже, чем новые покрышки. Если проводить процедуру регулярно, колёса прослужат долго.</p>
         </div>
       </section>
       <section class="serviceSection-4">
@@ -358,7 +347,7 @@
       </a>
       <address class="address">Краснодар
         <br> ул.Дзержинского, 125/1</address>
-      <a href="tel:+7 (909) 451-60-16" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
+      <a href="tel:+79094516016" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
   </a>
       <div class="legals">
         <a href="#">
@@ -414,10 +403,7 @@
             <a href="/investors" class="siteNavLink">Инвесторам</a>
           </li>
           <li class="siteNavItem">
-            <a href="/investors" class="siteNavLink">Контакты</a>
-          </li>
-          <li class="siteNavItem">
-            <a href="#" class="siteNavLink">Личный <br>кабинет</a>
+            <a href="/contacts" class="siteNavLink">Контакты</a>
           </li>
         </ul>
       </nav>

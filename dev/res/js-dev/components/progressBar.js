@@ -1,3 +1,5 @@
+// анимация с прогрессом загрязнения на стр клиентов
+
 function who() {
   return document.querySelector('.progress');
 }

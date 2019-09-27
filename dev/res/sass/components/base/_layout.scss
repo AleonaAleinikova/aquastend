@@ -24,6 +24,7 @@ body {
   padding: 0 $gap;
   margin: 0;
   background: $background;
+  transition: transform .8s;
 
   @include tx-media(wide) {
     padding: 0 $gap-middle;
@@ -33,6 +34,10 @@ body {
     padding: 0 $gap-phone;
   }
 
+}
+
+.animationScroll {
+  transform: translateY(-100vh);
 }
 
 .font-BebasNeue-is-loaded {

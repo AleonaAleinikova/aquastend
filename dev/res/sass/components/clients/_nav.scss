@@ -78,4 +78,33 @@ $clientsNavLink-fontSize: 13px;
     text-decoration: underline;
   }
 
+  @include tx-media(phone) {
+    position: relative;
+    z-index: 2;
+
+    &:before {
+      @include tx-pseudo;
+      z-index: -1;
+      top: 50%;
+      left: -30px;
+      width: 280px;
+      height: 50px;
+      border-radius: 25px;
+      background: $blue-100;
+      margin: -25px 0 0;
+      opacity: 0;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+
+      &:before {
+        opacity: 1;
+      }
+
+    }
+
+  }
+
 }

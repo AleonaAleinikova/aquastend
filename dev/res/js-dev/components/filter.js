@@ -1,3 +1,6 @@
+// запрашивает все карточки.а потом их фильтрует
+
+
 /* global Promise */
 
 import nanoajax from 'nanoajax';

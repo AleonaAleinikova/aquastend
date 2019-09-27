@@ -19,16 +19,39 @@
 $serviceInfo-background: rgba($blue-500, .88);
 
 .serviceInfo {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
   background: $serviceInfo-background;
   border-radius: 25px;
-  padding: 30px;
-  // max-width: 680px;
-  max-width: 755px;
   box-sizing: border-box;
+
+  &-1 {
+    width: 680px;
+    padding: 30px 40px 40px;
+  }
+
+  &-2 {
+    width: 680px;
+    padding: 30px 60px 45px;
+  }
+
+  &-3 {
+    width: 680px;
+    padding: 30px 105px 45px;
+  }
+
+  &-4 {
+    width: 755px;
+    padding: 30px 30px 45px;
+  }
+
+  &-5 {
+    width: 640px;
+    padding: 30px 55px 40px;
+  }
 
   @include tx-media(phone) {
     width: 100%;
@@ -75,8 +98,6 @@ $serviceDescription-fontSize: 14px;
   color: $serviceDescription-color;
   text-align: center;
   margin: 0;
-  // width: 560px;
-  width: 630px;
 
   @include tx-media(phone) {
     width: 100%;

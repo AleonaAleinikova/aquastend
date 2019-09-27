@@ -12,11 +12,12 @@ $advantages-background: $blue-50;
   @include tx-media(wide) {
     padding: 70px calc((100% - 530px) / 2) 15px;
     margin: 0 (-$gap-middle);
+    overflow: hidden;
   }
 
   @include tx-media(phone) {
     flex-direction: column;
-    padding: 55px $gap-phone 15px;
+    padding: 55px 30px 15px;
     margin: 0 (-$gap-phone);
   }
 
@@ -51,16 +52,14 @@ $advantagePlaceholder-size: 360px;
   }
 
   @include tx-media(tablet) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
     &:before {
       display: none;
     }
 
-  }
-
-  @include tx-media(phone) {
-    width: 100%;
-    margin: 0;
   }
 
 }
@@ -127,9 +126,9 @@ $advantageTitle-color: $blue-900;
     line-height: .95;
   }
 
-  @include tx-media(phone) {
+  @include tx-media(tablet) {
     @include tx-font-size($advantageTitle-phone-default-fontSize, none);
-    margin: 40px 0 0;
+    margin: 40px 0 10px;
 
     %font-BebasNeue-is-loaded & {
       @include tx-font-size($advantageTitle-phone-fontSize, none);
@@ -146,7 +145,7 @@ $advantageTitle-color: $blue-900;
     }
 
     .advantage-1 & {
-      margin: 0;
+      margin: 0 0 10px;
 
       &:before {
         display: none;
@@ -180,7 +179,7 @@ $advantageIcon-lightColor: $yellow;
   }
 
   .advantage-2 & {
-    transform: rotate(-140deg) translate(2px, 32px);
+    transform: rotate(-145deg) translate(4px, 30px);
     stroke: $advantageIcon-lightColor;
   }
 
@@ -204,7 +203,7 @@ $advantageIcon-lightColor: $yellow;
     stroke: $advantageIcon-lightColor;
   }
 
-  @include tx-media(phone) {
+  @include tx-media(tablet) {
     display: none;
   }
 
@@ -214,7 +213,8 @@ $advantageDescription-fontSize: 13px;
 
 .advantageDescription {
   @include tx-font-size($advantageDescription-fontSize, none);
-  margin: 0 0 30px;
+  margin: 0 auto 30px;
   font-weight: 300;
   line-height: 1.6;
+  max-width: 260px;
 }

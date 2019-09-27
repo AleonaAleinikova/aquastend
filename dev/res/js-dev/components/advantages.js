@@ -1,3 +1,5 @@
+// для главной стр.анимация для фактов
+
 function who() {
   return document.querySelector('.advantages');
 }

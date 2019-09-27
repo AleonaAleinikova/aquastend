@@ -1,3 +1,5 @@
+// табы на стр с политиками
+
 function who() {
   return document.querySelector('.js-tabsHolder');
 }

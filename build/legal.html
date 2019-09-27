@@ -27,10 +27,11 @@
 
   <body>
     <div class="preloader">
-      <svg class="icon" viewBox="0 0 120 120">
-        <path fill="#fff" d="M87.1 57.1l3.8-.5L87 71.1H73.4V46.5l4 2.1-6.5-19-6.6 19 4-2.1v24.6H54.7l-3.9-14.5 3.8.5-12.7-14.4 8.9 33.5h17.5v12.4l-3.8 3.8 3.8 3.8v16l5.1-5.2V96.2l3.8-3.8-3.8-3.8V76.2H91l8.9-33.5z" />
-      </svg>
-      <div class="preloaderHolder"></div>
+      <div class="preloaderHolder">
+        <svg class="icon" viewBox="0 0 120 120">
+          <path fill="#fff" d="M87.1 57.1l3.8-.5L87 71.1H73.4V46.5l4 2.1-6.5-19-6.6 19 4-2.1v24.6H54.7l-3.9-14.5 3.8.5-12.7-14.4 8.9 33.5h17.5v12.4l-3.8 3.8 3.8 3.8v16l5.1-5.2V96.2l3.8-3.8-3.8-3.8V76.2H91l8.9-33.5z" />
+        </svg>
+      </div>
       <style>
       .preloader {
         position: fixed;
@@ -52,40 +53,43 @@
         background: white;
       }
       
-      .preloaderHolder {
+      .preloaderHolder,
+      .icon {
         position: absolute;
-        z-index: -1;
         top: 50%;
         left: 50%;
-        width: 120px;
-        height: 120px;
-        margin: -60px 0 0 -60px;
-        animation: preloader 1.5s infinite ease-in-out;
+        width: 90px;
+        height: 90px;
+      }
+      
+      .preloaderHolder {
+        z-index: -1;
+        margin: -45px 0 0 -45px;
+        animation: preloader 3s infinite ease-in-out;
         background: #233263;
       }
       
       .icon {
-        position: absolute;
         z-index: 5;
-        top: 50%;
-        left: 50%;
-        width: 120px;
-        height: 120px;
-        margin: -70px 0 0 -70px;
+        margin: -53px 0 0 -53px;
         transform: translateZ(1000px);
-        transform-style: preserve-3d;
-        -webkit-transform-style: preserve-3d;
       }
       
       @keyframes preloader {
         0% {
           transform: perspective(140px) rotateX(0deg) rotateY(0deg);
         }
+        25% {
+          transform: perspective(140px) rotateX(-180deg) rotateY(0deg);
+        }
         50% {
-          transform: perspective(140px) rotateX(-180.1deg) rotateY(0deg);
+          transform: perspective(140px) rotateX(-360deg) rotateY(0deg);
+        }
+        75% {
+          transform: perspective(140px) rotateX(-360deg) rotateY(180deg);
         }
         100% {
-          transform: perspective(140px) rotateX(-180deg) rotateY(-179.9deg);
+          transform: perspective(140px) rotateX(-360deg) rotateY(360deg);
         }
       }
       </style>
@@ -244,16 +248,13 @@
             <a href="/investors" class="siteNavLink">Инвесторам</a>
           </li>
           <li class="siteNavItem">
-            <a href="/investors" class="siteNavLink">Контакты</a>
-          </li>
-          <li class="siteNavItem">
-            <a href="#" class="siteNavLink">Личный <br>кабинет</a>
+            <a href="/contacts" class="siteNavLink">Контакты</a>
           </li>
         </ul>
       </nav>
       <address class="address">Краснодар
         <br> ул.Дзержинского, 125/1</address>
-      <a href="tel:+7 (909) 451-60-16" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
+      <a href="tel:79094516016" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
   </a>
       <form action="http://private-41d3c9-aquaprofile.apiary-mock.com" class="feedback" data-id="menu_">
         <label for="menu_name" class="feedbackLabel">Имя:</label>
@@ -360,7 +361,7 @@
       </a>
       <address class="address">Краснодар
         <br> ул.Дзержинского, 125/1</address>
-      <a href="tel:+7 (909) 451-60-16" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
+      <a href="tel:+79094516016" class="contactLink">+7 (909) <span class="contactLinkText">451-60-16</span>
   </a>
       <div class="legals">
         <a href="#">
@@ -416,10 +417,7 @@
             <a href="/investors" class="siteNavLink">Инвесторам</a>
           </li>
           <li class="siteNavItem">
-            <a href="/investors" class="siteNavLink">Контакты</a>
-          </li>
-          <li class="siteNavItem">
-            <a href="#" class="siteNavLink">Личный <br>кабинет</a>
+            <a href="/contacts" class="siteNavLink">Контакты</a>
           </li>
         </ul>
       </nav>

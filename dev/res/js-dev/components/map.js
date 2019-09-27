@@ -1,3 +1,5 @@
+// ассинхронно подгружает карту
+
 /* global Promise */
 /* global ymaps */
 

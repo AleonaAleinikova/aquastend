@@ -13,7 +13,7 @@
   }
 
   @include tx-media(phone) {
-    padding: 15px $gap-phone;
+    padding: 30px $gap-phone 15px;
   }
 
 }
@@ -160,7 +160,9 @@ $menuLinkItem-height: 3px;
   }
 
   @include tx-media(phone) {
-    order: -1;
+    position: absolute;
+    top: 30px;
+    left: $gap-phone;
   }
 
 }

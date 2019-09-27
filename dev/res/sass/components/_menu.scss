@@ -14,6 +14,7 @@ $menu-phone-background: $black-800;
   background: url('../images/background.png');
   background-size: cover;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   overflow: auto;
   opacity: 0;
@@ -42,6 +43,7 @@ $menu-phone-background: $black-800;
   @include tx-media(tablet) {
     padding: 100px 0 60px;
     background: $menu-background;
+    justify-content: flex-start;
 
     &:before {
       opacity: 0;
@@ -49,6 +51,10 @@ $menu-phone-background: $black-800;
       background: $menu-phone-background;
     }
 
+  }
+
+  @include tx-media(phone) {
+    padding-bottom: 0;
   }
 
 }
@@ -81,11 +87,12 @@ $menuLogo-height: 70px;
 
 .menuLogo {
   position: absolute;
-  top: 40px;
+  top: 50%;
   left: 50%;
   width: $menuLogo-width;
   height: $menuLogo-height;
-  margin: 0 0 0 ($menuLogo-width / -2);
+  margin: -230px 0 0 ($menuLogo-width / -2);
+  transform: translateY(-3vh);
 
   @include tx-media(tablet) {
     display: none;

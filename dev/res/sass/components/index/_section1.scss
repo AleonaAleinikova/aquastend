@@ -60,10 +60,7 @@
   }
 
   @include tx-media(phone) {
-    top: auto;
-    right: 20px;
-    bottom: 10px;
-    margin: 0;
+    display: none;
   }
 
 }
@@ -176,11 +173,11 @@ $slideTitle-background: rgba($blue-500, .88);
     @include tx-font-size($slideTitle-default-phone-fontSize, none);
     left: 0;
     bottom: 90px;
-    width: 295px;
+    width: 290px;
     box-sizing: border-box;
-    padding: 20px 20px 15px 40px;
+    padding: 30px 20px 25px;
     border-radius: 0 25px 25px 0;
-    margin-left: -20px;
+    margin-left: 0;
 
     %font-BebasNeue-is-loaded & {
       @include tx-font-size($slideTitle-phone-fontSize, none);

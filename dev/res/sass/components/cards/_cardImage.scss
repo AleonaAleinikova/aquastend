@@ -9,11 +9,6 @@
     order: -1;
     padding: 90% 0 0;
     margin: -1px -21px 0;
-
-    @include tx-media(phone) {
-      padding: 70% 0 0;
-    }
-
   }
 
   %card-articleContent &,

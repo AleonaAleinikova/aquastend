@@ -1,3 +1,6 @@
+// для валидации и отправки формы
+
+
 import Numbered from 'input.numbered';
 import nanoajax from 'nanoajax';
 

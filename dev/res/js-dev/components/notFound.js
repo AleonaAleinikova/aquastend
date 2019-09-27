@@ -1,3 +1,5 @@
+// анимация на 404 стр
+
 function who() {
   return document.querySelector('.notFoundCanvas');
 }
@@ -9,6 +11,10 @@ export default function notFound() {
   let image;
   let width;
   let height;
+
+  const IMAGE_WIDTH = 1500;
+  const IMAGE_HEIGHT = 835;
+  const IMAGE_RATIO = IMAGE_WIDTH / IMAGE_HEIGHT;
 
   function findElements() {
     holder = document.querySelector('.notFound');
@@ -35,12 +41,14 @@ export default function notFound() {
         image.removeEventListener('error', onError);
         reject();
       });
-      image.src = '/res/images/222.jpg';
+      image.src = '/res/images/111.jpg';
     });
   }
 
   function drawResult() {
-    context.drawImage(image, 0, 0, width, height, 0 , 0, width, height);
+    const ratio = width / height;
+    if (ratio < IMAGE_RATIO) context.drawImage(image, 0, 0, IMAGE_HEIGHT * ratio, IMAGE_HEIGHT, 0 , 0, width, height);
+    else context.drawImage(image, 0, 0, IMAGE_WIDTH, IMAGE_WIDTH / ratio, 0 , 0, width, height);
   }
 
   function clearBackground(x, y) {

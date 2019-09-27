@@ -1,3 +1,6 @@
+// для блока еще на странице статьи.ждет html верстку.
+
+
 /* global Promise */
 
 import nanoajax from 'nanoajax';

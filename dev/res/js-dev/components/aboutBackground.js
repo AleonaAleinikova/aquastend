@@ -1,3 +1,6 @@
+
+// для страницы истории.для создания эффекта паралакса
+
 function who() {
   return document.querySelector('.history-1');
 }

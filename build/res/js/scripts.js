@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = aboutBackground;
 
+// для страницы истории.для создания эффекта паралакса
 function who() {
   return document.querySelector('.history-1');
 }
@@ -57,6 +58,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = advantages;
 
+// для главной стр.анимация для фактов
 function who() {
   return document.querySelector('.advantages');
 }
@@ -117,6 +119,8 @@ exports.default = articles;
 var _nanoajax = _interopRequireDefault(require("nanoajax"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// для блока еще на странице статьи.ждет html верстку.
 
 /* global Promise */
 function who() {
@@ -181,6 +185,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = facts;
+// для фактов.если надо добавить - просто дописать в items;
 var items = [{
   count: '960',
   detail: 'минут',
@@ -303,6 +308,8 @@ exports.default = filter;
 var _nanoajax = _interopRequireDefault(require("nanoajax"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// запрашивает все карточки.а потом их фильтрует
 
 /* global Promise */
 function who() {
@@ -476,6 +483,7 @@ var _nanoajax = _interopRequireDefault(require("nanoajax"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// для валидации и отправки формы
 function initMask(id) {
   return new _input.default("#".concat(id, "phone"), {
     mask: '+7 (###) ### - ## - ##',
@@ -628,6 +636,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = handAnimation;
 
+// анимация на странице о нас
 function who() {
   return document.querySelector('.js-handAnimation');
 }
@@ -675,6 +684,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = legal;
 
+// табы на стр с политиками
 function who() {
   return document.querySelector('.js-tabsHolder');
 }
@@ -737,6 +747,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.init = init;
+// ассинхронно подгружает карту
 
 /* global Promise */
 
@@ -789,6 +800,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = menu;
 
+// открывает\закрывает меню
 function who() {
   return document.querySelector('.menu');
 }
@@ -844,6 +856,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = notFound;
 
+// анимация на 404 стр
 function who() {
   return document.querySelector('.notFoundCanvas');
 }
@@ -855,6 +868,9 @@ function notFound() {
   var image;
   var width;
   var height;
+  var IMAGE_WIDTH = 1500;
+  var IMAGE_HEIGHT = 835;
+  var IMAGE_RATIO = IMAGE_WIDTH / IMAGE_HEIGHT;
 
   function findElements() {
     holder = document.querySelector('.notFound');
@@ -881,12 +897,13 @@ function notFound() {
         image.removeEventListener('error', onError);
         reject();
       });
-      image.src = '/res/images/222.jpg';
+      image.src = '/res/images/111.jpg';
     });
   }
 
   function drawResult() {
-    context.drawImage(image, 0, 0, width, height, 0, 0, width, height);
+    var ratio = width / height;
+    if (ratio < IMAGE_RATIO) context.drawImage(image, 0, 0, IMAGE_HEIGHT * ratio, IMAGE_HEIGHT, 0, 0, width, height);else context.drawImage(image, 0, 0, IMAGE_WIDTH, IMAGE_WIDTH / ratio, 0, 0, width, height);
   }
 
   function clearBackground(x, y) {
@@ -1173,9 +1190,9 @@ function init(object, navigationObject, pageClassName) {
   var sliderPosition;
   var activeSlideIndex;
   var activeSlideDot;
-  var pointStartX;
+  var pointStartY;
   var pointShift;
-  var pointDiffX;
+  var pointDiffY;
   var positionStart;
   var animationFrame;
   /* Get */
@@ -1216,16 +1233,16 @@ function init(object, navigationObject, pageClassName) {
     return activeSlideDot;
   }
 
-  function getPointStartX() {
-    return pointStartX;
+  function getPointStartY() {
+    return pointStartY;
   }
 
   function getPointShift() {
     return pointShift;
   }
 
-  function getPointDiffX() {
-    return pointDiffX;
+  function getPointDiffY() {
+    return pointDiffY;
   }
 
   function getPositionStart() {
@@ -1277,16 +1294,16 @@ function init(object, navigationObject, pageClassName) {
     activeSlideDot = getSliderDot(getActiveSlideIndex());
   }
 
-  function setPointStartX(start) {
-    pointStartX = start;
+  function setPointStartY(start) {
+    pointStartY = start;
   }
 
   function setPointShift(shift) {
     pointShift = shift;
   }
 
-  function setPointDiffX(diff) {
-    pointDiffX = diff;
+  function setPointDiffY(diff) {
+    pointDiffY = diff;
   }
 
   function setPositionStart(position) {
@@ -1313,9 +1330,9 @@ function init(object, navigationObject, pageClassName) {
   }
 
   function calculatePositions() {
-    if (getActiveSlideIndex() === 0 && getPointDiffX() > 0) {
+    if (getActiveSlideIndex() === 0 && getPointDiffY() > 0) {
       setPointShift(4);
-    } else if (getActiveSlideIndex() === getSliderMax() && getPointDiffX() < 0) {
+    } else if (getActiveSlideIndex() === getSliderMax() && getPointDiffY() < 0) {
       setPointShift(4);
     }
   }
@@ -1325,8 +1342,8 @@ function init(object, navigationObject, pageClassName) {
   }
 
   function calculateSlideDistance() {
-    var correction = getPointDiffX() < 0 ? SLIDE_THRESHOLD : -SLIDE_THRESHOLD;
-    return "".concat(getPositionStart() + (getPointDiffX() + correction) / getPointShift(), "px");
+    var correction = getPointDiffY() < 0 ? SLIDE_THRESHOLD : -SLIDE_THRESHOLD;
+    return "".concat(getPositionStart() + (getPointDiffY() + correction) / getPointShift(), "px");
   }
 
   function translateSlider(distance) {
@@ -1347,10 +1364,10 @@ function init(object, navigationObject, pageClassName) {
   }
 
   function updateInteractionParameters(event) {
-    var startPoint = event ? event.touches[0].pageX : 0;
-    setPointStartX(startPoint);
+    var startPoint = event ? event.touches[0].pageY : 0;
+    setPointStartY(startPoint);
     setPointShift(1);
-    setPointDiffX(0);
+    setPointDiffY(0);
     setPositionStart(getSlider().getBoundingClientRect().left - getSliderPosition());
   }
 
@@ -1369,11 +1386,11 @@ function init(object, navigationObject, pageClassName) {
   }
 
   function slidingForward() {
-    return getPointDiffX() < -NEXT_SHIFT && getActiveSlideIndex() !== getSliderMax();
+    return getPointDiffY() < -NEXT_SHIFT && getActiveSlideIndex() !== getSliderMax();
   }
 
   function slidingBack() {
-    return getPointDiffX() > NEXT_SHIFT && getActiveSlideIndex() !== 0;
+    return getPointDiffY() > NEXT_SHIFT && getActiveSlideIndex() !== 0;
   }
 
   function updateIndex() {
@@ -1407,7 +1424,7 @@ function init(object, navigationObject, pageClassName) {
   }
 
   function fixSlider() {
-    if (Math.abs(pointDiffX) > SLIDE_THRESHOLD) {
+    if (Math.abs(pointDiffY) > SLIDE_THRESHOLD) {
       updateIndex();
       updateDots();
       positionSlider();
@@ -1416,7 +1433,7 @@ function init(object, navigationObject, pageClassName) {
 
   function fakeSwipe(fakeShift) {
     updateInteractionParameters();
-    setPointDiffX(fakeShift);
+    setPointDiffY(fakeShift);
     setStatus(true, true);
     getSlider().classList.add(SLIDER_CHANGING_CLASS_NAME);
     fixSlider();
@@ -1441,17 +1458,17 @@ function init(object, navigationObject, pageClassName) {
 
 
   function onTouchMove(event) {
-    setPointDiffX(event.touches[0].pageX - getPointStartX());
+    setPointDiffY(event.touches[0].pageY - getPointStartY());
 
-    if (Math.abs(getPointDiffX()) > SLIDE_THRESHOLD) {
+    if (Math.abs(getPointDiffY()) > SLIDE_THRESHOLD) {
       event.preventDefault();
       setAnimationFrame(requestAnimationFrame(shiftSlider));
     }
   }
 
   function onTouchEnd() {
-    // document.removeEventListener('touchmove', onTouchMove, true);
-    // document.removeEventListener('touchend', onTouchEnd);
+    document.removeEventListener('touchmove', onTouchMove, true);
+    document.removeEventListener('touchend', onTouchEnd);
     cancelAnimationFrame(getAnimationFrame());
     requestAnimationFrame(fixSlider);
   }
@@ -1461,8 +1478,9 @@ function init(object, navigationObject, pageClassName) {
     var status = getStatus();
 
     if (!status.fixing || !status.changing) {
-      updateInteractionParameters(event); // document.addEventListener('touchmove', onTouchMove, true);
-      // document.addEventListener('touchend', onTouchEnd);
+      updateInteractionParameters(event);
+      document.addEventListener('touchmove', onTouchMove, true);
+      document.addEventListener('touchend', onTouchEnd);
     }
   }
 
@@ -1591,6 +1609,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = progressBar;
 
+// анимация с прогрессом загрязнения на стр клиентов
 function who() {
   return document.querySelector('.progress');
 }
@@ -1746,7 +1765,7 @@ function slider() {
     pagination = parent.querySelector('.js-sliderDots');
     dotsList = [].slice.call(parent.querySelectorAll('.js-sliderDot'));
     gallery.slide(0);
-    body.classList.add('withoutScroll');
+    body.classList.add('withoutScroll', 'fixed');
   }
 
   function findDot(target) {
@@ -1760,23 +1779,22 @@ function slider() {
   }
 
   function selectWay(way) {
+    console.log(way);
+
     if (way && gallery.current() !== 2) {
-      timeout = setTimeout(function () {
-        return document.addEventListener('wheel', onWheel, false);
-      }, 800);
+      timeout = setTimeout(subscribeWheel, 800);
       gallery.next();
     } else if (way && gallery.current() === 2) {
       var _height = window.innerHeight;
       body.classList.add('animationScroll');
-      body.classList.remove('withoutScroll');
+      body.classList.remove('withoutScroll', 'fixed');
       clearTimeout(timeout);
       document.removeEventListener('wheel', onWheel, false);
       document.removeEventListener('keydown', onKey);
+      document.removeEventListener('touchstart', onTouch, false);
     } else {
       gallery.prev();
-      timeout = setTimeout(function () {
-        return document.addEventListener('wheel', onWheel, false);
-      }, 800);
+      timeout = setTimeout(subscribeWheel, 800);
     }
   }
 
@@ -1788,6 +1806,12 @@ function slider() {
 
   function unsubscribeWheel() {
     document.removeEventListener('wheel', onWheel, false);
+    document.removeEventListener('touchstart', onTouch, false);
+  }
+
+  function subscribeWheel() {
+    document.addEventListener('wheel', onWheel, false);
+    document.addEventListener('touchstart', onTouch, false);
   }
 
   function onWheel(event) {
@@ -1795,28 +1819,36 @@ function slider() {
     event.preventDefault();
     var deltaY = event.deltaY;
     selectWay(deltaY > 0);
-  } // function onTouchMove(event) {
-  //   event.preventDefault();
-  //   const currentCord = event.touches[0].pageY;
-  //   selectWay(currentCord > start);
-  // }
-  // function onTouchEnd(event) {
-  //   document.removeEventListener('touchmove', onTouchMove, false);
-  //   document.removeEventListener('touchend', onTouchEnd, false);
-  // }
-  // function onTouch(event) {
-  //   event.preventDefault();
-  //   start = event.pageY;
-  //   document.addEventListener('touchmove', onTouchMove, false);
-  //   document.addEventListener('touchend', onTouchEnd, false);
-  // }
+  }
 
+  function onTouchMove(event) {
+    event.preventDefault();
+    var currentCord = event.touches[0].pageY;
+    selectWay(currentCord > start);
+    document.removeEventListener('touchmove', onTouchMove, false);
+    document.removeEventListener('touchend', onTouchEnd, false);
+    document.removeEventListener('touchstart', onTouch, false);
+  }
+
+  function onTouchEnd(event) {
+    document.removeEventListener('touchmove', onTouchMove, false);
+    document.removeEventListener('touchend', onTouchEnd, false);
+    document.removeEventListener('touchstart', onTouch, false);
+  }
+
+  function onTouch(event) {
+    event.preventDefault();
+    start = event.touches[0].pageX;
+    document.addEventListener('touchmove', onTouchMove, false);
+    document.addEventListener('touchend', onTouchEnd, false);
+  }
 
   function resetEvents() {
     document.addEventListener('keydown', onKey);
     document.addEventListener('wheel', onWheel, false);
+    document.addEventListener('touchstart', onTouch, false);
     body.classList.remove('animationScroll');
-    body.classList.add('withoutScroll');
+    body.classList.add('withoutScroll', 'fixed');
   }
 
   function onScroll(event) {
@@ -1827,8 +1859,8 @@ function slider() {
     pagination.addEventListener('click', onDot);
     pagination.addEventListener('touchstart', onDot);
     document.addEventListener('keydown', onKey);
-    document.addEventListener('wheel', onWheel, false); // document.addEventListener('touchstart', onTouch, false);
-
+    document.addEventListener('wheel', onWheel, false);
+    document.addEventListener('touchstart', onTouch, false);
     document.addEventListener('scroll', onScroll);
   }
 

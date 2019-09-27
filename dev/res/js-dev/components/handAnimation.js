@@ -1,3 +1,5 @@
+// анимация на странице о нас
+
 function who() {
   return document.querySelector('.js-handAnimation');
 }

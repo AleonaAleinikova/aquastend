@@ -48,9 +48,9 @@ export function init(object, navigationObject, pageClassName) {
   let sliderPosition;
   let activeSlideIndex;
   let activeSlideDot;
-  let pointStartX;
+  let pointStartY;
   let pointShift;
-  let pointDiffX;
+  let pointDiffY;
   let positionStart;
   let animationFrame;
 
@@ -92,16 +92,16 @@ export function init(object, navigationObject, pageClassName) {
     return activeSlideDot;
   }
 
-  function getPointStartX() {
-    return pointStartX;
+  function getPointStartY() {
+    return pointStartY;
   }
 
   function getPointShift() {
     return pointShift;
   }
 
-  function getPointDiffX() {
-    return pointDiffX;
+  function getPointDiffY() {
+    return pointDiffY;
   }
 
   function getPositionStart() {
@@ -153,16 +153,16 @@ export function init(object, navigationObject, pageClassName) {
     activeSlideDot = getSliderDot(getActiveSlideIndex());
   }
 
-  function setPointStartX(start) {
-    pointStartX = start;
+  function setPointStartY(start) {
+    pointStartY = start;
   }
 
   function setPointShift(shift) {
     pointShift = shift;
   }
 
-  function setPointDiffX(diff) {
-    pointDiffX = diff;
+  function setPointDiffY(diff) {
+    pointDiffY = diff;
   }
 
   function setPositionStart(position) {
@@ -189,9 +189,9 @@ export function init(object, navigationObject, pageClassName) {
   }
 
   function calculatePositions() {
-    if (getActiveSlideIndex() === 0 && getPointDiffX() > 0) {
+    if (getActiveSlideIndex() === 0 && getPointDiffY() > 0) {
       setPointShift(4);
-    } else if (getActiveSlideIndex() === getSliderMax() && getPointDiffX() < 0) {
+    } else if (getActiveSlideIndex() === getSliderMax() && getPointDiffY() < 0) {
       setPointShift(4);
     }
   }
@@ -201,8 +201,8 @@ export function init(object, navigationObject, pageClassName) {
   }
 
   function calculateSlideDistance() {
-    const correction = getPointDiffX() < 0 ? SLIDE_THRESHOLD : -SLIDE_THRESHOLD;
-    return `${getPositionStart() + ((getPointDiffX() + correction) / getPointShift())}px`;
+    const correction = getPointDiffY() < 0 ? SLIDE_THRESHOLD : -SLIDE_THRESHOLD;
+    return `${getPositionStart() + ((getPointDiffY() + correction) / getPointShift())}px`;
   }
 
   function translateSlider(distance) {
@@ -223,10 +223,10 @@ export function init(object, navigationObject, pageClassName) {
   }
 
   function updateInteractionParameters(event) {
-    const startPoint = event ? event.touches[0].pageX : 0;
-    setPointStartX(startPoint);
+    const startPoint = event ? event.touches[0].pageY : 0;
+    setPointStartY(startPoint);
     setPointShift(1);
-    setPointDiffX(0);
+    setPointDiffY(0);
     setPositionStart(getSlider().getBoundingClientRect().left - getSliderPosition());
   }
 
@@ -245,11 +245,11 @@ export function init(object, navigationObject, pageClassName) {
   }
 
   function slidingForward() {
-    return getPointDiffX() < -NEXT_SHIFT && getActiveSlideIndex() !== getSliderMax();
+    return getPointDiffY() < -NEXT_SHIFT && getActiveSlideIndex() !== getSliderMax();
   }
 
   function slidingBack() {
-    return getPointDiffX() > NEXT_SHIFT && getActiveSlideIndex() !== 0;
+    return getPointDiffY() > NEXT_SHIFT && getActiveSlideIndex() !== 0;
   }
 
   function updateIndex() {
@@ -283,7 +283,7 @@ export function init(object, navigationObject, pageClassName) {
   }
 
   function fixSlider() {
-    if (Math.abs(pointDiffX) > SLIDE_THRESHOLD) {
+    if (Math.abs(pointDiffY) > SLIDE_THRESHOLD) {
       updateIndex();
       updateDots();
       positionSlider();
@@ -292,7 +292,7 @@ export function init(object, navigationObject, pageClassName) {
 
   function fakeSwipe(fakeShift) {
     updateInteractionParameters();
-    setPointDiffX(fakeShift);
+    setPointDiffY(fakeShift);
     setStatus(true, true);
     getSlider().classList.add(SLIDER_CHANGING_CLASS_NAME);
     fixSlider();
@@ -315,16 +315,16 @@ export function init(object, navigationObject, pageClassName) {
   /* Slider Interactions */
 
   function onTouchMove(event) {
-    setPointDiffX(event.touches[0].pageX - getPointStartX());
-    if (Math.abs(getPointDiffX()) > SLIDE_THRESHOLD) {
+    setPointDiffY(event.touches[0].pageY - getPointStartY());
+    if (Math.abs(getPointDiffY()) > SLIDE_THRESHOLD){
       event.preventDefault();
       setAnimationFrame(requestAnimationFrame(shiftSlider));
     }
   }
 
   function onTouchEnd() {
-    // document.removeEventListener('touchmove', onTouchMove, true);
-    // document.removeEventListener('touchend', onTouchEnd);
+    document.removeEventListener('touchmove', onTouchMove, true);
+    document.removeEventListener('touchend', onTouchEnd);
     cancelAnimationFrame(getAnimationFrame());
     requestAnimationFrame(fixSlider);
   }
@@ -334,8 +334,8 @@ export function init(object, navigationObject, pageClassName) {
     const status = getStatus();
     if (!status.fixing || !status.changing) {
       updateInteractionParameters(event);
-      // document.addEventListener('touchmove', onTouchMove, true);
-      // document.addEventListener('touchend', onTouchEnd);
+      document.addEventListener('touchmove', onTouchMove, true);
+      document.addEventListener('touchend', onTouchEnd);
     }
   }
 

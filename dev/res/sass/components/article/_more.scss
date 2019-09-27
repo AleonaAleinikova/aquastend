@@ -15,7 +15,7 @@ $moreArticles-background: $blue-100;
 
   @include tx-media(phone) {
     margin: 0 (-$gap-phone);
-    padding: 45px 50px 130px;
+    padding: 45px 50px 110px;
   }
 
 }
@@ -35,7 +35,7 @@ $moreArticlesLink-color: $blue-200;
 .moreArticlesLink {
   @include tx-link($moreArticlesLink-color);
   position: absolute;
-  bottom: 50px;
+  bottom: 60px;
   left: 50%;
   text-decoration: none;
   border-bottom: 2px dashed currentColor;

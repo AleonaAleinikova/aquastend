@@ -25,6 +25,7 @@ $feedback-footer-background: $blue-100;
   }
 
   @include tx-media(tablet) {
+    position: relative;
 
     %footer & {
       top: 45px;
@@ -35,6 +36,20 @@ $feedback-footer-background: $blue-100;
 
     %menu & {
       margin: 0 auto;
+      width: auto;
+      padding-bottom: 60px;
+
+      &:before {
+        @include tx-pseudo;
+        z-index: -1;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 100vw;
+        background: #1C232D;
+        transform: translateX(-50%);
+      }
+
     }
 
   }
@@ -89,6 +104,8 @@ $feedbackField-color: $gray-500;
   font-weight: 300;
   box-sizing: border-box;
   color: $feedbackField-color;
+  appearance: none;
+  -webkit-appearance: none;
 
   %footer & {
     border: 1px solid $feedbackField-footer-borderColor;

@@ -1,3 +1,5 @@
+// открывает\закрывает меню
+
 function who() {
   return document.querySelector('.menu');
 }

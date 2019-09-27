@@ -24,7 +24,7 @@ $clients-2-background: $blue-50;
 
   @include tx-media(phone) {
     margin: 0 (-$gap-phone);
-    padding: 50px 0;
+    padding: 50px 40px;
   }
 
 }
@@ -78,6 +78,13 @@ $clientsTitle-3-color: $blue-400;
 .clientsTitle-3 {
   @extend %aqs-sectionTitle;
   color: $clientsTitle-3-color;
+
+  @include tx-media(phone) {
+    width: 200px;
+    margin-bottom: -5px;
+    align-self: center;
+  }
+
 }
 
 .clientsDescription-1 {
@@ -99,6 +106,7 @@ $clientsTitle-3-color: $blue-400;
 
   @include tx-media(phone) {
     width: 100%;
+    margin: -20px 0 0;
   }
 
 }
@@ -132,14 +140,14 @@ $clientsTitle-3-color: $blue-400;
   width: 591px;
   height: 175px;
   margin: 55px 0 0;
-  background: url('../images/cli1.svg');
+  background: url('../images/cli1.png');
   background-size: contain;
   background-repeat: no-repeat;
   fill: none;
 
   @include tx-media(wide) {
     width: 730px;
-    background: url('../images/cli2.svg');
+    background: url('../images/cli2.png');
   }
 
   @include tx-media(tablet) {
@@ -150,6 +158,7 @@ $clientsTitle-3-color: $blue-400;
   @include tx-media(phone) {
     width: 280px;
     height: 90px;
+    margin: 35px 0 0;
   }
 
 }
@@ -428,7 +437,7 @@ $steps-background: $blue-100;
   @include tx-media(phone) {
     flex-direction: column;
     width: 200px;
-    padding: 30px;
+    padding: 30px 30px 40px;
     margin: 30px auto 60px;
     border-radius: 100px;
   }
